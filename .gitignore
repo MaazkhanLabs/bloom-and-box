@@ -1,0 +1,9 @@
+# Archives & extracted source
+*.zip
+extracted/
+
+# OS and Editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

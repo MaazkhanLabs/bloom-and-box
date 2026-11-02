@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Custom Gift Builder — Bloom &amp; Box | Premium Bouquets &amp; Gift Hampers · Lahore</title>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Noto+Serif:wght@400;500;600&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config={darkMode:"class",theme:{extend:{"colors":{"surface-variant":"#f1dfd9","background":"#fff8f6","error-container":"#ffdad6","tertiary":"#7c5149","secondary-fixed-dim":"#baccaf","on-primary-fixed":"#3a0a00","on-primary":"#ffffff","inverse-primary":"#ffb59f","on-primary-container":"#fffbff","on-surface":"#231917","on-secondary-container":"#57674f","inverse-on-surface":"#ffede8","on-secondary":"#ffffff","on-tertiary":"#ffffff","on-tertiary-fixed":"#31120d","primary-container":"#af5e45","on-error":"#ffffff","on-surface-variant":"#54433e","surface-container":"#fdeae5","on-tertiary-container":"#fffbff","surface-container-lowest":"#ffffff","surface-container-highest":"#f1dfd9","primary-fixed-dim":"#ffb59f","on-primary-fixed-variant":"#76321d","on-error-container":"#93000a","surface-tint":"#944931","outline-variant":"#dac1ba","on-secondary-fixed":"#111f0d","on-secondary-fixed-variant":"#3b4b35","tertiary-fixed-dim":"#f1b9af","secondary-container":"#d3e5c8","outline":"#87736d","on-background":"#231917","surface":"#fff8f6","tertiary-fixed":"#ffdad4","secondary-fixed":"#d6e8ca","primary":"#91462f","tertiary-container":"#976960","secondary":"#53634b","surface-dim":"#e8d6d1","on-tertiary-fixed-variant":"#643c35","inverse-surface":"#392e2b","surface-container-low":"#fff1ed","error":"#ba1a1a","surface-container-high":"#f7e4df","primary-fixed":"#ffdbd0","surface-bright":"#fff8f6"},"borderRadius":{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},"spacing":{"space-xl":"3.5rem","margin-mobile":"1.25rem","space-sm":"0.75rem","space-xs":"0.375rem","space-md":"1.25rem","margin":"3.5rem","space-lg":"2rem","gutter-mobile":"1rem","gutter":"1.5rem"},"fontFamily":{"body-lg":["Manrope"],"label-lg":["Manrope"],"headline-lg-mobile":["Noto Serif"],"body-md":["Manrope"],"title-lg":["Manrope"],"headline-md":["Noto Serif"],"headline-lg":["Noto Serif"],"title-md":["Manrope"],"display-hero-mobile":["Noto Serif"],"headline-sm":["Noto Serif"],"label-sm":["Manrope"],"display-hero":["Noto Serif"],"label-md":["Manrope"],"body-sm":["Manrope"]},"fontSize":{"body-lg":["18px",{"lineHeight":"28px","letterSpacing":"0.01em","fontWeight":"400"}],"label-lg":["13px",{"lineHeight":"18px","letterSpacing":"0.08em","fontWeight":"600"}],"headline-lg-mobile":["28px",{"lineHeight":"36px","letterSpacing":"-0.01em","fontWeight":"400"}],"body-md":["15px",{"lineHeight":"24px","letterSpacing":"0.01em","fontWeight":"400"}],"title-lg":["18px",{"lineHeight":"26px","letterSpacing":"0.01em","fontWeight":"600"}],"headline-md":["28px",{"lineHeight":"38px","letterSpacing":"-0.01em","fontWeight":"500"}],"headline-lg":["40px",{"lineHeight":"52px","letterSpacing":"-0.015em","fontWeight":"400"}],"title-md":["16px",{"lineHeight":"24px","letterSpacing":"0.01em","fontWeight":"600"}],"display-hero-mobile":["38px",{"lineHeight":"48px","letterSpacing":"-0.01em","fontWeight":"400"}],"headline-sm":["22px",{"lineHeight":"30px","letterSpacing":"0em","fontWeight":"500"}],"label-sm":["10px",{"lineHeight":"14px","letterSpacing":"0.12em","fontWeight":"700"}],"display-hero":["56px",{"lineHeight":"68px","letterSpacing":"-0.02em","fontWeight":"400"}],"label-md":["11px",{"lineHeight":"16px","letterSpacing":"0.1em","fontWeight":"600"}],"body-sm":["13px",{"lineHeight":"20px","letterSpacing":"0.015em","fontWeight":"400"}]}}}};
+</script>
+<style>
+@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}
+::-webkit-scrollbar{display:none;}
+.base-card{transition:all .25s ease;}
+.base-card.active{box-shadow:0 0 0 3px rgba(145,70,47,.45);transform:scale(1.02);}
+.addon-item{transition:all .2s ease;}
+.addon-item.checked{background-color:#fff1ed;}
+.wrap-option{transition:all .25s ease;}
+.wrap-option.active{box-shadow:0 0 0 3px rgba(145,70,47,.45);}
+.swatch{transition:all .15s ease;}
+.swatch.active{transform:scale(1.2);box-shadow:0 0 0 3px rgba(145,70,47,.5);}
+.step-indicator{transition:all .3s ease;}
+.step-indicator.completed{background-color:#53634b;color:#fff;}
+.step-indicator.current{background-color:#91462f;color:#fff;}
+</style>
+</head>
+<body class="bg-background font-body-md text-on-surface antialiased">
+
+<!-- ========== HEADER ========== -->
+<header class="fixed top-0 left-0 right-0 z-50 bg-surface/90 backdrop-blur-md shadow-[0_1px_8px_rgba(43,33,30,0.04)]">
+  <div class="bg-surface-container-high py-1 px-margin-mobile lg:px-margin text-center">
+    <div class="max-w-[1360px] mx-auto flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm">
+      <div class="flex items-center gap-space-xs">
+        <span class="w-1.5 h-1.5 rounded-full bg-secondary inline-block"></span>
+        <span class="tracking-wider uppercase">Same-Day Delivery in Lahore</span>
+      </div>
+      <div class="hidden md:flex items-center gap-space-md">
+        <a class="hover:text-primary transition-colors" href="#">Concierge Service</a>
+        <span class="text-outline-variant">•</span>
+        <a class="hover:text-primary transition-colors" href="#">Care Guide</a>
+        <span class="text-outline-variant">•</span>
+        <button class="flex items-center gap-1 hover:text-primary transition-colors cursor-pointer">
+          <span class="material-symbols-outlined text-[14px]">support_agent</span>
+          <span>Client Services</span>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="h-20 max-w-[1360px] mx-auto px-margin-mobile lg:px-margin flex items-center justify-between gap-space-md">
+    <div class="flex items-center gap-space-sm">
+      <a class="flex flex-col text-left" href="index.html">
+        <span class="font-headline-sm text-headline-sm text-primary tracking-tight font-serif">Bloom &amp; Box</span>
+        <span class="font-label-sm text-label-sm tracking-widest text-on-surface-variant uppercase">Premium Bouquets &amp; Hampers · Lahore</span>
+      </a>
+    </div>
+    <nav class="hidden xl:flex items-center gap-space-md font-label-lg text-label-lg tracking-wider">
+      <a class="text-on-surface-variant hover:text-on-surface transition-colors py-1" href="index.html">Home</a>
+      <a class="text-on-surface-variant hover:text-on-surface transition-colors py-1" href="bouquets.html">Bouquets</a>
+      <a class="text-on-surface-variant hover:text-on-surface transition-colors py-1" href="hampers.html">Hampers</a>
+      <a class="text-on-surface-variant hover:text-on-surface transition-colors py-1" href="keepsakes.html">Keepsakes</a>
+      <a class="text-primary font-semibold border-b border-primary py-1" href="custom.html">Custom Gift Builder</a>
+      <a class="text-on-surface-variant hover:text-on-surface transition-colors py-1" href="blog.html">Blog</a>
+      <a class="text-on-surface-variant hover:text-on-surface transition-colors py-1" href="occasions.html">Occasions</a>
+    </nav>
+    <div class="flex items-center gap-space-sm">
+      <button aria-label="Search" class="w-9 h-9 rounded-full flex items-center justify-center text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors">
+        <span class="material-symbols-outlined text-[20px]">search</span>
+      </button>
+      <button aria-label="Open Cart" class="relative flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-surface-container hover:bg-surface-container-high transition-colors text-on-surface">
+        <span class="material-symbols-outlined text-[18px] text-primary">shopping_bag</span>
+        <span class="font-label-sm text-label-sm font-semibold">Bag (0)</span>
+      </button>
+      <!-- Mobile menu button -->
+      <button class="xl:hidden w-9 h-9 rounded-full flex items-center justify-center text-on-surface-variant hover:bg-surface-container transition-colors" onclick="document.getElementById('mobile-nav').classList.toggle('hidden')">
+        <span class="material-symbols-outlined text-[22px]">menu</span>
+      </button>
+    </div>
+  </div>
+  <!-- Mobile nav -->
+  <div id="mobile-nav" class="hidden xl:hidden bg-surface-container-lowest border-t border-surface-container px-margin-mobile py-space-sm">
+    <div class="flex flex-col gap-space-xs font-label-lg text-label-lg">
+      <a class="py-2 text-on-surface-variant hover:text-primary" href="index.html">Home</a>
+      <a class="py-2 text-on-surface-variant hover:text-primary" href="bouquets.html">Bouquets</a>
+      <a class="py-2 text-on-surface-variant hover:text-primary" href="hampers.html">Hampers</a>
+      <a class="py-2 text-on-surface-variant hover:text-primary" href="keepsakes.html">Keepsakes</a>
+      <a class="py-2 text-primary font-semibold" href="custom.html">Custom Gift Builder</a>
+      <a class="py-2 text-on-surface-variant hover:text-primary" href="blog.html">Blog</a>
+      <a class="py-2 text-on-surface-variant hover:text-primary" href="occasions.html">Occasions</a>
+    </div>
+  </div>
+</header>
+
+<!-- ========== MAIN ========== -->
+<main class="w-full pt-28 bg-background max-w-[1360px] mx-auto px-margin-mobile lg:px-margin min-h-screen">
+
+<!-- Hero Section -->
+<section class="relative pt-space-sm pb-space-lg">
+  <!-- Decorative blurs -->
+  <div class="absolute -top-32 -left-20 w-96 h-96 rounded-full bg-surface-variant/40 blur-3xl pointer-events-none"></div>
+  <div class="absolute top-1/2 right-0 w-[400px] h-[400px] rounded-full bg-secondary-container/30 blur-3xl pointer-events-none"></div>
+
+  <!-- Breadcrumb -->
+  <nav class="flex items-center gap-2 font-label-sm text-label-sm text-on-surface-variant mb-space-md relative z-10">
+    <a href="index.html" class="hover:text-primary transition-colors">Home</a>
+    <span class="material-symbols-outlined text-[14px]">chevron_right</span>
+    <span class="text-primary font-semibold">Custom Gift Builder</span>
+  </nav>
+
+  <div class="relative z-10 max-w-3xl">
+    <div class="inline-flex items-center gap-space-xs px-3.5 py-1.5 rounded-full bg-surface-container-high text-tertiary mb-space-sm">
+      <span class="material-symbols-outlined text-[16px] text-primary" style="font-variation-settings: 'FILL' 1;">palette</span>
+      <span class="font-label-sm text-label-sm uppercase tracking-widest font-semibold">Interactive Gift Studio</span>
+    </div>
+    <h1 class="font-display-hero text-display-hero-mobile lg:text-display-hero text-on-surface tracking-tight leading-tight max-w-2xl mb-space-sm">
+      Build Your <span class="italic font-light text-primary">Perfect</span> Gift
+    </h1>
+    <p class="font-body-lg text-body-lg text-on-surface-variant max-w-xl leading-relaxed">
+      Design a one-of-a-kind gift by choosing your bouquet, add-ons, wrapping, and personal message. Preview everything in real-time before ordering.
+    </p>
+  </div>
+</section>
+
+<!-- ========== MULTI-STEP GIFT BUILDER ========== -->
+<section class="pb-space-xl">
+  <!-- Step Progress Indicator -->
+  <div class="flex items-center gap-2 mb-space-lg overflow-x-auto pb-2">
+    <button onclick="scrollToStep(1)" class="step-indicator current flex items-center gap-1.5 px-3.5 py-2 rounded-full font-label-sm text-label-sm uppercase tracking-wider whitespace-nowrap" data-step="1">
+      <span class="material-symbols-outlined text-[16px]">looks_one</span>
+      <span>Choose Base</span>
+    </button>
+    <span class="w-6 h-px bg-outline-variant shrink-0"></span>
+    <button onclick="scrollToStep(2)" class="step-indicator flex items-center gap-1.5 px-3.5 py-2 rounded-full bg-surface-container text-on-surface-variant font-label-sm text-label-sm uppercase tracking-wider whitespace-nowrap" data-step="2">
+      <span class="material-symbols-outlined text-[16px]">looks_two</span>
+      <span>Add Items</span>
+    </button>
+    <span class="w-6 h-px bg-outline-variant shrink-0"></span>
+    <button onclick="scrollToStep(3)" class="step-indicator flex items-center gap-1.5 px-3.5 py-2 rounded-full bg-surface-container text-on-surface-variant font-label-sm text-label-sm uppercase tracking-wider whitespace-nowrap" data-step="3">
+      <span class="material-symbols-outlined text-[16px]">looks_3</span>
+      <span>Wrapping</span>
+    </button>
+    <span class="w-6 h-px bg-outline-variant shrink-0"></span>
+    <button onclick="scrollToStep(4)" class="step-indicator flex items-center gap-1.5 px-3.5 py-2 rounded-full bg-surface-container text-on-surface-variant font-label-sm text-label-sm uppercase tracking-wider whitespace-nowrap" data-step="4">
+      <span class="material-symbols-outlined text-[16px]">looks_4</span>
+      <span>Ribbon</span>
+    </button>
+    <span class="w-6 h-px bg-outline-variant shrink-0"></span>
+    <button onclick="scrollToStep(5)" class="step-indicator flex items-center gap-1.5 px-3.5 py-2 rounded-full bg-surface-container text-on-surface-variant font-label-sm text-label-sm uppercase tracking-wider whitespace-nowrap" data-step="5">
+      <span class="material-symbols-outlined text-[16px]">looks_5</span>
+      <span>Card</span>
+    </button>
+  </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter items-start">
+
+    <!-- ===== LEFT COLUMN: Configuration Steps ===== -->
+    <div class="lg:col-span-7 space-y-space-md">
+
+      <!-- STEP 1: Choose Your Base -->
+      <div class="p-space-md rounded-2xl bg-surface-container-low shadow-sm space-y-space-sm" id="step-1">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center gap-2">
+            <span class="w-8 h-8 rounded-full bg-primary text-on-primary flex items-center justify-center font-label-lg text-label-lg font-bold">1</span>
+            <h2 class="font-title-lg text-title-lg text-on-surface">Choose Your Base</h2>
+          </div>
+          <span class="font-label-sm text-label-sm text-secondary uppercase tracking-widest font-semibold">Required</span>
+        </div>
+        <p class="font-body-sm text-body-sm text-on-surface-variant">Select the foundation of your custom gift — every arrangement is hand-crafted by our master florists.</p>
+
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-space-sm">
+          <!-- Base Option 1 -->
+          <button class="base-card active rounded-xl bg-surface-container-lowest p-3 text-left cursor-pointer group" onclick="selectBase(0)" data-index="0">
+            <div class="relative h-40 rounded-lg overflow-hidden mb-2">
+              <img src="https://images.unsplash.com/photo-1487530811176-3780de880c2d?w=400" alt="Fresh Bouquet Base" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"/>
+            </div>
+            <span class="font-title-md text-title-md text-on-surface block">Fresh Bouquet Base</span>
+            <span class="font-headline-sm text-headline-sm text-primary font-serif block mt-0.5">₨3,500</span>
+            <p class="font-body-sm text-body-sm text-on-surface-variant mt-1 leading-snug">12 mixed seasonal flowers, hand-tied</p>
+          </button>
+
+          <!-- Base Option 2 -->
+          <button class="base-card rounded-xl bg-surface-container-lowest p-3 text-left cursor-pointer group" onclick="selectBase(1)" data-index="1">
+            <div class="relative h-40 rounded-lg overflow-hidden mb-2">
+              <img src="https://images.unsplash.com/photo-1455659817273-f96807779a8a?w=400" alt="Premium Rose Base" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"/>
+            </div>
+            <span class="font-title-md text-title-md text-on-surface block">Premium Rose Base</span>
+            <span class="font-headline-sm text-headline-sm text-primary font-serif block mt-0.5">₨4,500</span>
+            <p class="font-body-sm text-body-sm text-on-surface-variant mt-1 leading-snug">24 long-stem roses</p>
+          </button>
+
+          <!-- Base Option 3 -->
+          <button class="base-card rounded-xl bg-surface-container-lowest p-3 text-left cursor-pointer group" onclick="selectBase(2)" data-index="2">
+            <div class="relative h-40 rounded-lg overflow-hidden mb-2">
+              <img src="https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?w=400" alt="Preserved Rose Box" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"/>
+            </div>
+            <span class="font-title-md text-title-md text-on-surface block">Preserved Rose Box</span>
+            <span class="font-headline-sm text-headline-sm text-primary font-serif block mt-0.5">₨5,500</span>
+            <p class="font-body-sm text-body-sm text-on-surface-variant mt-1 leading-snug">9 preserved roses in velvet box</p>
+          </button>
+        </div>
+      </div>
+
+      <!-- STEP 2: Add Gift Items -->
+      <div class="p-space-md rounded-2xl bg-surface-container-low shadow-sm space-y-space-sm" id="step-2">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center gap-2">
+            <span class="w-8 h-8 rounded-full bg-primary text-on-primary flex items-center justify-center font-label-lg text-label-lg font-bold">2</span>
+            <h2 class="font-title-lg text-title-lg text-on-surface">Add Gift Items</h2>
+          </div>
+          <span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest">Optional</span>
+        </div>
+        <p class="font-body-sm text-body-sm text-on-surface-variant">Enhance your gift with premium add-ons — select as many as you like.</p>
+
+        <div class="space-y-2">
+          <!-- Addon 1 -->
+          <label class="addon-item flex items-center gap-space-sm p-3 rounded-xl bg-surface-container-lowest cursor-pointer hover:bg-surface-container-high/50" data-addon="0">
+            <input type="checkbox" class="sr-only addon-check" data-price="1200" data-name="Premium Chocolates" onchange="toggleAddon(this)"/>
+            <div class="w-6 h-6 rounded border-2 border-outline-variant flex items-center justify-center shrink-0 addon-checkbox transition-all">
+              <span class="material-symbols-outlined text-[16px] text-on-primary opacity-0 transition-opacity">check</span>
+            </div>
+            <div class="flex-1 min-w-0">
+              <div class="flex items-center justify-between">
+                <span class="font-title-md text-title-md text-on-surface">Premium Chocolates</span>
+                <span class="font-title-md text-title-md text-primary font-serif shrink-0 ml-2">+₨1,200</span>
+              </div>
+              <p class="font-body-sm text-body-sm text-on-surface-variant">Belgian chocolate assortment (200g)</p>
+            </div>
+          </label>
+
+          <!-- Addon 2 -->
+          <label class="addon-item flex items-center gap-space-sm p-3 rounded-xl bg-surface-container-lowest cursor-pointer hover:bg-surface-container-high/50" data-addon="1">
+            <input type="checkbox" class="sr-only addon-check" data-price="800" data-name="Scented Candle" onchange="toggleAddon(this)"/>
+            <div class="w-6 h-6 rounded border-2 border-outline-variant flex items-center justify-center shrink-0 addon-checkbox transition-all">
+              <span class="material-symbols-outlined text-[16px] text-on-primary opacity-0 transition-opacity">check</span>
+            </div>
+            <div class="flex-1 min-w-0">
+              <div class="flex items-center justify-between">
+                <span class="font-title-md text-title-md text-on-surface">Scented Candle</span>
+                <span class="font-title-md text-title-md text-primary font-serif shrink-0 ml-2">+₨800</span>
+              </div>
+              <p class="font-body-sm text-body-sm text-on-surface-variant">Vanilla &amp; lavender soy wax candle</p>
+            </div>
+          </label>
+
+          <!-- Addon 3 -->
+          <label class="addon-item flex items-center gap-space-sm p-3 rounded-xl bg-surface-container-lowest cursor-pointer hover:bg-surface-container-high/50" data-addon="2">
+            <input type="checkbox" class="sr-only addon-check" data-price="1500" data-name="Dried Fruit Box" onchange="toggleAddon(this)"/>
+            <div class="w-6 h-6 rounded border-2 border-outline-variant flex items-center justify-center shrink-0 addon-checkbox transition-all">
+              <span class="material-symbols-outlined text-[16px] text-on-primary opacity-0 transition-opacity">check</span>
+            </div>
+            <div class="flex-1 min-w-0">
+              <div class="flex items-center justify-between">
+                <span class="font-title-md text-title-md text-on-surface">Dried Fruit Box</span>
+                <span class="font-title-md text-title-md text-primary font-serif shrink-0 ml-2">+₨1,500</span>
+              </div>
+              <p class="font-body-sm text-body-sm text-on-surface-variant">Imported almonds, cashews, dates, figs</p>
+            </div>
+          </label>
+
+          <!-- Addon 4 -->
+          <label class="addon-item flex items-center gap-space-sm p-3 rounded-xl bg-surface-container-lowest cursor-pointer hover:bg-surface-container-high/50" data-addon="3">
+            <input type="checkbox" class="sr-only addon-check" data-price="900" data-name="Teddy Bear" onchange="toggleAddon(this)"/>
+            <div class="w-6 h-6 rounded border-2 border-outline-variant flex items-center justify-center shrink-0 addon-checkbox transition-all">
+              <span class="material-symbols-outlined text-[16px] text-on-primary opacity-0 transition-opacity">check</span>
+            </div>
+            <div class="flex-1 min-w-0">
+              <div class="flex items-center justify-between">
+                <span class="font-title-md text-title-md text-on-surface">Teddy Bear</span>
+                <span class="font-title-md text-title-md text-primary font-serif shrink-0 ml-2">+₨900</span>
+              </div>
+              <p class="font-body-sm text-body-sm text-on-surface-variant">Soft plush teddy bear (12 inches)</p>
+            </div>
+          </label>
+
+          <!-- Addon 5 -->
+          <label class="addon-item flex items-center gap-space-sm p-3 rounded-xl bg-surface-container-lowest cursor-pointer hover:bg-surface-container-high/50" data-addon="4">
+            <input type="checkbox" class="sr-only addon-check" data-price="2000" data-name="Perfume Sampler" onchange="toggleAddon(this)"/>
+            <div class="w-6 h-6 rounded border-2 border-outline-variant flex items-center justify-center shrink-0 addon-checkbox transition-all">
+              <span class="material-symbols-outlined text-[16px] text-on-primary opacity-0 transition-opacity">check</span>
+            </div>
+            <div class="flex-1 min-w-0">
+              <div class="flex items-center justify-between">
+                <span class="font-title-md text-title-md text-on-surface">Perfume Sampler</span>
+                <span class="font-title-md text-title-md text-primary font-serif shrink-0 ml-2">+₨2,000</span>
+              </div>
+              <p class="font-body-sm text-body-sm text-on-surface-variant">3 premium fragrance vials</p>
+            </div>
+          </label>
+
+          <!-- Addon 6 -->
+          <label class="addon-item flex items-center gap-space-sm p-3 rounded-xl bg-surface-container-lowest cursor-pointer hover:bg-surface-container-high/50" data-addon="5">
+            <input type="checkbox" class="sr-only addon-check" data-price="1100" data-name="Photo Frame" onchange="toggleAddon(this)"/>
+            <div class="w-6 h-6 rounded border-2 border-outline-variant flex items-center justify-center shrink-0 addon-checkbox transition-all">
+              <span class="material-symbols-outlined text-[16px] text-on-primary opacity-0 transition-opacity">check</span>
+            </div>
+            <div class="flex-1 min-w-0">
+              <div class="flex items-center justify-between">
+                <span class="font-title-md text-title-md text-on-surface">Photo Frame</span>
+                <span class="font-title-md text-title-md text-primary font-serif shrink-0 ml-2">+₨1,100</span>
+              </div>
+              <p class="font-body-sm text-body-sm text-on-surface-variant">Engraved brass photo frame (5×7)</p>
+            </div>
+          </label>
+        </div>
+      </div>
+
+      <!-- STEP 3: Wrapping Style -->
+      <div class="p-space-md rounded-2xl bg-surface-container-low shadow-sm space-y-space-sm" id="step-3">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center gap-2">
+            <span class="w-8 h-8 rounded-full bg-primary text-on-primary flex items-center justify-center font-label-lg text-label-lg font-bold">3</span>
+            <h2 class="font-title-lg text-title-lg text-on-surface">Wrapping Style</h2>
+          </div>
+          <span class="font-label-sm text-label-sm text-secondary uppercase tracking-widest font-semibold">Presentation</span>
+        </div>
+        <p class="font-body-sm text-body-sm text-on-surface-variant">Choose how your gift is presented — the first impression matters.</p>
+
+        <div class="space-y-2">
+          <!-- Wrap 1 -->
+          <button class="wrap-option active w-full flex items-center gap-space-sm p-4 rounded-xl bg-surface-container-lowest text-left cursor-pointer hover:bg-surface-container-high/50" onclick="selectWrap(0)" data-wrap="0">
+            <div class="w-12 h-12 rounded-full bg-secondary-container flex items-center justify-center shrink-0">
+              <span class="material-symbols-outlined text-[24px] text-secondary">card_giftcard</span>
+            </div>
+            <div class="flex-1">
+              <div class="flex items-center justify-between">
+                <span class="font-title-md text-title-md text-on-surface">Standard Gift Wrap</span>
+                <span class="font-label-sm text-label-sm text-secondary font-semibold uppercase px-2 py-0.5 rounded-full bg-secondary-container">Included</span>
+              </div>
+              <p class="font-body-sm text-body-sm text-on-surface-variant">Korean art paper with satin ribbon</p>
+            </div>
+          </button>
+
+          <!-- Wrap 2 -->
+          <button class="wrap-option w-full flex items-center gap-space-sm p-4 rounded-xl bg-surface-container-lowest text-left cursor-pointer hover:bg-surface-container-high/50" onclick="selectWrap(1)" data-wrap="1">
+            <div class="w-12 h-12 rounded-full bg-primary-fixed flex items-center justify-center shrink-0">
+              <span class="material-symbols-outlined text-[24px] text-primary">inventory_2</span>
+            </div>
+            <div class="flex-1">
+              <div class="flex items-center justify-between">
+                <span class="font-title-md text-title-md text-on-surface">Premium Box</span>
+                <span class="font-title-md text-title-md text-primary font-serif">+₨500</span>
+              </div>
+              <p class="font-body-sm text-body-sm text-on-surface-variant">Magnetic closure box with tissue lining</p>
+            </div>
+          </button>
+
+          <!-- Wrap 3 -->
+          <button class="wrap-option w-full flex items-center gap-space-sm p-4 rounded-xl bg-surface-container-lowest text-left cursor-pointer hover:bg-surface-container-high/50" onclick="selectWrap(2)" data-wrap="2">
+            <div class="w-12 h-12 rounded-full bg-tertiary-fixed flex items-center justify-center shrink-0">
+              <span class="material-symbols-outlined text-[24px] text-tertiary">deployed_code</span>
+            </div>
+            <div class="flex-1">
+              <div class="flex items-center justify-between">
+                <span class="font-title-md text-title-md text-on-surface">Luxury Wooden Crate</span>
+                <span class="font-title-md text-title-md text-primary font-serif">+₨1,500</span>
+              </div>
+              <p class="font-body-sm text-body-sm text-on-surface-variant">Handcrafted wooden crate with hay filling</p>
+            </div>
+          </button>
+        </div>
+      </div>
+
+      <!-- STEP 4: Ribbon Message -->
+      <div class="p-space-md rounded-2xl bg-surface-container-low shadow-sm space-y-space-sm" id="step-4">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center gap-2">
+            <span class="w-8 h-8 rounded-full bg-primary text-on-primary flex items-center justify-center font-label-lg text-label-lg font-bold">4</span>
+            <h2 class="font-title-lg text-title-lg text-on-surface">Ribbon Message</h2>
+          </div>
+          <span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest">Optional</span>
+        </div>
+        <p class="font-body-sm text-body-sm text-on-surface-variant">Add a personalized message to the satin ribbon tied around your gift.</p>
+
+        <div class="space-y-space-xs">
+          <input type="text" id="ribbon-input" maxlength="50" placeholder="e.g. With love, always yours..."
+            class="w-full px-4 py-3 bg-surface-container-lowest rounded-xl text-body-md font-body-md text-on-surface focus:outline-none focus:ring-2 focus:ring-primary/40 transition-all shadow-sm"
+            oninput="updateRibbonPreview(this.value)"/>
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-space-sm">
+              <span class="font-label-sm text-label-sm text-on-surface-variant">Ribbon Color:</span>
+              <button class="swatch active w-8 h-8 rounded-full border-2 border-primary cursor-pointer" style="background-color:#f1cfc6" onclick="selectRibbonColor(this, '#f1cfc6', '#724e1b')" title="Pink"></button>
+              <button class="swatch w-8 h-8 rounded-full border-2 border-transparent cursor-pointer hover:border-secondary" style="background-color:#d3e5c8" onclick="selectRibbonColor(this, '#d3e5c8', '#33442a')" title="Sage"></button>
+              <button class="swatch w-8 h-8 rounded-full border-2 border-transparent cursor-pointer hover:border-secondary" style="background-color:#fcefd2" onclick="selectRibbonColor(this, '#fcefd2', '#644211')" title="Gold"></button>
+            </div>
+            <span class="font-label-sm text-label-sm text-on-surface-variant" id="ribbon-char-count">0 / 50</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- STEP 5: Personal Card Message -->
+      <div class="p-space-md rounded-2xl bg-surface-container-low shadow-sm space-y-space-sm" id="step-5">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center gap-2">
+            <span class="w-8 h-8 rounded-full bg-primary text-on-primary flex items-center justify-center font-label-lg text-label-lg font-bold">5</span>
+            <h2 class="font-title-lg text-title-lg text-on-surface">Personal Card Message</h2>
+          </div>
+          <span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest">Optional</span>
+        </div>
+        <p class="font-body-sm text-body-sm text-on-surface-variant">Write a heartfelt message for the handwritten card included with your gift.</p>
+
+        <div class="space-y-space-xs">
+          <textarea id="card-input" maxlength="200" rows="4" placeholder="Write your heartfelt message here..."
+            class="w-full px-4 py-3 bg-surface-container-lowest rounded-xl text-body-md font-body-md text-on-surface focus:outline-none focus:ring-2 focus:ring-primary/40 transition-all resize-none shadow-sm"
+            oninput="updateCardPreview(this.value)"></textarea>
+          <div class="flex items-center justify-end">
+            <span class="font-label-sm text-label-sm text-on-surface-variant" id="card-char-count">0 / 200</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ===== RIGHT COLUMN: Live Preview Panel ===== -->
+    <div class="lg:col-span-5 lg:sticky lg:top-28">
+      <div class="rounded-2xl bg-surface-container-lowest shadow-xl overflow-hidden">
+
+        <!-- Preview Header -->
+        <div class="px-space-md pt-space-md pb-space-sm border-b border-surface-container">
+          <div class="flex items-center justify-between">
+            <div>
+              <span class="font-label-sm text-label-sm text-primary uppercase tracking-widest font-semibold flex items-center gap-1">
+                <span class="w-2 h-2 rounded-full bg-primary animate-pulse inline-block"></span>
+                Live Preview
+              </span>
+              <h3 class="font-headline-sm text-headline-sm font-serif text-on-surface mt-0.5">Your Custom Gift</h3>
+            </div>
+            <span class="px-2.5 py-1 rounded-full bg-secondary-container text-on-secondary-container font-label-sm text-label-sm font-semibold">Preview</span>
+          </div>
+        </div>
+
+        <!-- Preview Image -->
+        <div class="relative h-56 overflow-hidden bg-surface-container">
+          <img id="preview-image" src="https://images.unsplash.com/photo-1487530811176-3780de880c2d?w=600" alt="Selected base preview" class="w-full h-full object-cover transition-all duration-500"/>
+          <div class="absolute inset-0 bg-gradient-to-t from-inverse-surface/40 to-transparent"></div>
+          <div class="absolute bottom-3 left-3 z-10">
+            <span class="px-3 py-1 rounded-full bg-surface-container-lowest/90 backdrop-blur-md font-label-sm text-label-sm text-primary font-semibold" id="preview-base-badge">Fresh Bouquet Base</span>
+          </div>
+        </div>
+
+        <!-- Preview Content -->
+        <div class="p-space-md space-y-space-sm">
+
+          <!-- Base Item -->
+          <div class="flex items-center justify-between pb-space-xs border-b border-surface-container">
+            <div>
+              <span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest">Base</span>
+              <p class="font-title-md text-title-md text-on-surface" id="preview-base-name">Fresh Bouquet Base</p>
+            </div>
+            <span class="font-title-md text-title-md text-primary font-serif" id="preview-base-price">₨3,500</span>
+          </div>
+
+          <!-- Add-ons List -->
+          <div id="preview-addons-container">
+            <span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest block mb-1">Add-Ons</span>
+            <div id="preview-addons-list" class="space-y-1">
+              <p class="font-body-sm text-body-sm text-on-surface-variant italic">No add-ons selected</p>
+            </div>
+          </div>
+
+          <!-- Wrapping -->
+          <div class="flex items-center justify-between py-space-xs border-t border-b border-surface-container">
+            <div>
+              <span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest">Wrapping</span>
+              <p class="font-body-md text-body-md text-on-surface" id="preview-wrap-name">Standard Gift Wrap</p>
+            </div>
+            <span class="font-body-md text-body-md text-secondary font-semibold" id="preview-wrap-price">Included</span>
+          </div>
+
+          <!-- Ribbon Preview -->
+          <div id="preview-ribbon-section">
+            <span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest block mb-2">Ribbon Message</span>
+            <div class="relative rounded-lg overflow-hidden py-3 px-5 flex items-center justify-center transition-colors duration-300" id="preview-ribbon-band" style="background-color:#f1cfc6">
+              <span class="font-serif italic text-center font-bold tracking-wider drop-shadow-[0_1px_1px_rgba(255,255,255,0.7)] text-sm leading-relaxed" id="preview-ribbon-text" style="color:#724e1b">
+                Your ribbon message here...
+              </span>
+            </div>
+          </div>
+
+          <!-- Card Message Preview -->
+          <div id="preview-card-section">
+            <span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest block mb-1">Card Message</span>
+            <div class="p-space-sm rounded-lg bg-surface-container-low">
+              <p class="font-headline-sm font-serif italic text-tertiary leading-relaxed text-[16px]" id="preview-card-text">
+                &ldquo;Your heartfelt message will appear here...&rdquo;
+              </p>
+            </div>
+          </div>
+
+          <!-- Total -->
+          <div class="pt-space-sm border-t-2 border-primary/20">
+            <div class="flex items-center justify-between mb-space-sm">
+              <span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest">Total</span>
+              <span class="font-headline-lg text-headline-md font-serif text-primary font-bold" id="preview-total">₨3,500</span>
+            </div>
+            <button onclick="addToCart()" class="w-full py-4 rounded-full bg-primary text-on-primary font-label-lg text-label-lg uppercase tracking-wider font-semibold hover:bg-primary-container shadow-lg shadow-primary/20 transition-all flex items-center justify-center gap-2 cursor-pointer group">
+              <span class="material-symbols-outlined text-[20px]">shopping_bag</span>
+              <span id="cart-btn-text">Add to Cart — ₨3,500</span>
+              <span class="material-symbols-outlined text-[18px] group-hover:translate-x-1 transition-transform">arrow_forward</span>
+            </button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+</main>
+
+<!-- ========== FOOTER ========== -->
+<footer class="w-full bg-surface-container-low mt-space-xl shadow-[0_-1px_12px_rgba(43,33,30,0.03)]">
+  <div class="max-w-[1360px] mx-auto px-margin-mobile lg:px-margin py-space-xl">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-gutter mb-space-xl">
+      <!-- Brand -->
+      <div class="lg:col-span-4 space-y-space-sm">
+        <div class="flex items-center gap-space-xs">
+          <span class="font-headline-sm text-headline-sm font-serif text-primary">Bloom &amp; Box</span>
+        </div>
+        <p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed max-w-sm">Handcrafting premium bouquets and curated gift hampers from our atelier in Lahore. Every arrangement is a labour of love, sustainably sourced and artfully designed.</p>
+        <div class="p-space-sm rounded-lg bg-surface-container space-y-1">
+          <span class="font-label-sm text-label-sm text-secondary uppercase tracking-widest font-semibold flex items-center gap-1">
+            <span class="material-symbols-outlined text-[16px]">eco</span> Eco-Conscious Promise
+          </span>
+          <p class="font-body-sm text-body-sm text-on-surface-variant">100% biodegradable wrapping, locally sourced blooms, and recyclable gift boxes.</p>
+        </div>
+      </div>
+
+      <!-- Links Col 1 -->
+      <div class="lg:col-span-2 space-y-space-xs">
+        <span class="font-title-md text-title-md text-on-surface block mb-space-sm">Shop</span>
+        <ul class="space-y-space-xs font-body-sm text-body-sm text-on-surface-variant">
+          <li><a class="hover:text-primary transition-colors" href="bouquets.html">Bouquets</a></li>
+          <li><a class="hover:text-primary transition-colors" href="hampers.html">Gift Hampers</a></li>
+          <li><a class="hover:text-primary transition-colors" href="keepsakes.html">Keepsakes</a></li>
+          <li><a class="hover:text-primary transition-colors" href="custom.html">Custom Gift Builder</a></li>
+          <li><a class="hover:text-primary transition-colors" href="occasions.html">Occasions</a></li>
+        </ul>
+      </div>
+
+      <!-- Links Col 2 -->
+      <div class="lg:col-span-2 space-y-space-xs">
+        <span class="font-title-md text-title-md text-on-surface block mb-space-sm">Help &amp; Info</span>
+        <ul class="space-y-space-xs font-body-sm text-body-sm text-on-surface-variant">
+          <li><a class="hover:text-primary transition-colors" href="#">Care Guide</a></li>
+          <li><a class="hover:text-primary transition-colors" href="#">Delivery &amp; Shipping</a></li>
+          <li><a class="hover:text-primary transition-colors" href="blog.html">Blog</a></li>
+          <li><a class="hover:text-primary transition-colors" href="#">Contact Us</a></li>
+          <li><a class="hover:text-primary transition-colors" href="#">FAQs</a></li>
+        </ul>
+      </div>
+
+      <!-- Newsletter -->
+      <div class="lg:col-span-4 space-y-space-sm">
+        <div class="bg-surface p-space-md rounded-lg shadow-[0_6px_20px_-4px_rgba(43,33,30,0.05)]">
+          <span class="font-headline-sm text-headline-sm text-on-surface block">Join Our Circle</span>
+          <p class="font-body-sm text-body-sm text-on-surface-variant mt-1 mb-space-sm">Get 10% off your first order, seasonal collections, and exclusive offers delivered to your inbox.</p>
+          <form class="space-y-space-xs" onsubmit="event.preventDefault(); alert('Thank you for subscribing!');">
+            <div class="flex gap-2">
+              <input class="w-full px-3 py-2 text-body-sm font-body-sm bg-surface-container-low rounded text-on-surface placeholder:text-on-surface-variant/50 focus:outline-none focus:ring-1 focus:ring-primary" placeholder="Your email address" type="email"/>
+              <button class="px-4 py-2 bg-primary text-on-primary rounded font-label-md text-label-md tracking-wider uppercase hover:bg-primary-container transition-colors whitespace-nowrap" type="submit">Subscribe</button>
+            </div>
+            <span class="font-label-sm text-label-sm text-on-surface-variant/70 block">We respect your privacy. Unsubscribe anytime.</span>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div class="pt-space-md flex flex-col md:flex-row items-center justify-between gap-space-sm font-body-sm text-body-sm text-on-surface-variant border-t border-surface-container">
+      <p class="pt-space-sm">© 2024 Bloom &amp; Box. Premium Bouquets &amp; Gift Hampers · Lahore, Pakistan.</p>
+      <div class="flex items-center gap-space-md font-label-sm text-label-sm pt-space-sm">
+        <a class="hover:text-primary transition-colors" href="#">Terms &amp; Conditions</a>
+        <a class="hover:text-primary transition-colors" href="#">Privacy Policy</a>
+        <a class="hover:text-primary transition-colors" href="#">Refund Policy</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ========== JAVASCRIPT ========== -->
+<script>
+  // ===== STATE =====
+  const bases = [
+    { name: 'Fresh Bouquet Base', price: 3500, img: 'https://images.unsplash.com/photo-1487530811176-3780de880c2d?w=600', desc: '12 mixed seasonal flowers, hand-tied' },
+    { name: 'Premium Rose Base', price: 4500, img: 'https://images.unsplash.com/photo-1455659817273-f96807779a8a?w=600', desc: '24 long-stem roses' },
+    { name: 'Preserved Rose Box', price: 5500, img: 'https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?w=600', desc: '9 preserved roses in velvet box' }
+  ];
+
+  const wraps = [
+    { name: 'Standard Gift Wrap', price: 0, priceLabel: 'Included' },
+    { name: 'Premium Box', price: 500, priceLabel: '+₨500' },
+    { name: 'Luxury Wooden Crate', price: 1500, priceLabel: '+₨1,500' }
+  ];
+
+  let state = {
+    baseIndex: 0,
+    addons: [], // { name, price }
+    wrapIndex: 0,
+    ribbonText: '',
+    ribbonBg: '#f1cfc6',
+    ribbonColor: '#724e1b',
+    cardText: ''
+  };
+
+  // ===== FORMAT PRICE =====
+  function formatPrice(amount) {
+    return '₨' + amount.toLocaleString('en-PK');
+  }
+
+  // ===== CALCULATE TOTAL =====
+  function getTotal() {
+    let total = bases[state.baseIndex].price;
+    state.addons.forEach(a => total += a.price);
+    total += wraps[state.wrapIndex].price;
+    return total;
+  }
+
+  // ===== UPDATE PREVIEW =====
+  function updatePreview() {
+    const total = getTotal();
+
+    // Base
+    document.getElementById('preview-image').src = bases[state.baseIndex].img;
+    document.getElementById('preview-base-badge').textContent = bases[state.baseIndex].name;
+    document.getElementById('preview-base-name').textContent = bases[state.baseIndex].name;
+    document.getElementById('preview-base-price').textContent = formatPrice(bases[state.baseIndex].price);
+
+    // Addons
+    const addonsList = document.getElementById('preview-addons-list');
+    if (state.addons.length === 0) {
+      addonsList.innerHTML = '<p class="font-body-sm text-body-sm text-on-surface-variant italic">No add-ons selected</p>';
+    } else {
+      addonsList.innerHTML = state.addons.map(a =>
+        `<div class="flex items-center justify-between py-1">
+          <span class="font-body-sm text-body-sm text-on-surface flex items-center gap-1">
+            <span class="material-symbols-outlined text-[14px] text-secondary">check_circle</span>
+            ${a.name}
+          </span>
+          <span class="font-body-sm text-body-sm text-primary font-semibold">+${formatPrice(a.price)}</span>
+        </div>`
+      ).join('');
+    }
+
+    // Wrap
+    document.getElementById('preview-wrap-name').textContent = wraps[state.wrapIndex].name;
+    document.getElementById('preview-wrap-price').textContent = wraps[state.wrapIndex].price === 0 ? 'Included' : '+' + formatPrice(wraps[state.wrapIndex].price);
+
+    // Ribbon
+    const ribbonBand = document.getElementById('preview-ribbon-band');
+    const ribbonText = document.getElementById('preview-ribbon-text');
+    ribbonBand.style.backgroundColor = state.ribbonBg;
+    ribbonText.style.color = state.ribbonColor;
+    ribbonText.textContent = state.ribbonText || 'Your ribbon message here...';
+
+    // Card
+    const cardText = document.getElementById('preview-card-text');
+    if (state.cardText) {
+      cardText.innerHTML = `&ldquo;${state.cardText}&rdquo;`;
+    } else {
+      cardText.innerHTML = '&ldquo;Your heartfelt message will appear here...&rdquo;';
+    }
+
+    // Total
+    document.getElementById('preview-total').textContent = formatPrice(total);
+    document.getElementById('cart-btn-text').textContent = 'Add to Cart — ' + formatPrice(total);
+  }
+
+  // ===== STEP 1: Select Base =====
+  function selectBase(index) {
+    state.baseIndex = index;
+    document.querySelectorAll('.base-card').forEach((card, i) => {
+      card.classList.toggle('active', i === index);
+    });
+    updatePreview();
+  }
+
+  // ===== STEP 2: Toggle Add-on =====
+  function toggleAddon(checkbox) {
+    const name = checkbox.dataset.name;
+    const price = parseInt(checkbox.dataset.price);
+    const label = checkbox.closest('.addon-item');
+    const checkboxDiv = label.querySelector('.addon-checkbox');
+    const checkIcon = checkboxDiv.querySelector('.material-symbols-outlined');
+
+    if (checkbox.checked) {
+      state.addons.push({ name, price });
+      label.classList.add('checked');
+      checkboxDiv.classList.add('bg-primary', 'border-primary');
+      checkboxDiv.classList.remove('border-outline-variant');
+      checkIcon.classList.remove('opacity-0');
+      checkIcon.classList.add('opacity-100');
+    } else {
+      state.addons = state.addons.filter(a => a.name !== name);
+      label.classList.remove('checked');
+      checkboxDiv.classList.remove('bg-primary', 'border-primary');
+      checkboxDiv.classList.add('border-outline-variant');
+      checkIcon.classList.add('opacity-0');
+      checkIcon.classList.remove('opacity-100');
+    }
+    updatePreview();
+  }
+
+  // ===== STEP 3: Select Wrap =====
+  function selectWrap(index) {
+    state.wrapIndex = index;
+    document.querySelectorAll('.wrap-option').forEach((opt, i) => {
+      opt.classList.toggle('active', i === index);
+    });
+    updatePreview();
+  }
+
+  // ===== STEP 4: Ribbon =====
+  function updateRibbonPreview(value) {
+    state.ribbonText = value;
+    document.getElementById('ribbon-char-count').textContent = value.length + ' / 50';
+    updatePreview();
+  }
+
+  function selectRibbonColor(btn, bg, textColor) {
+    state.ribbonBg = bg;
+    state.ribbonColor = textColor;
+    document.querySelectorAll('.swatch').forEach(s => {
+      s.classList.remove('active');
+      s.style.borderColor = 'transparent';
+    });
+    btn.classList.add('active');
+    btn.style.borderColor = '#91462f';
+    updatePreview();
+  }
+
+  // ===== STEP 5: Card =====
+  function updateCardPreview(value) {
+    state.cardText = value;
+    document.getElementById('card-char-count').textContent = value.length + ' / 200';
+    updatePreview();
+  }
+
+  // ===== SCROLL TO STEP =====
+  function scrollToStep(num) {
+    const el = document.getElementById('step-' + num);
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+  }
+
+  // ===== ADD TO CART & WHATSAPP CHECKOUT =====
+  function addToCart() {
+    const total = getTotal();
+    const base = bases[state.baseIndex].name;
+    const addonNames = state.addons.map(a => `${a.name} (+${formatPrice(a.price)})`);
+    
+    const customDetails = {
+      base: `${base} (${formatPrice(bases[state.baseIndex].price)})`,
+      addons: addonNames,
+      wrapping: `${wraps[state.wrapIndex].name} (${wraps[state.wrapIndex].price > 0 ? '+' + formatPrice(wraps[state.wrapIndex].price) : 'Included'})`,
+      ribbon: state.ribbonText || 'Standard Silk',
+      note: state.cardText || 'No custom card note',
+      total: total
+    };
+
+    if (typeof addToCartGlobal === 'function') {
+      addToCartGlobal(`Custom: ${base}`, total, '', `Ribbon: "${state.ribbonText || 'None'}" | Wrap: ${wraps[state.wrapIndex].name}`);
+    }
+
+    if (confirm(`✓ Custom Gift created (${formatPrice(total)})!\n\nWould you like to open WhatsApp now to send this order directly to our admin and get payment details?`)) {
+      if (typeof sendWhatsAppOrder === 'function') {
+        sendWhatsAppOrder(customDetails);
+      }
+    }
+  }
+
+  // ===== INIT =====
+  updatePreview();
+</script>
+<script src="whatsapp.js"></script>
+
+</body>
+</html>

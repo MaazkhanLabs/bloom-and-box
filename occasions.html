@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Shop by Occasion — Bloom &amp; Box</title>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Noto+Serif:wght@400;500;600&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config={darkMode:"class",theme:{extend:{"colors":{"surface-variant":"#f1dfd9","background":"#fff8f6","error-container":"#ffdad6","tertiary":"#7c5149","secondary-fixed-dim":"#baccaf","on-primary-fixed":"#3a0a00","on-primary":"#ffffff","inverse-primary":"#ffb59f","on-primary-container":"#fffbff","on-surface":"#231917","on-secondary-container":"#57674f","inverse-on-surface":"#ffede8","on-secondary":"#ffffff","on-tertiary":"#ffffff","on-tertiary-fixed":"#31120d","primary-container":"#af5e45","on-error":"#ffffff","on-surface-variant":"#54433e","surface-container":"#fdeae5","on-tertiary-container":"#fffbff","surface-container-lowest":"#ffffff","surface-container-highest":"#f1dfd9","primary-fixed-dim":"#ffb59f","on-primary-fixed-variant":"#76321d","on-error-container":"#93000a","surface-tint":"#944931","outline-variant":"#dac1ba","on-secondary-fixed":"#111f0d","on-secondary-fixed-variant":"#3b4b35","tertiary-fixed-dim":"#f1b9af","secondary-container":"#d3e5c8","outline":"#87736d","on-background":"#231917","surface":"#fff8f6","tertiary-fixed":"#ffdad4","secondary-fixed":"#d6e8ca","primary":"#91462f","tertiary-container":"#976960","secondary":"#53634b","surface-dim":"#e8d6d1","on-tertiary-fixed-variant":"#643c35","inverse-surface":"#392e2b","surface-container-low":"#fff1ed","error":"#ba1a1a","surface-container-high":"#f7e4df","primary-fixed":"#ffdbd0","surface-bright":"#fff8f6"},"borderRadius":{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},"spacing":{"space-xl":"3.5rem","margin-mobile":"1.25rem","space-sm":"0.75rem","space-xs":"0.375rem","space-md":"1.25rem","margin":"3.5rem","space-lg":"2rem","gutter-mobile":"1rem","gutter":"1.5rem"},"fontFamily":{"body-lg":["Manrope"],"label-lg":["Manrope"],"headline-lg-mobile":["Noto Serif"],"body-md":["Manrope"],"title-lg":["Manrope"],"headline-md":["Noto Serif"],"headline-lg":["Noto Serif"],"title-md":["Manrope"],"display-hero-mobile":["Noto Serif"],"headline-sm":["Noto Serif"],"label-sm":["Manrope"],"display-hero":["Noto Serif"],"label-md":["Manrope"],"body-sm":["Manrope"]},"fontSize":{"body-lg":["18px",{"lineHeight":"28px","letterSpacing":"0.01em","fontWeight":"400"}],"label-lg":["13px",{"lineHeight":"18px","letterSpacing":"0.08em","fontWeight":"600"}],"headline-lg-mobile":["28px",{"lineHeight":"36px","letterSpacing":"-0.01em","fontWeight":"400"}],"body-md":["15px",{"lineHeight":"24px","letterSpacing":"0.01em","fontWeight":"400"}],"title-lg":["18px",{"lineHeight":"26px","letterSpacing":"0.01em","fontWeight":"600"}],"headline-md":["28px",{"lineHeight":"38px","letterSpacing":"-0.01em","fontWeight":"500"}],"headline-lg":["40px",{"lineHeight":"52px","letterSpacing":"-0.015em","fontWeight":"400"}],"title-md":["16px",{"lineHeight":"24px","letterSpacing":"0.01em","fontWeight":"600"}],"display-hero-mobile":["38px",{"lineHeight":"48px","letterSpacing":"-0.01em","fontWeight":"400"}],"headline-sm":["22px",{"lineHeight":"30px","letterSpacing":"0em","fontWeight":"500"}],"label-sm":["10px",{"lineHeight":"14px","letterSpacing":"0.12em","fontWeight":"700"}],"display-hero":["56px",{"lineHeight":"68px","letterSpacing":"-0.02em","fontWeight":"400"}],"label-md":["11px",{"lineHeight":"16px","letterSpacing":"0.1em","fontWeight":"600"}],"body-sm":["13px",{"lineHeight":"20px","letterSpacing":"0.015em","fontWeight":"400"}]}}}};
+</script>
+<style>
+@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}
+::-webkit-scrollbar{display:none;}
+</style>
+</head>
+<body class="bg-background font-body-md text-on-surface antialiased">
+
+<!-- ==================== HEADER ==================== -->
+<header class="fixed top-0 left-0 right-0 z-50 bg-surface/90 backdrop-blur-md shadow-[0_1px_8px_rgba(43,33,30,0.04)]">
+  <!-- Top Utility Bar -->
+  <div class="bg-surface-container-high py-1 px-margin-mobile lg:px-margin text-center">
+    <div class="max-w-[1360px] mx-auto flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm">
+      <div class="flex items-center gap-space-xs">
+        <span class="w-1.5 h-1.5 rounded-full bg-secondary inline-block"></span>
+        <span class="tracking-wider uppercase">Free Delivery Across Lahore</span>
+      </div>
+      <div class="hidden md:flex items-center gap-space-md">
+        <a class="hover:text-primary transition-colors" href="custom.html">Custom Orders</a>
+        <span class="text-outline-variant">•</span>
+        <a class="hover:text-primary transition-colors" href="#">Care Guide</a>
+        <span class="text-outline-variant">•</span>
+        <button class="flex items-center gap-1 hover:text-primary transition-colors cursor-pointer">
+          <span class="material-symbols-outlined text-[14px]">support_agent</span>
+          <span>Customer Support</span>
+        </button>
+      </div>
+    </div>
+  </div>
+  <!-- Main Navigation Bar -->
+  <div class="h-20 max-w-[1360px] mx-auto px-margin-mobile lg:px-margin flex items-center justify-between gap-space-md">
+    <!-- Brand -->
+    <div class="flex items-center gap-space-sm">
+      <a class="flex flex-col text-left" href="index.html">
+        <span class="font-headline-sm text-headline-sm text-primary tracking-tight font-serif">Bloom &amp; Box</span>
+        <span class="font-label-sm text-label-sm tracking-widest text-on-surface-variant uppercase">Premium Bouquets &amp; Gift Hampers · Lahore</span>
+      </a>
+    </div>
+    <!-- Desktop Nav -->
+    <nav class="hidden xl:flex items-center gap-space-md font-label-lg text-label-lg tracking-wider">
+      <a class="text-on-surface-variant hover:text-on-surface transition-colors py-1" href="index.html">Home</a>
+      <a class="text-on-surface-variant hover:text-on-surface transition-colors py-1" href="bouquets.html">Bouquets</a>
+      <a class="text-on-surface-variant hover:text-on-surface transition-colors py-1" href="hampers.html">Hampers</a>
+      <a class="text-on-surface-variant hover:text-on-surface transition-colors py-1" href="keepsakes.html">Keepsakes</a>
+      <a class="text-on-surface-variant hover:text-on-surface transition-colors py-1" href="custom.html">Custom</a>
+      <a class="text-on-surface-variant hover:text-on-surface transition-colors py-1" href="blog.html">Blog</a>
+      <a class="text-primary font-semibold border-b border-primary py-1" href="occasions.html">Occasions</a>
+    </nav>
+    <!-- Right Actions -->
+    <div class="flex items-center gap-space-sm">
+      <button aria-label="Search" class="w-9 h-9 rounded-full flex items-center justify-center text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors">
+        <span class="material-symbols-outlined text-[20px]">search</span>
+      </button>
+      <div class="hidden sm:flex items-center px-2 py-1 rounded bg-surface-container text-on-surface font-label-md text-label-md">
+        <span class="text-primary font-bold">PKR ₨</span>
+      </div>
+      <button aria-label="Open Cart" class="relative flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-surface-container hover:bg-surface-container-high transition-colors text-on-surface">
+        <span class="material-symbols-outlined text-[18px] text-primary">shopping_bag</span>
+        <span class="font-label-sm text-label-sm font-semibold">Bag (0)</span>
+      </button>
+      <div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center ml-1">
+        <span class="material-symbols-outlined text-on-primary text-[18px]">person</span>
+      </div>
+      <!-- Mobile Menu Toggle -->
+      <button class="xl:hidden w-9 h-9 rounded-full flex items-center justify-center text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
+        <span class="material-symbols-outlined text-[22px]">menu</span>
+      </button>
+    </div>
+  </div>
+  <!-- Mobile Nav -->
+  <div class="hidden xl:hidden bg-surface-container-lowest border-t border-surface-container px-margin-mobile py-space-sm" id="mobile-menu">
+    <nav class="flex flex-col gap-space-xs font-label-lg text-label-lg tracking-wider">
+      <a class="py-2 text-on-surface-variant hover:text-primary transition-colors" href="index.html">Home</a>
+      <a class="py-2 text-on-surface-variant hover:text-primary transition-colors" href="bouquets.html">Bouquets</a>
+      <a class="py-2 text-on-surface-variant hover:text-primary transition-colors" href="hampers.html">Hampers</a>
+      <a class="py-2 text-on-surface-variant hover:text-primary transition-colors" href="keepsakes.html">Keepsakes</a>
+      <a class="py-2 text-on-surface-variant hover:text-primary transition-colors" href="custom.html">Custom</a>
+      <a class="py-2 text-on-surface-variant hover:text-primary transition-colors" href="blog.html">Blog</a>
+      <a class="py-2 text-primary font-semibold" href="occasions.html">Occasions</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ==================== MAIN CONTENT ==================== -->
+<main class="w-full pt-20 bg-background max-w-[1360px] mx-auto px-margin-mobile lg:px-margin min-h-screen">
+
+  <!-- Breadcrumb -->
+  <nav class="pt-space-lg pb-space-sm">
+    <ol class="flex items-center gap-2 font-label-sm text-label-sm text-on-surface-variant">
+      <li><a href="index.html" class="hover:text-primary transition-colors">Home</a></li>
+      <li><span class="material-symbols-outlined text-[14px] text-outline-variant">chevron_right</span></li>
+      <li class="text-on-surface font-semibold">Occasions</li>
+    </ol>
+  </nav>
+
+  <!-- Page Title Section -->
+  <section class="pt-space-sm pb-space-xl relative">
+    <!-- Decorative blobs -->
+    <div class="absolute -top-32 -right-20 w-96 h-96 rounded-full bg-surface-variant/40 blur-3xl pointer-events-none"></div>
+    <div class="absolute top-1/2 -left-20 w-[400px] h-[400px] rounded-full bg-secondary-container/30 blur-3xl pointer-events-none"></div>
+
+    <div class="text-center max-w-2xl mx-auto space-y-space-xs relative z-10">
+      <div class="inline-flex items-center gap-space-xs px-3.5 py-1.5 rounded-full bg-surface-container-high text-tertiary">
+        <span class="material-symbols-outlined text-[16px] text-primary" style="font-variation-settings: 'FILL' 1;">celebration</span>
+        <span class="font-label-sm text-label-sm uppercase tracking-widest font-semibold">Curated For Every Milestone</span>
+      </div>
+      <h1 class="font-display-hero text-display-hero-mobile md:text-display-hero text-on-surface tracking-tight font-serif">
+        Gifts for Every <span class="italic font-light text-primary">Occasion</span>
+      </h1>
+      <p class="font-body-lg text-body-lg text-on-surface-variant max-w-lg mx-auto leading-relaxed">
+        No matter the moment, we have the perfect gift. Browse our curated collections for life's most meaningful milestones.
+      </p>
+    </div>
+  </section>
+
+  <!-- Occasions Grid -->
+  <section class="pb-space-xl">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-gutter" id="occasions-grid">
+
+      <!-- Occasion 1: Birthday -->
+      <a href="hampers.html" class="group relative rounded-xl overflow-hidden h-80 sm:h-96 flex flex-col justify-end shadow-md hover:shadow-2xl transition-all duration-500">
+        <img src="https://images.unsplash.com/photo-1558636508-e0db3814bd1d?w=500" alt="Birthday bouquets and gifts" class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" loading="lazy"/>
+        <div class="absolute inset-0 bg-gradient-to-t from-inverse-surface/85 via-inverse-surface/30 to-transparent"></div>
+        <div class="relative z-10 p-space-md space-y-2">
+          <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-primary/90 text-on-primary font-label-sm text-label-sm uppercase tracking-wider">
+            <span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">cake</span>
+            Birthday
+          </span>
+          <p class="font-body-sm text-body-sm text-surface-container-high/90 leading-relaxed">Make their birthday bloom with fresh flowers and curated hampers</p>
+          <span class="inline-flex items-center gap-1 font-label-sm text-label-sm uppercase tracking-wider text-primary-fixed-dim group-hover:gap-2 transition-all">
+            Shop Now
+            <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+          </span>
+        </div>
+      </a>
+
+      <!-- Occasion 2: Anniversary -->
+      <a href="bouquets.html" class="group relative rounded-xl overflow-hidden h-80 sm:h-96 flex flex-col justify-end shadow-md hover:shadow-2xl transition-all duration-500">
+        <img src="https://images.unsplash.com/photo-1455659817273-f96807779a8a?w=500" alt="Anniversary roses and keepsakes" class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" loading="lazy"/>
+        <div class="absolute inset-0 bg-gradient-to-t from-inverse-surface/85 via-inverse-surface/30 to-transparent"></div>
+        <div class="relative z-10 p-space-md space-y-2">
+          <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-primary/90 text-on-primary font-label-sm text-label-sm uppercase tracking-wider">
+            <span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">favorite</span>
+            Anniversary
+          </span>
+          <p class="font-body-sm text-body-sm text-surface-container-high/90 leading-relaxed">Celebrate years of love with roses, keepsakes, and luxury gifts</p>
+          <span class="inline-flex items-center gap-1 font-label-sm text-label-sm uppercase tracking-wider text-primary-fixed-dim group-hover:gap-2 transition-all">
+            Shop Now
+            <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+          </span>
+        </div>
+      </a>
+
+      <!-- Occasion 3: Wedding -->
+      <a href="keepsakes.html" class="group relative rounded-xl overflow-hidden h-80 sm:h-96 flex flex-col justify-end shadow-md hover:shadow-2xl transition-all duration-500">
+        <img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=500" alt="Wedding floral arrangements" class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" loading="lazy"/>
+        <div class="absolute inset-0 bg-gradient-to-t from-inverse-surface/85 via-inverse-surface/30 to-transparent"></div>
+        <div class="relative z-10 p-space-md space-y-2">
+          <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-primary/90 text-on-primary font-label-sm text-label-sm uppercase tracking-wider">
+            <span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">diamond</span>
+            Wedding
+          </span>
+          <p class="font-body-sm text-body-sm text-surface-container-high/90 leading-relaxed">Elegant floral arrangements and gift hampers for the happy couple</p>
+          <span class="inline-flex items-center gap-1 font-label-sm text-label-sm uppercase tracking-wider text-primary-fixed-dim group-hover:gap-2 transition-all">
+            Shop Now
+            <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+          </span>
+        </div>
+      </a>
+
+      <!-- Occasion 4: Eid & Festive -->
+      <a href="hampers.html" class="group relative rounded-xl overflow-hidden h-80 sm:h-96 flex flex-col justify-end shadow-md hover:shadow-2xl transition-all duration-500">
+        <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=500" alt="Eid and festive hampers" class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" loading="lazy"/>
+        <div class="absolute inset-0 bg-gradient-to-t from-inverse-surface/85 via-inverse-surface/30 to-transparent"></div>
+        <div class="relative z-10 p-space-md space-y-2">
+          <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-primary/90 text-on-primary font-label-sm text-label-sm uppercase tracking-wider">
+            <span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+            Eid &amp; Festive
+          </span>
+          <p class="font-body-sm text-body-sm text-surface-container-high/90 leading-relaxed">Share festive joy with gourmet hampers, dates, and sweets</p>
+          <span class="inline-flex items-center gap-1 font-label-sm text-label-sm uppercase tracking-wider text-primary-fixed-dim group-hover:gap-2 transition-all">
+            Shop Now
+            <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+          </span>
+        </div>
+      </a>
+
+      <!-- Occasion 5: New Baby -->
+      <a href="hampers.html" class="group relative rounded-xl overflow-hidden h-80 sm:h-96 flex flex-col justify-end shadow-md hover:shadow-2xl transition-all duration-500">
+        <img src="https://images.unsplash.com/photo-1519689680058-324335c77eba?w=500" alt="New baby gifts" class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" loading="lazy"/>
+        <div class="absolute inset-0 bg-gradient-to-t from-inverse-surface/85 via-inverse-surface/30 to-transparent"></div>
+        <div class="relative z-10 p-space-md space-y-2">
+          <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-primary/90 text-on-primary font-label-sm text-label-sm uppercase tracking-wider">
+            <span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">child_care</span>
+            New Baby
+          </span>
+          <p class="font-body-sm text-body-sm text-surface-container-high/90 leading-relaxed">Welcome the little one with tender gifts for mom and baby</p>
+          <span class="inline-flex items-center gap-1 font-label-sm text-label-sm uppercase tracking-wider text-primary-fixed-dim group-hover:gap-2 transition-all">
+            Shop Now
+            <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+          </span>
+        </div>
+      </a>
+
+      <!-- Occasion 6: Get Well Soon -->
+      <a href="bouquets.html" class="group relative rounded-xl overflow-hidden h-80 sm:h-96 flex flex-col justify-end shadow-md hover:shadow-2xl transition-all duration-500">
+        <img src="https://images.unsplash.com/photo-1508610048659-a06b669e3321?w=500" alt="Get well soon bouquets" class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" loading="lazy"/>
+        <div class="absolute inset-0 bg-gradient-to-t from-inverse-surface/85 via-inverse-surface/30 to-transparent"></div>
+        <div class="relative z-10 p-space-md space-y-2">
+          <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-primary/90 text-on-primary font-label-sm text-label-sm uppercase tracking-wider">
+            <span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">local_florist</span>
+            Get Well Soon
+          </span>
+          <p class="font-body-sm text-body-sm text-surface-container-high/90 leading-relaxed">Send warmth and healing vibes with cheerful blooms and care packages</p>
+          <span class="inline-flex items-center gap-1 font-label-sm text-label-sm uppercase tracking-wider text-primary-fixed-dim group-hover:gap-2 transition-all">
+            Shop Now
+            <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+          </span>
+        </div>
+      </a>
+
+      <!-- Occasion 7: Corporate -->
+      <a href="hampers.html" class="group relative rounded-xl overflow-hidden h-80 sm:h-96 flex flex-col justify-end shadow-md hover:shadow-2xl transition-all duration-500">
+        <img src="https://images.unsplash.com/photo-1607344645866-009c320b63e0?w=500" alt="Corporate gift hampers" class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" loading="lazy"/>
+        <div class="absolute inset-0 bg-gradient-to-t from-inverse-surface/85 via-inverse-surface/30 to-transparent"></div>
+        <div class="relative z-10 p-space-md space-y-2">
+          <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-primary/90 text-on-primary font-label-sm text-label-sm uppercase tracking-wider">
+            <span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">business_center</span>
+            Corporate
+          </span>
+          <p class="font-body-sm text-body-sm text-surface-container-high/90 leading-relaxed">Professional gift hampers and branded gifts for clients and teams</p>
+          <span class="inline-flex items-center gap-1 font-label-sm text-label-sm uppercase tracking-wider text-primary-fixed-dim group-hover:gap-2 transition-all">
+            Shop Now
+            <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+          </span>
+        </div>
+      </a>
+
+      <!-- Occasion 8: Sympathy -->
+      <a href="bouquets.html" class="group relative rounded-xl overflow-hidden h-80 sm:h-96 flex flex-col justify-end shadow-md hover:shadow-2xl transition-all duration-500">
+        <img src="https://images.unsplash.com/photo-1561181286-d3fee7d55364?w=600" alt="Sympathy white flower arrangements" class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" loading="lazy"/>
+        <div class="absolute inset-0 bg-gradient-to-t from-inverse-surface/85 via-inverse-surface/30 to-transparent"></div>
+        <div class="relative z-10 p-space-md space-y-2">
+          <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-primary/90 text-on-primary font-label-sm text-label-sm uppercase tracking-wider">
+            <span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">spa</span>
+            Sympathy
+          </span>
+          <p class="font-body-sm text-body-sm text-surface-container-high/90 leading-relaxed">Express heartfelt condolences with elegant white arrangements</p>
+          <span class="inline-flex items-center gap-1 font-label-sm text-label-sm uppercase tracking-wider text-primary-fixed-dim group-hover:gap-2 transition-all">
+            Shop Now
+            <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+          </span>
+        </div>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- CTA Banner Section -->
+  <section class="pb-space-xl">
+    <div class="rounded-2xl bg-secondary-container/40 p-space-lg lg:p-space-xl text-center space-y-space-md relative overflow-hidden">
+      <div class="absolute -top-20 -right-20 w-64 h-64 rounded-full bg-primary-fixed/20 blur-3xl pointer-events-none"></div>
+      <div class="absolute -bottom-20 -left-20 w-64 h-64 rounded-full bg-secondary-container/40 blur-3xl pointer-events-none"></div>
+      <div class="relative z-10 space-y-space-sm max-w-xl mx-auto">
+        <div class="inline-flex items-center gap-2 text-secondary">
+          <span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">local_florist</span>
+          <span class="font-label-sm text-label-sm uppercase tracking-widest font-bold">Can't Find the Right Occasion?</span>
+        </div>
+        <h2 class="font-headline-lg text-headline-lg font-serif text-on-surface">Build a Custom Gift</h2>
+        <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Every celebration is unique. Let our expert curators design a one-of-a-kind bouquet or hamper tailored to your special moment.
+        </p>
+        <div class="flex flex-wrap items-center justify-center gap-space-sm pt-space-xs">
+          <a href="custom.html" class="px-space-md py-3.5 rounded-full bg-primary text-on-primary font-label-lg text-label-lg uppercase tracking-wider shadow-lg shadow-primary/20 hover:bg-primary-container transition-all flex items-center gap-2 group">
+            <span>Design Your Gift</span>
+            <span class="material-symbols-outlined text-[18px] group-hover:translate-x-1 transition-transform">arrow_forward</span>
+          </a>
+          <a href="index.html" class="px-space-md py-3.5 rounded-full bg-surface-container-high text-on-surface font-label-lg text-label-lg tracking-wider hover:bg-surface-container transition-colors flex items-center gap-2">
+            <span class="material-symbols-outlined text-[18px] text-secondary">storefront</span>
+            <span>Browse All Products</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ==================== FOOTER ==================== -->
+<footer class="w-full bg-surface-container-low mt-space-xl shadow-[0_-1px_12px_rgba(43,33,30,0.03)]">
+  <div class="max-w-[1360px] mx-auto px-margin-mobile lg:px-margin py-space-xl">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-gutter mb-space-xl">
+      <!-- Brand Column -->
+      <div class="lg:col-span-4 space-y-space-sm">
+        <div class="flex items-center gap-space-xs">
+          <span class="font-headline-sm text-headline-sm font-serif text-primary">Bloom &amp; Box</span>
+        </div>
+        <p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed max-w-sm">Handcrafting beautiful bouquets and premium gift hampers from our studio in Lahore. Locally sourced flowers, artisan packaging, and heartfelt curation for every occasion.</p>
+        <div class="p-space-sm rounded-lg bg-surface-container space-y-1">
+          <span class="font-label-sm text-label-sm text-secondary uppercase tracking-widest font-semibold flex items-center gap-1">
+            <span class="material-symbols-outlined text-[16px]">eco</span> Sustainability Promise
+          </span>
+          <p class="font-body-sm text-body-sm text-on-surface-variant">100% eco-friendly packaging, locally sourced blooms, and recyclable gift materials throughout our process.</p>
+        </div>
+      </div>
+      <!-- Links Column 1 -->
+      <div class="lg:col-span-2 space-y-space-xs">
+        <span class="font-title-md text-title-md text-on-surface block mb-space-sm">Shop</span>
+        <ul class="space-y-space-xs font-body-sm text-body-sm text-on-surface-variant">
+          <li><a class="hover:text-primary transition-colors" href="bouquets.html">Bouquets</a></li>
+          <li><a class="hover:text-primary transition-colors" href="hampers.html">Gift Hampers</a></li>
+          <li><a class="hover:text-primary transition-colors" href="keepsakes.html">Keepsakes</a></li>
+          <li><a class="hover:text-primary transition-colors" href="custom.html">Custom Gift Builder</a></li>
+          <li><a class="hover:text-primary transition-colors" href="occasions.html">Shop by Occasion</a></li>
+        </ul>
+      </div>
+      <!-- Links Column 2 -->
+      <div class="lg:col-span-2 space-y-space-xs">
+        <span class="font-title-md text-title-md text-on-surface block mb-space-sm">Help &amp; Info</span>
+        <ul class="space-y-space-xs font-body-sm text-body-sm text-on-surface-variant">
+          <li><a class="hover:text-primary transition-colors" href="#">Flower Care Guide</a></li>
+          <li><a class="hover:text-primary transition-colors" href="#">Delivery Information</a></li>
+          <li><a class="hover:text-primary transition-colors" href="#">Returns &amp; Refunds</a></li>
+          <li><a class="hover:text-primary transition-colors" href="blog.html">The Bloom Journal</a></li>
+          <li><a class="hover:text-primary transition-colors" href="#">Contact Us</a></li>
+        </ul>
+      </div>
+      <!-- Newsletter Column -->
+      <div class="lg:col-span-4 space-y-space-sm">
+        <div class="bg-surface p-space-md rounded-lg shadow-[0_6px_20px_-4px_rgba(43,33,30,0.05)]">
+          <span class="font-headline-sm text-headline-sm text-on-surface block">Join the Bloom Circle</span>
+          <p class="font-body-sm text-body-sm text-on-surface-variant mt-1 mb-space-sm">Get 10% off your first order, seasonal flower guides, and early access to new collections.</p>
+          <form class="space-y-space-xs" onsubmit="event.preventDefault(); alert('Thank you for subscribing! Welcome to the Bloom Circle.');">
+            <div class="flex gap-2">
+              <input class="w-full px-3 py-2 text-body-sm font-body-sm bg-surface-container-low rounded text-on-surface placeholder:text-on-surface-variant/50 focus:outline-none focus:ring-1 focus:ring-primary" placeholder="Your email address" type="email"/>
+              <button class="px-4 py-2 bg-primary text-on-primary rounded font-label-md text-label-md tracking-wider uppercase hover:bg-primary-container transition-colors whitespace-nowrap" type="submit">Subscribe</button>
+            </div>
+            <span class="font-label-sm text-label-sm text-on-surface-variant/70 block">We respect your privacy. Unsubscribe anytime.</span>
+          </form>
+        </div>
+      </div>
+    </div>
+    <!-- Bottom Bar -->
+    <div class="pt-space-md flex flex-col md:flex-row items-center justify-between gap-space-sm font-body-sm text-body-sm text-on-surface-variant border-t border-surface-container">
+      <p class="pt-space-sm">© 2024 Bloom &amp; Box. Premium Bouquets &amp; Gift Hampers · Lahore, Pakistan.</p>
+      <div class="flex items-center gap-space-md font-label-sm text-label-sm pt-space-sm">
+        <a class="hover:text-primary transition-colors" href="#">Terms &amp; Conditions</a>
+        <a class="hover:text-primary transition-colors" href="#">Privacy Policy</a>
+        <a class="hover:text-primary transition-colors" href="#">Sitemap</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="whatsapp.js"></script>
+</body>
+</html>
