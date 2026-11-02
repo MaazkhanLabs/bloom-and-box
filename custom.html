@@ -211,59 +211,48 @@
       <!-- ================= LEFT: 3D/2D LIVE MULTI-LAYER PREVIEW (STICKY) ================= -->
       <div class="lg:col-span-5 lg:sticky lg:top-40 space-y-4">
         
-        <!-- Live Preview Stage Box -->
-        <div class="bg-white rounded-3xl p-6 shadow-pillowy border border-[#E8C9C9]/50 relative overflow-hidden">
+        <!-- Live Preview Stage Box (Hybrid 3D WebGL Configurator) -->
+        <div class="bg-white rounded-3xl p-5 sm:p-6 shadow-pillowy border border-[#E8C9C9]/50 relative overflow-hidden">
           
-          <div class="flex items-center justify-between mb-4">
+          <div class="flex items-center justify-between mb-3">
             <span class="text-[11px] uppercase tracking-widest font-bold text-[#B97980] flex items-center gap-1.5">
               <span class="w-2 h-2 rounded-full bg-[#B97980] animate-pulse"></span>
-              Live Atelier Visualizer
+              360° Interactive 3D Studio
             </span>
             <span id="preview-box-badge" class="px-2.5 py-0.5 rounded-full bg-[#F7EDEB] text-[#443535] text-[10px] font-semibold">
-              Signature Box (Medium)
+              Signature Grand Box
             </span>
           </div>
 
-          <!-- Multi-layered Visual Container -->
-          <div id="visual-preview-stage" class="relative w-full aspect-square rounded-2xl bg-[#F7EDEB] overflow-hidden flex items-center justify-center shadow-inner">
+          <!-- 3D Canvas Stage Container -->
+          <div class="relative w-full aspect-square rounded-2xl bg-[#F7EDEB] overflow-hidden flex items-center justify-center shadow-inner border border-[#E8C9C9]/40 group">
             
-            <!-- LAYER 1: BASE BOX CONTAINER -->
-            <div id="layer-box-base" class="absolute inset-8 rounded-2xl bg-[#E8C9C9] shadow-2xl transition-all duration-500 border-4 border-white flex flex-col justify-between p-4">
-              <!-- Box Texture watermark -->
-              <div class="text-[9px] uppercase tracking-widest text-[#443535]/30 font-bold self-end">Bloom &amp; Box</div>
-              <div id="layer-box-label" class="text-xs font-serif font-bold text-[#443535]/60 text-center">Atelier Craft Box</div>
+            <!-- Three.js 3D WebGL Canvas mounts here -->
+            <div id="custom-3d-stage" class="absolute inset-0 w-full h-full"></div>
+
+            <!-- 3D Drag Gesture Prompt Overlay -->
+            <div class="absolute top-3 left-3 z-20 pointer-events-none flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/80 backdrop-blur-md text-[10px] font-bold text-[#443535] shadow-sm">
+              <span class="material-symbols-outlined text-[14px] text-[#B97980]">3d_rotation</span>
+              <span>Drag to rotate 360°</span>
             </div>
 
-            <!-- LAYER 2: WRAPPING PAPER OVERLAY -->
-            <div id="layer-wrap-paper" class="absolute inset-8 rounded-2xl transition-all duration-500 opacity-90 mix-blend-multiply bg-[#F7EDEB]">
+            <!-- Floating 3D Action Controls -->
+            <div class="absolute bottom-3 left-3 right-3 z-20 flex items-center justify-between gap-2">
+              <button id="unbox-3d-btn" onclick="toggle3DUnbox()" class="px-3.5 py-1.5 rounded-full bg-[#443535] hover:bg-[#B97980] text-white text-[11px] font-semibold flex items-center gap-1.5 shadow transition-all cursor-pointer">
+                <span class="material-symbols-outlined text-[16px]">lock_open</span>
+                <span>Unbox &amp; Reveal Stems</span>
+              </button>
+              
+              <button id="rotate-3d-btn" onclick="toggle3DAutoRotate()" class="px-3 py-1.5 rounded-full bg-white/90 hover:bg-white text-[#443535] text-[11px] font-semibold flex items-center gap-1.5 shadow-sm transition-all border border-[#E8C9C9] cursor-pointer">
+                <span class="material-symbols-outlined text-[15px] text-[#B97980]">pause</span>
+                <span>Pause Orbit</span>
+              </button>
             </div>
 
-            <!-- LAYER 3: FLORAL SELECTION ARTWORK -->
-            <div id="layer-flowers-art" class="absolute inset-10 flex items-center justify-center transition-all duration-500 pointer-events-none">
-              <img id="layer-flowers-img" src="https://images.unsplash.com/photo-1561181286-d3fee7d55364?w=600" alt="Selected blooms" class="w-full h-full object-cover rounded-xl shadow-md transition-all duration-500 transform hover:scale-105">
-            </div>
-
-            <!-- LAYER 4: RIBBON VERTICAL / HORIZONTAL CROSS & BOW -->
-            <div id="layer-ribbon-v" class="ribbon-bar absolute top-8 bottom-8 w-6 bg-[#B97980] shadow-md z-10 pointer-events-none transition-all duration-300"></div>
-            <div id="layer-ribbon-h" class="ribbon-bar absolute left-8 right-8 h-6 bg-[#B97980] shadow-md z-10 pointer-events-none transition-all duration-300"></div>
-            
-            <!-- Center Ribbon Rosette Bow -->
-            <div id="layer-ribbon-bow" class="absolute z-20 w-14 h-14 rounded-full bg-[#B97980] text-white flex items-center justify-center shadow-lg border-2 border-white/50 pointer-events-none transition-all duration-300">
-              <span class="material-symbols-outlined text-2xl">local_florist</span>
-            </div>
-
-            <!-- LAYER 5: PERSONALIZED CALLIGRAPHY ENVELOPE / CARD NOTE -->
-            <div id="layer-card-note" class="absolute bottom-10 right-10 z-30 bg-white/95 backdrop-blur-md rounded-xl p-3 shadow-xl border border-[#E8C9C9] max-w-[170px] transform rotate-[-4deg] transition-all duration-300">
-              <div class="flex items-center gap-1 text-[8px] uppercase font-bold tracking-wider text-[#B97980] mb-0.5">
-                <span class="material-symbols-outlined text-[10px]">edit_note</span> Atelier Card
-              </div>
-              <p id="layer-recipient-preview" class="font-serif text-[11px] font-bold text-[#443535] truncate">To: My Dearest</p>
-              <p id="layer-message-preview" class="text-[9px] text-[#443535]/80 line-clamp-2 italic leading-tight mt-0.5">"With all my endless adoration..."</p>
-            </div>
-
-            <!-- LAYER 6: ADD-ONS BADGES PILL -->
-            <div id="layer-addons-badges" class="absolute top-10 left-10 z-30 flex flex-col gap-1 pointer-events-none">
-              <!-- Dynamically populated tags -->
+            <!-- Layered Card Preview Pill -->
+            <div id="layer-card-note" class="absolute top-3 right-3 z-20 bg-white/90 backdrop-blur-md rounded-xl p-2.5 shadow border border-[#E8C9C9] max-w-[140px] text-right pointer-events-none">
+              <div class="text-[8px] uppercase font-bold text-[#B97980]">Vow Note</div>
+              <p id="layer-recipient-preview" class="font-serif text-[10px] font-bold text-[#443535] truncate">To: My Dearest</p>
             </div>
 
           </div>
@@ -652,9 +641,11 @@
     </div>
   </footer>
 
-  <!-- Store scripts -->
+  <!-- Store scripts & 3D WebGL Configurator Engine -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   <script src="products.js"></script>
   <script src="store.js"></script>
+  <script src="custom-3d.js"></script>
 
   <!-- Custom Studio Interactive Controller Script -->
   <script>
@@ -796,6 +787,11 @@
       const ind = currentCard.querySelector('.select-indicator');
       if (ind) ind.textContent = 'Active';
 
+      // Update 3D WebGL Configurator Model
+      if (typeof set3DBoxSize === 'function') {
+        set3DBoxSize(id);
+      }
+
       // Update visual preview layer
       const badge = document.getElementById('preview-box-badge');
       if (badge) badge.textContent = name;
@@ -817,6 +813,11 @@
       const card = event.currentTarget;
       card.classList.add('selected', 'border-[#B97980]');
       card.classList.remove('border-[#E8C9C9]/60');
+
+      // Update 3D WebGL Stems
+      if (typeof set3DFlowerType === 'function') {
+        set3DFlowerType(id);
+      }
 
       // Update Preview Layer
       const previewImg = document.getElementById('layer-flowers-img');
@@ -840,6 +841,11 @@
       card.classList.add('selected', 'border-[#B97980]');
       card.classList.remove('border-[#E8C9C9]/60');
 
+      // Update 3D WebGL Wrapping PBR Material
+      if (typeof set3DWrappingColor === 'function') {
+        set3DWrappingColor(color);
+      }
+
       // Update Preview Layer
       const paper = document.getElementById('layer-wrap-paper');
       if (paper) paper.style.backgroundColor = color;
@@ -859,6 +865,11 @@
       const card = event.currentTarget;
       card.classList.add('selected', 'border-[#B97980]');
       card.classList.remove('border-[#E8C9C9]/60');
+
+      // Update 3D WebGL Ribbon Mesh
+      if (typeof set3DRibbonColor === 'function') {
+        set3DRibbonColor(color);
+      }
 
       // Update Ribbon Visuals
       const ribV = document.getElementById('layer-ribbon-v');

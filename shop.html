@@ -47,6 +47,7 @@ tailwind.config = {
     box-shadow: 0 20px 40px -8px rgba(68, 53, 53, 0.10), 0 8px 16px -2px rgba(185, 121, 128, 0.06);
   }
 </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.0/vanilla-tilt.min.js"></script>
 </head>
 
 <body class="bg-[#F7EDEB] text-[#443535] antialiased">
@@ -284,7 +285,7 @@ tailwind.config = {
     summary.textContent = `Showing ${items.length} handcrafted creation${items.length !== 1 ? 's' : ''}`;
 
     grid.innerHTML = items.map(p => `
-      <article class="bg-white rounded-3xl p-5 shadow-pillowy hover:shadow-lift transition-all duration-300 flex flex-col justify-between group border border-[#E8C9C9]/50 relative">
+      <article class="card-3d-tilt bg-white rounded-3xl p-5 shadow-pillowy hover:shadow-lift transition-all duration-300 flex flex-col justify-between group border border-[#E8C9C9]/50 relative">
         ${p.badge ? `
           <div class="absolute -top-3 left-6 bg-[#B97980] text-white px-3 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-widest shadow">
             ${p.badge}
@@ -331,6 +332,17 @@ tailwind.config = {
         </div>
       </article>
     `).join('');
+
+    // Initialize 3D Card Tilt on newly rendered cards
+    if (typeof VanillaTilt !== 'undefined') {
+      VanillaTilt.init(document.querySelectorAll(".card-3d-tilt"), {
+        max: 8,
+        speed: 500,
+        glare: true,
+        "max-glare": 0.18,
+        scale: 1.015
+      });
+    }
   }
 
   function resetShopFilters() {
