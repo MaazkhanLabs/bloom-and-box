@@ -2,19 +2,22 @@
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
 <title>Keepsake Boxes — Bloom & Box | Premium Bouquets & Gift Hampers · Lahore</title>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Noto+Serif:wght@400;500;600&display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
 <style>
 @layer base {
-  html, body { margin: 0; padding: 0; }
-  body { overscroll-behavior: none; }
+  html, body { margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+  body { touch-action: manipulation; -webkit-font-smoothing: antialiased; }
   main > :first-child { margin-top: 0 !important; }
   main > :last-child { margin-bottom: 0 !important; }
 }
-::-webkit-scrollbar { display: none; }
+.safe-top { padding-top: max(0.375rem, env(safe-area-inset-top, 0px)); }
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+html { scroll-behavior: smooth; }
 </style>
 <script src="https://cdn.tailwindcss.com"></script>
 <script id="tailwind-config">
@@ -128,13 +131,13 @@ tailwind.config = {
 <body class="bg-background font-body-md text-on-surface antialiased">
 
 <!-- ========== HEADER ========== -->
-<header class="fixed top-0 left-0 right-0 z-50 bg-surface/90 backdrop-blur-md shadow-[0_1px_8px_rgba(43,33,30,0.04)]">
+<header class="sticky top-0 left-0 right-0 z-50 bg-surface/95 backdrop-blur-md shadow-[0_1px_8px_rgba(43,33,30,0.04)] border-b border-surface-container/60">
   <!-- Top Announcement Bar -->
-  <div class="bg-surface-container-high py-1 px-margin-mobile lg:px-margin text-center">
-    <div class="max-w-[1360px] mx-auto flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm">
-      <div class="flex items-center gap-space-xs">
-        <span class="w-1.5 h-1.5 rounded-full bg-secondary inline-block"></span>
-        <span class="tracking-wider uppercase">🌸 Free Delivery on Orders Above ₨5,000 · Same-Day Delivery in Lahore</span>
+  <div class="bg-surface-container-high py-1.5 px-3 sm:px-margin-mobile lg:px-margin text-center safe-top transition-all">
+    <div class="max-w-[1360px] mx-auto flex items-center justify-between text-on-surface-variant font-label-sm text-[11px] sm:text-label-sm">
+      <div class="flex items-center gap-1.5 mx-auto md:mx-0">
+        <span class="w-1.5 h-1.5 rounded-full bg-secondary inline-block animate-pulse shrink-0"></span>
+        <span class="tracking-wide sm:tracking-wider uppercase font-semibold text-[10px] sm:text-[11px]">🌸 Free Delivery Above ₨5,000 · Same-Day in Lahore</span>
       </div>
       <div class="hidden md:flex items-center gap-space-md">
         <a class="hover:text-primary transition-colors" href="custom.html">Custom Orders</a>
@@ -149,14 +152,17 @@ tailwind.config = {
     </div>
   </div>
   <!-- Main Nav Bar -->
-  <div class="h-20 max-w-[1360px] mx-auto px-margin-mobile lg:px-margin flex items-center justify-between gap-space-md">
+  <div class="h-16 sm:h-20 max-w-[1360px] mx-auto px-4 sm:px-margin-mobile lg:px-margin flex items-center justify-between gap-2 sm:gap-space-md">
     <!-- Brand -->
-    <div class="flex items-center gap-space-sm">
-      <a class="flex flex-col text-left" href="index.html">
-        <span class="font-headline-sm text-headline-sm text-primary tracking-tight font-serif">Bloom &amp; Box</span>
-        <span class="font-label-sm text-label-sm tracking-widest text-on-surface-variant uppercase">Bouquets &amp; Gift Hampers · Lahore</span>
-      </a>
-    </div>
+    <a class="flex items-center gap-2.5 shrink-0 group" href="index.html">
+      <div class="w-9 h-9 rounded-full bg-primary flex items-center justify-center text-on-primary shrink-0 shadow-sm group-hover:scale-105 transition-transform">
+        <span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">local_florist</span>
+      </div>
+      <div class="flex flex-col text-left leading-tight">
+        <span class="font-headline-sm text-lg sm:text-headline-sm text-primary tracking-tight font-serif font-bold">Bloom &amp; Box</span>
+        <span class="font-label-sm text-[9px] sm:text-label-sm tracking-widest text-on-surface-variant uppercase hidden xs:block">Lahore · Bouquets &amp; Hampers</span>
+      </div>
+    </a>
     <!-- Navigation -->
     <nav class="hidden xl:flex items-center gap-space-md font-label-lg text-label-lg tracking-wider">
       <a class="text-on-surface-variant hover:text-on-surface transition-colors py-1" href="bouquets.html">Bouquets</a>
@@ -167,93 +173,116 @@ tailwind.config = {
       <a class="text-on-surface-variant hover:text-on-surface transition-colors py-1" href="occasions.html">Occasions</a>
     </nav>
     <!-- Right Actions -->
-    <div class="flex items-center gap-space-sm">
+    <div class="flex items-center gap-1.5 sm:gap-space-sm shrink-0">
       <button aria-label="Search" class="w-9 h-9 rounded-full flex items-center justify-center text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors">
         <span class="material-symbols-outlined text-[20px]">search</span>
       </button>
-      <div class="hidden sm:flex items-center px-2 py-1 rounded bg-surface-container text-on-surface font-label-md text-label-md">
-        <span class="text-primary font-bold">PKR ₨</span>
-      </div>
-      <button aria-label="Open Cart" class="relative flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-surface-container hover:bg-surface-container-high transition-colors text-on-surface">
+      <button aria-label="Open Cart" class="relative flex items-center gap-1 sm:gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-full bg-surface-container hover:bg-surface-container-high transition-colors text-on-surface" id="cart-btn">
         <span class="material-symbols-outlined text-[18px] text-primary">shopping_bag</span>
-        <span class="font-label-sm text-label-sm font-semibold">Bag (0)</span>
+        <span class="font-label-sm text-[11px] sm:text-label-sm font-semibold" id="cart-count-label">Bag (0)</span>
       </button>
       <!-- Mobile Menu Toggle -->
-      <button class="xl:hidden w-9 h-9 rounded-full flex items-center justify-center text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" id="mobile-menu-btn" onclick="toggleMobileMenu()">
+      <button class="xl:hidden w-9 h-9 rounded-full flex items-center justify-center text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" id="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Toggle menu">
         <span class="material-symbols-outlined text-[22px]">menu</span>
       </button>
     </div>
   </div>
   <!-- Mobile Nav -->
-  <div class="xl:hidden hidden bg-surface-container-lowest border-t border-surface-container px-margin-mobile py-space-md space-y-space-xs" id="mobile-nav">
-    <a class="block py-2 font-label-lg text-label-lg text-on-surface-variant hover:text-primary transition-colors" href="bouquets.html">Bouquets</a>
-    <a class="block py-2 font-label-lg text-label-lg text-on-surface-variant hover:text-primary transition-colors" href="hampers.html">Gift Hampers</a>
-    <a class="block py-2 font-label-lg text-label-lg text-primary font-semibold" href="keepsakes.html">Keepsake Boxes</a>
-    <a class="block py-2 font-label-lg text-label-lg text-on-surface-variant hover:text-primary transition-colors" href="custom.html">Custom Gift Builder</a>
-    <a class="block py-2 font-label-lg text-label-lg text-on-surface-variant hover:text-primary transition-colors" href="blog.html">Blog</a>
-    <a class="block py-2 font-label-lg text-label-lg text-on-surface-variant hover:text-primary transition-colors" href="occasions.html">Occasions</a>
+  <div class="xl:hidden hidden bg-surface-container-lowest/98 backdrop-blur-md border-t border-surface-container shadow-xl max-h-[calc(100vh-5rem)] overflow-y-auto px-4 py-3 space-y-1" id="mobile-nav">
+    <a class="flex items-center gap-2 py-2.5 px-3 rounded-lg text-on-surface-variant hover:bg-surface-container font-label-lg text-label-lg tracking-wider" href="index.html">
+      <span class="material-symbols-outlined text-[20px]">home</span>
+      <span>Home</span>
+    </a>
+    <a class="flex items-center gap-2 py-2.5 px-3 rounded-lg text-on-surface-variant hover:bg-surface-container font-label-lg text-label-lg tracking-wider" href="bouquets.html">
+      <span class="material-symbols-outlined text-[20px] text-primary">local_florist</span>
+      <span>Bouquets</span>
+    </a>
+    <a class="flex items-center gap-2 py-2.5 px-3 rounded-lg text-on-surface-variant hover:bg-surface-container font-label-lg text-label-lg tracking-wider" href="hampers.html">
+      <span class="material-symbols-outlined text-[20px] text-primary">redeem</span>
+      <span>Gift Hampers</span>
+    </a>
+    <a class="flex items-center gap-2 py-2.5 px-3 rounded-lg text-primary font-semibold bg-surface-container/50 font-label-lg text-label-lg tracking-wider" href="keepsakes.html">
+      <span class="material-symbols-outlined text-[20px]">diamond</span>
+      <span>Keepsake Boxes</span>
+    </a>
+    <a class="flex items-center gap-2 py-2.5 px-3 rounded-lg text-on-surface-variant hover:bg-surface-container font-label-lg text-label-lg tracking-wider" href="custom.html">
+      <span class="material-symbols-outlined text-[20px] text-primary">palette</span>
+      <span>Custom Gift Builder</span>
+    </a>
+    <a class="flex items-center gap-2 py-2.5 px-3 rounded-lg text-on-surface-variant hover:bg-surface-container font-label-lg text-label-lg tracking-wider" href="occasions.html">
+      <span class="material-symbols-outlined text-[20px] text-primary">celebration</span>
+      <span>Shop by Occasion</span>
+    </a>
+    <a class="flex items-center gap-2 py-2.5 px-3 rounded-lg text-on-surface-variant hover:bg-surface-container font-label-lg text-label-lg tracking-wider" href="blog.html">
+      <span class="material-symbols-outlined text-[20px] text-primary">auto_stories</span>
+      <span>The Bloom Journal</span>
+    </a>
+    <div class="pt-3 border-t border-surface-container flex items-center justify-between px-3 text-xs text-on-surface-variant">
+      <span class="flex items-center gap-1 font-semibold text-primary">PKR (₨) · Lahore Boutique</span>
+      <button onclick="promptChangeAdminWhatsApp()" class="text-xs text-primary underline">Admin WhatsApp</button>
+    </div>
   </div>
 </header>
 
 <!-- ========== MAIN CONTENT ========== -->
-<main class="w-full pt-20 bg-background max-w-[1360px] mx-auto px-margin-mobile lg:px-margin min-h-screen">
+<main class="w-full pt-4 sm:pt-6 lg:pt-8 bg-background max-w-[1360px] mx-auto px-4 sm:px-margin-mobile lg:px-margin min-h-screen">
 <div class="flex flex-col w-full">
 
 <!-- ===== PAGE HERO ===== -->
-<section class="relative pt-space-lg pb-space-xl overflow-hidden">
+<section class="relative pt-2 sm:pt-space-sm pb-space-lg lg:pb-space-xl overflow-hidden">
   <!-- Decorative Blurs -->
-  <div class="absolute -top-32 -left-20 w-96 h-96 rounded-full bg-surface-variant/40 blur-3xl pointer-events-none"></div>
-  <div class="absolute top-1/2 right-0 w-[500px] h-[500px] rounded-full bg-secondary-container/30 blur-3xl pointer-events-none"></div>
+  <div class="absolute -top-32 -left-20 w-72 sm:w-96 h-72 sm:h-96 rounded-full bg-surface-variant/40 blur-3xl pointer-events-none"></div>
+  <div class="absolute top-1/2 right-0 w-80 sm:w-[500px] h-80 sm:h-[500px] rounded-full bg-secondary-container/30 blur-3xl pointer-events-none"></div>
 
-  <div class="relative z-10 max-w-3xl space-y-space-md">
+  <div class="relative z-10 max-w-3xl space-y-3 sm:space-y-space-md">
     <!-- Breadcrumb -->
-    <nav class="flex items-center gap-2 font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest">
+    <nav class="flex items-center gap-2 font-label-sm text-xs sm:text-label-sm text-on-surface-variant uppercase tracking-widest">
       <a href="index.html" class="hover:text-primary transition-colors">Home</a>
       <span class="material-symbols-outlined text-[14px] text-outline">chevron_right</span>
       <span class="text-primary font-semibold">Keepsake Boxes</span>
     </nav>
 
     <!-- Badge -->
-    <div class="inline-flex items-center gap-space-xs px-3.5 py-1.5 rounded-full bg-surface-container-high text-tertiary">
-      <span class="material-symbols-outlined text-[16px] text-primary" style="font-variation-settings: 'FILL' 1;">diamond</span>
-      <span class="font-label-sm text-label-sm uppercase tracking-widest font-semibold">Luxury Heirloom Collection</span>
+    <div class="inline-flex items-center gap-1.5 sm:gap-space-xs px-3 sm:px-3.5 py-1.5 rounded-full bg-surface-container-high text-tertiary">
+      <span class="material-symbols-outlined text-[15px] sm:text-[16px] text-primary" style="font-variation-settings: 'FILL' 1;">diamond</span>
+      <span class="font-label-sm text-[10px] sm:text-label-sm uppercase tracking-widest font-semibold">Luxury Heirloom Collection</span>
     </div>
 
     <!-- Heading -->
-    <h1 class="font-display-hero text-display-hero text-on-surface tracking-tight leading-[1.08] max-w-xl">
+    <h1 class="font-display-hero text-3xl sm:text-4xl md:text-5xl lg:text-display-hero text-on-surface tracking-tight leading-[1.12] sm:leading-[1.08] max-w-xl">
       Heirloom <br/><span class="italic font-light text-primary">Keepsake</span> Boxes
     </h1>
 
     <!-- Subtitle -->
-    <p class="font-body-lg text-body-lg text-on-surface-variant max-w-lg leading-relaxed">
+    <p class="font-body-md sm:font-body-lg text-sm sm:text-body-lg text-on-surface-variant max-w-lg leading-relaxed">
       Luxury keepsake gifts designed to last a lifetime — from 24K gold-dipped roses to personalized engraved chests. Treasured memories in beautiful form.
     </p>
 
     <!-- CTA Buttons -->
-    <div class="flex flex-wrap items-center gap-space-sm pt-space-xs">
-      <a class="px-space-md py-3.5 rounded-full bg-primary text-on-primary font-label-lg text-label-lg uppercase tracking-wider shadow-lg shadow-primary/20 hover:bg-primary-container transition-all flex items-center gap-2 group" href="#products">
+    <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 sm:gap-space-sm pt-space-xs">
+      <a class="px-space-md py-3 sm:py-3.5 rounded-full bg-primary text-on-primary font-label-md sm:font-label-lg text-xs sm:text-label-lg uppercase tracking-wider shadow-lg shadow-primary/20 hover:bg-primary-container transition-all flex items-center justify-center gap-2 group" href="#products">
         <span>Explore Collection</span>
         <span class="material-symbols-outlined text-[18px] group-hover:translate-x-1 transition-transform">arrow_forward</span>
       </a>
-      <a class="px-space-md py-3.5 rounded-full bg-surface-container-high text-on-surface font-label-lg text-label-lg tracking-wider hover:bg-surface-container transition-colors flex items-center gap-2" href="custom.html">
+      <a class="px-space-md py-3 sm:py-3.5 rounded-full bg-surface-container-high text-on-surface font-label-md sm:font-label-lg text-xs sm:text-label-lg tracking-wider hover:bg-surface-container transition-colors flex items-center justify-center gap-2" href="custom.html">
         <span class="material-symbols-outlined text-[18px] text-secondary">auto_awesome</span>
         <span>Custom Gift Builder</span>
       </a>
     </div>
 
     <!-- Metric Accent Bar -->
-    <div class="pt-space-md grid grid-cols-3 max-w-md gap-space-sm">
-      <div class="p-space-sm rounded-lg bg-surface-container-low shadow-sm">
-        <span class="font-headline-sm text-headline-sm text-primary font-serif block">24K</span>
-        <span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Gold Certified</span>
+    <div class="pt-2 sm:pt-space-md grid grid-cols-3 max-w-md gap-2 sm:gap-space-sm">
+      <div class="p-2 sm:p-space-sm rounded-lg bg-surface-container-low shadow-sm">
+        <span class="font-headline-sm text-lg sm:text-headline-sm text-primary font-serif block">24K</span>
+        <span class="font-label-sm text-[9px] sm:text-label-sm text-on-surface-variant uppercase tracking-wider block leading-tight">Gold Certified</span>
       </div>
-      <div class="p-space-sm rounded-lg bg-surface-container-low shadow-sm">
-        <span class="font-headline-sm text-headline-sm text-secondary font-serif block">100%</span>
-        <span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Handcrafted</span>
+      <div class="p-2 sm:p-space-sm rounded-lg bg-surface-container-low shadow-sm">
+        <span class="font-headline-sm text-lg sm:text-headline-sm text-secondary font-serif block">100%</span>
+        <span class="font-label-sm text-[9px] sm:text-label-sm text-on-surface-variant uppercase tracking-wider block leading-tight">Handcrafted</span>
       </div>
-      <div class="p-space-sm rounded-lg bg-surface-container-low shadow-sm">
-        <span class="font-headline-sm text-headline-sm text-tertiary font-serif block">∞</span>
-        <span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Lasting Beauty</span>
+      <div class="p-2 sm:p-space-sm rounded-lg bg-surface-container-low shadow-sm">
+        <span class="font-headline-sm text-lg sm:text-headline-sm text-tertiary font-serif block">∞</span>
+        <span class="font-label-sm text-[9px] sm:text-label-sm text-on-surface-variant uppercase tracking-wider block leading-tight">Lasting Beauty</span>
       </div>
     </div>
   </div>
@@ -261,23 +290,23 @@ tailwind.config = {
 
 <!-- ===== PRODUCT GRID — 4 KEEPSAKE PRODUCTS ===== -->
 <section class="py-space-lg space-y-space-md" id="products">
-  <div class="flex flex-col md:flex-row items-baseline justify-between gap-space-xs">
+  <div class="flex flex-col sm:flex-row items-start sm:items-baseline justify-between gap-space-xs">
     <div>
       <span class="font-label-sm text-label-sm uppercase tracking-widest text-primary font-semibold">Handcrafted Treasures</span>
-      <h2 class="font-headline-lg text-headline-lg font-serif text-on-surface">Our Keepsake Collection</h2>
+      <h2 class="font-headline-lg text-2xl sm:text-headline-lg font-serif text-on-surface">Our Keepsake Collection</h2>
     </div>
-    <a class="font-label-md text-label-md uppercase tracking-widest text-primary hover:text-primary-container transition-colors flex items-center gap-1 underline underline-offset-4" href="occasions.html">
+    <a class="font-label-md text-xs sm:text-label-md uppercase tracking-widest text-primary hover:text-primary-container transition-colors flex items-center gap-1 underline underline-offset-4" href="occasions.html">
       <span>Browse All Gift Collections</span>
       <span class="material-symbols-outlined text-[16px]">north_east</span>
     </a>
   </div>
 
   <!-- 2x2 Product Grid -->
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-gutter">
 
     <!-- Product 1: Golden Rose Keepsake -->
     <article class="rounded-xl bg-surface-container-lowest p-4 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col group">
-      <div class="relative h-80 rounded-lg overflow-hidden bg-surface-container mb-space-sm p-1">
+      <div class="relative h-64 sm:h-80 rounded-lg overflow-hidden bg-surface-container mb-space-sm p-1">
         <img class="w-full h-full object-cover rounded-lg group-hover:scale-105 transition-transform duration-500" src="https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?w=500" alt="Golden Rose Keepsake — 24K gold-dipped natural rose in velvet display case"/>
         <span class="absolute top-3 left-3 bg-surface-container-lowest/90 backdrop-blur-md px-3 py-1 rounded-full font-label-sm text-label-sm text-on-surface font-semibold">Bestseller</span>
         <span class="absolute bottom-3 right-3 bg-primary text-on-primary px-3 py-1 rounded-full font-label-sm text-label-sm font-bold">₨12,000</span>
@@ -304,7 +333,7 @@ tailwind.config = {
 
     <!-- Product 2: Personalized Wooden Memory Box -->
     <article class="rounded-xl bg-surface-container-lowest p-4 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col group">
-      <div class="relative h-80 rounded-lg overflow-hidden bg-surface-container mb-space-sm p-1">
+      <div class="relative h-64 sm:h-80 rounded-lg overflow-hidden bg-surface-container mb-space-sm p-1">
         <img class="w-full h-full object-cover rounded-lg group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAkH39YTIgwg0jhPit9mBZlgeuUK8Ag_z2UsIxWEmRme5Ib1R3EnSMqqA5-45B3LB5kiLAa2c4Gl-FTu4Os1ET6xU1tdIeUEZR9SCWY8xYSPz21Mxu-aMbGNNOvg0pl-Mwh9lWNiu8j4OcMkGEQDFf_TSpsvp1wFmLK34IEBUjFhtSrpz-pGyNeNFJ8Kxab4mZ2BZRucr1-bpnmgBmOwm4v6Y56vuvPMpRVyQ69trRU" alt="Personalized Wooden Memory Box — Handcrafted walnut wood with laser engraving"/>
         <span class="absolute top-3 left-3 bg-surface-container-lowest/90 backdrop-blur-md px-3 py-1 rounded-full font-label-sm text-label-sm text-on-surface font-semibold">Personalized</span>
         <span class="absolute bottom-3 right-3 bg-primary text-on-primary px-3 py-1 rounded-full font-label-sm text-label-sm font-bold">₨7,500</span>
@@ -331,7 +360,7 @@ tailwind.config = {
 
     <!-- Product 3: Crystal Rose Globe -->
     <article class="rounded-xl bg-surface-container-lowest p-4 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col group">
-      <div class="relative h-80 rounded-lg overflow-hidden bg-surface-container mb-space-sm p-1">
+      <div class="relative h-64 sm:h-80 rounded-lg overflow-hidden bg-surface-container mb-space-sm p-1">
         <img class="w-full h-full object-cover rounded-lg group-hover:scale-105 transition-transform duration-500" src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=500" alt="Crystal Rose Globe — Preserved rose in crystal globe with LED base"/>
         <span class="absolute top-3 left-3 bg-surface-container-lowest/90 backdrop-blur-md px-3 py-1 rounded-full font-label-sm text-label-sm text-on-surface font-semibold">Enchanted</span>
         <span class="absolute bottom-3 right-3 bg-primary text-on-primary px-3 py-1 rounded-full font-label-sm text-label-sm font-bold">₨5,000</span>
@@ -361,7 +390,7 @@ tailwind.config = {
       <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-primary text-on-primary px-4 py-0.5 rounded-full font-label-sm text-label-sm uppercase tracking-widest font-semibold shadow z-20">
         Most Coveted
       </div>
-      <div class="relative h-80 rounded-lg overflow-hidden bg-surface-container mb-space-sm p-1">
+      <div class="relative h-64 sm:h-80 rounded-lg overflow-hidden bg-surface-container mb-space-sm p-1">
         <img class="w-full h-full object-cover rounded-lg group-hover:scale-105 transition-transform duration-500" src="https://images.unsplash.com/photo-1556228578-0d85b1a4d571?w=500" alt="Luxury Perfume and Rose Gift Set — Premium cedarwood chest with perfume, gold rose, and accessories"/>
         <span class="absolute top-3 left-3 bg-surface-container-lowest/90 backdrop-blur-md px-3 py-1 rounded-full font-label-sm text-label-sm text-on-surface font-semibold">Premium Suite</span>
         <span class="absolute bottom-3 right-3 bg-primary text-on-primary px-3 py-1 rounded-full font-label-sm text-label-sm font-bold">₨18,000</span>

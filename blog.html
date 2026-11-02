@@ -2,18 +2,21 @@
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
 <title>The Bloom Journal — Bloom &amp; Box | Bouquets &amp; Gift Hampers · Lahore</title>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&amp;family=Noto+Serif:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
 <style>
 @layer base {
-  html, body { margin: 0; padding: 0; }
-  body { overscroll-behavior: none; }
+  html, body { margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+  body { touch-action: manipulation; -webkit-font-smoothing: antialiased; }
   main > :first-child { margin-top: 0 !important; }
   main > :last-child { margin-bottom: 0 !important; }
 }
-::-webkit-scrollbar { display: none; }
+.safe-top { padding-top: max(0.375rem, env(safe-area-inset-top, 0px)); }
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+html { scroll-behavior: smooth; }
 </style>
 <script src="https://cdn.tailwindcss.com"></script>
 <script>
@@ -127,13 +130,13 @@ tailwind.config = {
 <body class="bg-background font-body-md text-on-surface antialiased">
 
 <!-- ===== HEADER ===== -->
-<header class="fixed top-0 left-0 right-0 z-50 bg-surface/90 backdrop-blur-md shadow-[0_1px_8px_rgba(43,33,30,0.04)]">
+<header class="sticky top-0 left-0 right-0 z-50 bg-surface/95 backdrop-blur-md shadow-[0_1px_8px_rgba(43,33,30,0.04)] border-b border-surface-container/60">
   <!-- Top Bar -->
-  <div class="bg-surface-container-high py-1 px-margin-mobile lg:px-margin text-center">
-    <div class="max-w-[1360px] mx-auto flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm">
-      <div class="flex items-center gap-space-xs">
-        <span class="w-1.5 h-1.5 rounded-full bg-secondary inline-block"></span>
-        <span class="tracking-wider uppercase">🌸 Free Delivery on Orders Above ₨5,000 · Same-Day Delivery in Lahore</span>
+  <div class="bg-surface-container-high py-1.5 px-3 sm:px-margin-mobile lg:px-margin text-center safe-top transition-all">
+    <div class="max-w-[1360px] mx-auto flex items-center justify-between text-on-surface-variant font-label-sm text-[11px] sm:text-label-sm">
+      <div class="flex items-center gap-1.5 mx-auto md:mx-0">
+        <span class="w-1.5 h-1.5 rounded-full bg-secondary inline-block animate-pulse shrink-0"></span>
+        <span class="tracking-wide sm:tracking-wider uppercase font-semibold text-[10px] sm:text-[11px]">🌸 Free Delivery Above ₨5,000 · Same-Day in Lahore</span>
       </div>
       <div class="hidden md:flex items-center gap-space-md">
         <a class="hover:text-primary transition-colors" href="custom.html">Bespoke Concierge</a>
@@ -145,14 +148,17 @@ tailwind.config = {
     </div>
   </div>
   <!-- Main Nav Bar -->
-  <div class="h-20 max-w-[1360px] mx-auto px-margin-mobile lg:px-margin flex items-center justify-between gap-space-md">
+  <div class="h-16 sm:h-20 max-w-[1360px] mx-auto px-4 sm:px-margin-mobile lg:px-margin flex items-center justify-between gap-2 sm:gap-space-md">
     <!-- Brand -->
-    <div class="flex items-center gap-space-sm">
-      <a class="flex flex-col text-left" href="index.html">
-        <span class="font-headline-sm text-headline-sm text-primary tracking-tight font-serif">Bloom &amp; Box</span>
-        <span class="font-label-sm text-label-sm tracking-widest text-on-surface-variant uppercase">Bouquets &amp; Gift Hampers · Lahore</span>
-      </a>
-    </div>
+    <a class="flex items-center gap-2.5 shrink-0 group" href="index.html">
+      <div class="w-9 h-9 rounded-full bg-primary flex items-center justify-center text-on-primary shrink-0 shadow-sm group-hover:scale-105 transition-transform">
+        <span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">local_florist</span>
+      </div>
+      <div class="flex flex-col text-left leading-tight">
+        <span class="font-headline-sm text-lg sm:text-headline-sm text-primary tracking-tight font-serif font-bold">Bloom &amp; Box</span>
+        <span class="font-label-sm text-[9px] sm:text-label-sm tracking-widest text-on-surface-variant uppercase hidden xs:block">Lahore · Bouquets &amp; Hampers</span>
+      </div>
+    </a>
     <!-- Navigation -->
     <nav class="hidden xl:flex items-center gap-space-md font-label-lg text-label-lg tracking-wider">
       <a class="text-on-surface-variant hover:text-on-surface transition-colors py-1" href="bouquets.html">Bouquets</a>
@@ -163,58 +169,84 @@ tailwind.config = {
       <a class="text-on-surface-variant hover:text-on-surface transition-colors py-1" href="occasions.html">Occasions</a>
     </nav>
     <!-- Right Controls -->
-    <div class="flex items-center gap-space-sm">
+    <div class="flex items-center gap-1.5 sm:gap-space-sm shrink-0">
       <button aria-label="Search" class="w-9 h-9 rounded-full flex items-center justify-center text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors">
         <span class="material-symbols-outlined text-[20px]">search</span>
       </button>
-      <a href="index.html#customizer" aria-label="Open Cart" class="relative flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-surface-container hover:bg-surface-container-high transition-colors text-on-surface">
+      <button aria-label="Open Cart" class="relative flex items-center gap-1 sm:gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-full bg-surface-container hover:bg-surface-container-high transition-colors text-on-surface" id="cart-btn">
         <span class="material-symbols-outlined text-[18px] text-primary">shopping_bag</span>
-        <span class="font-label-sm text-label-sm font-semibold">Bag (2)</span>
-      </a>
-      <button id="mobile-menu-btn" class="xl:hidden w-9 h-9 rounded-full flex items-center justify-center text-on-surface hover:bg-surface-container">
-        <span class="material-symbols-outlined text-[24px]">menu</span>
+        <span class="font-label-sm text-[11px] sm:text-label-sm font-semibold" id="cart-count-label">Bag (0)</span>
+      </button>
+      <button id="mobile-menu-btn" class="xl:hidden w-9 h-9 rounded-full flex items-center justify-center text-on-surface-variant hover:bg-surface-container transition-colors" onclick="document.getElementById('mobile-nav').classList.toggle('hidden')" aria-label="Toggle menu">
+        <span class="material-symbols-outlined text-[22px]">menu</span>
       </button>
     </div>
   </div>
 
   <!-- Mobile Navigation Drawer -->
-  <div id="mobile-nav" class="hidden xl:hidden bg-surface-container-lowest border-b border-surface-container px-margin-mobile py-4 space-y-2">
-    <a class="block py-2 text-on-surface font-label-md" href="bouquets.html">Bouquets</a>
-    <a class="block py-2 text-on-surface font-label-md" href="hampers.html">Gift Hampers</a>
-    <a class="block py-2 text-on-surface font-label-md" href="keepsakes.html">Keepsake Boxes</a>
-    <a class="block py-2 text-on-surface font-label-md" href="custom.html">Custom Gift Builder</a>
-    <a class="block py-2 text-primary font-bold font-label-md" href="blog.html">Blog</a>
-    <a class="block py-2 text-on-surface font-label-md" href="occasions.html">Occasions</a>
+  <div id="mobile-nav" class="hidden xl:hidden bg-surface-container-lowest/98 backdrop-blur-md border-t border-surface-container shadow-xl max-h-[calc(100vh-5rem)] overflow-y-auto px-4 py-3 space-y-1">
+    <a class="flex items-center gap-2 py-2.5 px-3 rounded-lg text-on-surface-variant hover:bg-surface-container font-label-lg text-label-lg tracking-wider" href="index.html">
+      <span class="material-symbols-outlined text-[20px]">home</span>
+      <span>Home</span>
+    </a>
+    <a class="flex items-center gap-2 py-2.5 px-3 rounded-lg text-on-surface-variant hover:bg-surface-container font-label-lg text-label-lg tracking-wider" href="bouquets.html">
+      <span class="material-symbols-outlined text-[20px] text-primary">local_florist</span>
+      <span>Bouquets</span>
+    </a>
+    <a class="flex items-center gap-2 py-2.5 px-3 rounded-lg text-on-surface-variant hover:bg-surface-container font-label-lg text-label-lg tracking-wider" href="hampers.html">
+      <span class="material-symbols-outlined text-[20px] text-primary">redeem</span>
+      <span>Gift Hampers</span>
+    </a>
+    <a class="flex items-center gap-2 py-2.5 px-3 rounded-lg text-on-surface-variant hover:bg-surface-container font-label-lg text-label-lg tracking-wider" href="keepsakes.html">
+      <span class="material-symbols-outlined text-[20px] text-primary">diamond</span>
+      <span>Keepsake Boxes</span>
+    </a>
+    <a class="flex items-center gap-2 py-2.5 px-3 rounded-lg text-on-surface-variant hover:bg-surface-container font-label-lg text-label-lg tracking-wider" href="custom.html">
+      <span class="material-symbols-outlined text-[20px] text-primary">palette</span>
+      <span>Custom Gift Builder</span>
+    </a>
+    <a class="flex items-center gap-2 py-2.5 px-3 rounded-lg text-on-surface-variant hover:bg-surface-container font-label-lg text-label-lg tracking-wider" href="occasions.html">
+      <span class="material-symbols-outlined text-[20px] text-primary">celebration</span>
+      <span>Shop by Occasion</span>
+    </a>
+    <a class="flex items-center gap-2 py-2.5 px-3 rounded-lg text-primary font-semibold bg-surface-container/50 font-label-lg text-label-lg tracking-wider" href="blog.html">
+      <span class="material-symbols-outlined text-[20px]">auto_stories</span>
+      <span>The Bloom Journal</span>
+    </a>
+    <div class="pt-3 border-t border-surface-container flex items-center justify-between px-3 text-xs text-on-surface-variant">
+      <span class="flex items-center gap-1 font-semibold text-primary">PKR (₨) · Lahore Boutique</span>
+      <button onclick="promptChangeAdminWhatsApp()" class="text-xs text-primary underline">Admin WhatsApp</button>
+    </div>
   </div>
 </header>
 
 <!-- ===== MAIN CONTENT ===== -->
-<main class="w-full pt-28 bg-background max-w-[1360px] mx-auto px-margin-mobile lg:px-margin min-h-screen pb-space-xl">
+<main class="w-full pt-4 sm:pt-6 lg:pt-8 bg-background max-w-[1360px] mx-auto px-4 sm:px-margin-mobile lg:px-margin min-h-screen pb-space-xl">
   <div class="flex flex-col w-full">
 
     <!-- Breadcrumb & Hero -->
-    <section class="pt-4 pb-space-md text-center max-w-2xl mx-auto space-y-space-xs">
-      <div class="flex items-center justify-center gap-2 text-label-sm text-on-surface-variant font-label-sm">
+    <section class="pt-2 sm:pt-4 pb-space-md text-center max-w-2xl mx-auto space-y-space-xs">
+      <div class="flex items-center justify-center gap-2 text-xs sm:text-label-sm text-on-surface-variant font-label-sm">
         <a href="index.html" class="hover:text-primary transition-colors">Home</a>
         <span>/</span>
         <span class="text-primary font-semibold">The Bloom Journal</span>
       </div>
-      <span class="font-label-sm text-label-sm uppercase tracking-widest text-primary font-semibold block pt-2">Stories &amp; Floral Wisdom</span>
-      <h1 class="font-display-hero text-display-hero text-on-surface font-serif leading-tight">
+      <span class="font-label-sm text-xs sm:text-label-sm uppercase tracking-widest text-primary font-semibold block pt-1">Stories &amp; Floral Wisdom</span>
+      <h1 class="font-display-hero text-3xl sm:text-4xl md:text-5xl lg:text-display-hero text-on-surface font-serif leading-tight">
         The Bloom <span class="italic font-light text-primary">Journal</span>
       </h1>
-      <p class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed">
+      <p class="font-body-md sm:font-body-lg text-sm sm:text-body-lg text-on-surface-variant leading-relaxed">
         Tips, inspirations, and thoughtful guides from our florists and gift curators in Lahore.
       </p>
     </section>
 
     <!-- Category Filters -->
-    <div class="flex items-center justify-center flex-wrap gap-2 mb-space-lg">
-      <button class="blog-filter px-4 py-2 rounded-full font-label-sm text-label-sm uppercase tracking-wider bg-primary text-on-primary font-semibold transition-all shadow-sm">All Articles</button>
-      <button class="blog-filter px-4 py-2 rounded-full font-label-sm text-label-sm uppercase tracking-wider bg-surface-container text-on-surface hover:bg-surface-container-high transition-all">Flower Guides</button>
-      <button class="blog-filter px-4 py-2 rounded-full font-label-sm text-label-sm uppercase tracking-wider bg-surface-container text-on-surface hover:bg-surface-container-high transition-all">Care Tips</button>
-      <button class="blog-filter px-4 py-2 rounded-full font-label-sm text-label-sm uppercase tracking-wider bg-surface-container text-on-surface hover:bg-surface-container-high transition-all">Gifting Ideas</button>
-      <button class="blog-filter px-4 py-2 rounded-full font-label-sm text-label-sm uppercase tracking-wider bg-surface-container text-on-surface hover:bg-surface-container-high transition-all">Sustainability</button>
+    <div class="flex items-center justify-start sm:justify-center flex-nowrap sm:flex-wrap gap-2 overflow-x-auto no-scrollbar pb-2 sm:pb-0 mb-space-lg px-1">
+      <button class="blog-filter shrink-0 px-3.5 sm:px-4 py-2 rounded-full font-label-sm text-xs sm:text-label-sm uppercase tracking-wider bg-primary text-on-primary font-semibold transition-all shadow-sm">All Articles</button>
+      <button class="blog-filter shrink-0 px-3.5 sm:px-4 py-2 rounded-full font-label-sm text-xs sm:text-label-sm uppercase tracking-wider bg-surface-container text-on-surface hover:bg-surface-container-high transition-all">Flower Guides</button>
+      <button class="blog-filter shrink-0 px-3.5 sm:px-4 py-2 rounded-full font-label-sm text-xs sm:text-label-sm uppercase tracking-wider bg-surface-container text-on-surface hover:bg-surface-container-high transition-all">Care Tips</button>
+      <button class="blog-filter shrink-0 px-3.5 sm:px-4 py-2 rounded-full font-label-sm text-xs sm:text-label-sm uppercase tracking-wider bg-surface-container text-on-surface hover:bg-surface-container-high transition-all">Gifting Ideas</button>
+      <button class="blog-filter shrink-0 px-3.5 sm:px-4 py-2 rounded-full font-label-sm text-xs sm:text-label-sm uppercase tracking-wider bg-surface-container text-on-surface hover:bg-surface-container-high transition-all">Sustainability</button>
     </div>
 
     <!-- Featured Post Hero -->

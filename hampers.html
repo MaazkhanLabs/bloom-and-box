@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
 <title>Curated Gift Hampers — Bloom & Box | Lahore</title>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Noto+Serif:wght@400;500;600&display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
@@ -12,33 +12,42 @@ tailwind.config={darkMode:"class",theme:{extend:{"colors":{"surface-variant":"#f
 </script>
 <style>
 @layer base {
-  html, body { margin: 0; padding: 0; }
-  body { overscroll-behavior: none; }
+  html, body { margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+  body { touch-action: manipulation; -webkit-font-smoothing: antialiased; }
   main > :first-child { margin-top: 0 !important; }
   main > :last-child { margin-bottom: 0 !important; }
 }
-::-webkit-scrollbar { display: none; }
+.safe-top { padding-top: max(0.375rem, env(safe-area-inset-top, 0px)); }
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+html { scroll-behavior: smooth; }
 </style>
 </head>
 <body class="bg-background font-body-md text-on-surface antialiased">
 
 <!-- ═══════════════ HEADER ═══════════════ -->
-<header class="fixed top-0 left-0 right-0 z-50 bg-surface/90 backdrop-blur-md shadow-[0_1px_8px_rgba(43,33,30,0.04)]">
+<header class="sticky top-0 left-0 right-0 z-50 bg-surface/95 backdrop-blur-md shadow-[0_1px_8px_rgba(43,33,30,0.04)] border-b border-surface-container/60">
   <!-- Top Announcement Bar -->
-  <div class="bg-surface-container-high py-1 px-margin-mobile lg:px-margin text-center">
-    <div class="max-w-[1360px] mx-auto flex items-center justify-center text-on-surface-variant font-label-sm text-label-sm">
-      <span class="tracking-wider">🌸 Free Delivery on Orders Above ₨5,000 · Same-Day Delivery in Lahore</span>
+  <div class="bg-surface-container-high py-1.5 px-3 sm:px-margin-mobile lg:px-margin text-center safe-top transition-all">
+    <div class="max-w-[1360px] mx-auto flex items-center justify-center text-on-surface-variant font-label-sm text-[11px] sm:text-label-sm">
+      <div class="flex items-center gap-1.5">
+        <span class="w-1.5 h-1.5 rounded-full bg-secondary inline-block animate-pulse shrink-0"></span>
+        <span class="tracking-wide sm:tracking-wider uppercase font-semibold text-[10px] sm:text-[11px]">🌸 Free Delivery Above ₨5,000 · Same-Day in Lahore</span>
+      </div>
     </div>
   </div>
   <!-- Main Navigation -->
-  <div class="h-20 max-w-[1360px] mx-auto px-margin-mobile lg:px-margin flex items-center justify-between gap-space-md">
+  <div class="h-16 sm:h-20 max-w-[1360px] mx-auto px-4 sm:px-margin-mobile lg:px-margin flex items-center justify-between gap-2 sm:gap-space-md">
     <!-- Brand -->
-    <div class="flex items-center gap-space-sm">
-      <a class="flex flex-col text-left" href="index.html">
-        <span class="font-headline-sm text-headline-sm text-primary tracking-tight font-serif">Bloom &amp; Box</span>
-        <span class="font-label-sm text-label-sm tracking-widest text-on-surface-variant uppercase">Bouquets &amp; Gift Hampers · Lahore</span>
-      </a>
-    </div>
+    <a class="flex items-center gap-2.5 shrink-0 group" href="index.html">
+      <div class="w-9 h-9 rounded-full bg-primary flex items-center justify-center text-on-primary shrink-0 shadow-sm group-hover:scale-105 transition-transform">
+        <span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">local_florist</span>
+      </div>
+      <div class="flex flex-col text-left leading-tight">
+        <span class="font-headline-sm text-lg sm:text-headline-sm text-primary tracking-tight font-serif font-bold">Bloom &amp; Box</span>
+        <span class="font-label-sm text-[9px] sm:text-label-sm tracking-widest text-on-surface-variant uppercase hidden xs:block">Lahore · Bouquets &amp; Hampers</span>
+      </div>
+    </a>
     <!-- Desktop Nav -->
     <nav class="hidden xl:flex items-center gap-space-md font-label-lg text-label-lg tracking-wider">
       <a class="text-on-surface-variant hover:text-on-surface transition-colors py-1" href="bouquets.html">Bouquets</a>
@@ -49,36 +58,59 @@ tailwind.config={darkMode:"class",theme:{extend:{"colors":{"surface-variant":"#f
       <a class="text-on-surface-variant hover:text-on-surface transition-colors py-1" href="occasions.html">Occasions</a>
     </nav>
     <!-- Right Icons -->
-    <div class="flex items-center gap-space-sm">
+    <div class="flex items-center gap-1.5 sm:gap-space-sm shrink-0">
       <button aria-label="Search" class="w-9 h-9 rounded-full flex items-center justify-center text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors">
         <span class="material-symbols-outlined text-[20px]">search</span>
       </button>
-      <button aria-label="Open Cart" class="relative flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-surface-container hover:bg-surface-container-high transition-colors text-on-surface">
+      <button aria-label="Open Cart" class="relative flex items-center gap-1 sm:gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-full bg-surface-container hover:bg-surface-container-high transition-colors text-on-surface" id="cart-btn">
         <span class="material-symbols-outlined text-[18px] text-primary">shopping_bag</span>
-        <span class="font-label-sm text-label-sm font-semibold">Bag (0)</span>
+        <span class="font-label-sm text-[11px] sm:text-label-sm font-semibold" id="cart-count-label">Bag (0)</span>
       </button>
-      <div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center ml-1">
-        <span class="material-symbols-outlined text-on-primary text-[18px]">person</span>
-      </div>
       <!-- Mobile Menu Button -->
-      <button class="xl:hidden w-9 h-9 rounded-full flex items-center justify-center text-on-surface-variant hover:bg-surface-container transition-colors" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
+      <button class="xl:hidden w-9 h-9 rounded-full flex items-center justify-center text-on-surface-variant hover:bg-surface-container transition-colors" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')" aria-label="Toggle menu">
         <span class="material-symbols-outlined text-[22px]">menu</span>
       </button>
     </div>
   </div>
   <!-- Mobile Menu -->
-  <div class="hidden xl:hidden bg-surface-container-lowest border-t border-outline-variant px-margin-mobile py-space-md space-y-space-xs" id="mobile-menu">
-    <a class="block py-2 font-label-lg text-label-lg text-on-surface-variant hover:text-primary transition-colors" href="bouquets.html">Bouquets</a>
-    <a class="block py-2 font-label-lg text-label-lg text-primary font-semibold" href="hampers.html">Gift Hampers</a>
-    <a class="block py-2 font-label-lg text-label-lg text-on-surface-variant hover:text-primary transition-colors" href="keepsakes.html">Keepsake Boxes</a>
-    <a class="block py-2 font-label-lg text-label-lg text-on-surface-variant hover:text-primary transition-colors" href="custom.html">Custom Gift Builder</a>
-    <a class="block py-2 font-label-lg text-label-lg text-on-surface-variant hover:text-primary transition-colors" href="blog.html">Blog</a>
-    <a class="block py-2 font-label-lg text-label-lg text-on-surface-variant hover:text-primary transition-colors" href="occasions.html">Occasions</a>
+  <div class="hidden xl:hidden bg-surface-container-lowest/98 backdrop-blur-md border-t border-surface-container shadow-xl max-h-[calc(100vh-5rem)] overflow-y-auto px-4 py-3 space-y-1" id="mobile-menu">
+    <a class="flex items-center gap-2 py-2.5 px-3 rounded-lg text-on-surface-variant hover:bg-surface-container font-label-lg text-label-lg tracking-wider" href="index.html">
+      <span class="material-symbols-outlined text-[20px]">home</span>
+      <span>Home</span>
+    </a>
+    <a class="flex items-center gap-2 py-2.5 px-3 rounded-lg text-on-surface-variant hover:bg-surface-container font-label-lg text-label-lg tracking-wider" href="bouquets.html">
+      <span class="material-symbols-outlined text-[20px] text-primary">local_florist</span>
+      <span>Bouquets</span>
+    </a>
+    <a class="flex items-center gap-2 py-2.5 px-3 rounded-lg text-primary font-semibold bg-surface-container/50 font-label-lg text-label-lg tracking-wider" href="hampers.html">
+      <span class="material-symbols-outlined text-[20px]">redeem</span>
+      <span>Gift Hampers</span>
+    </a>
+    <a class="flex items-center gap-2 py-2.5 px-3 rounded-lg text-on-surface-variant hover:bg-surface-container font-label-lg text-label-lg tracking-wider" href="keepsakes.html">
+      <span class="material-symbols-outlined text-[20px] text-primary">diamond</span>
+      <span>Keepsake Boxes</span>
+    </a>
+    <a class="flex items-center gap-2 py-2.5 px-3 rounded-lg text-on-surface-variant hover:bg-surface-container font-label-lg text-label-lg tracking-wider" href="custom.html">
+      <span class="material-symbols-outlined text-[20px] text-primary">palette</span>
+      <span>Custom Gift Builder</span>
+    </a>
+    <a class="flex items-center gap-2 py-2.5 px-3 rounded-lg text-on-surface-variant hover:bg-surface-container font-label-lg text-label-lg tracking-wider" href="occasions.html">
+      <span class="material-symbols-outlined text-[20px] text-primary">celebration</span>
+      <span>Shop by Occasion</span>
+    </a>
+    <a class="flex items-center gap-2 py-2.5 px-3 rounded-lg text-on-surface-variant hover:bg-surface-container font-label-lg text-label-lg tracking-wider" href="blog.html">
+      <span class="material-symbols-outlined text-[20px] text-primary">auto_stories</span>
+      <span>The Bloom Journal</span>
+    </a>
+    <div class="pt-3 border-t border-surface-container flex items-center justify-between px-3 text-xs text-on-surface-variant">
+      <span class="flex items-center gap-1 font-semibold text-primary">PKR (₨) · Lahore Boutique</span>
+      <button onclick="promptChangeAdminWhatsApp()" class="text-xs text-primary underline">Admin WhatsApp</button>
+    </div>
   </div>
 </header>
 
 <!-- ═══════════════ MAIN CONTENT ═══════════════ -->
-<main class="w-full pt-28 bg-background max-w-[1360px] mx-auto px-margin-mobile lg:px-margin min-h-screen">
+<main class="w-full pt-4 sm:pt-6 lg:pt-8 bg-background max-w-[1360px] mx-auto px-4 sm:px-margin-mobile lg:px-margin min-h-screen">
 <div class="flex flex-col w-full">
 
 <!-- ─── PAGE HERO ─── -->
@@ -112,23 +144,23 @@ tailwind.config={darkMode:"class",theme:{extend:{"colors":{"surface-variant":"#f
 
 <!-- ─── FILTER PILLS ─── -->
 <section class="pb-space-lg">
-  <div class="flex items-center justify-start flex-wrap gap-2.5">
-    <button class="filter-pill px-5 py-2.5 rounded-full font-label-md text-label-md uppercase tracking-wider bg-primary text-on-primary transition-all cursor-pointer shadow-sm" data-category="all" onclick="filterHampers('all', this)">
+  <div class="flex items-center justify-start flex-nowrap sm:flex-wrap gap-2 overflow-x-auto no-scrollbar pb-2 sm:pb-0 px-1">
+    <button class="filter-pill shrink-0 px-4 py-2 sm:px-5 sm:py-2.5 rounded-full font-label-md text-xs sm:text-label-md uppercase tracking-wider bg-primary text-on-primary transition-all cursor-pointer shadow-sm" data-category="all" onclick="filterHampers('all', this)">
       All
     </button>
-    <button class="filter-pill px-5 py-2.5 rounded-full font-label-md text-label-md uppercase tracking-wider bg-surface-container text-on-surface hover:bg-surface-container-high transition-all cursor-pointer" data-category="chocolate" onclick="filterHampers('chocolate', this)">
+    <button class="filter-pill shrink-0 px-4 py-2 sm:px-5 sm:py-2.5 rounded-full font-label-md text-xs sm:text-label-md uppercase tracking-wider bg-surface-container text-on-surface hover:bg-surface-container-high transition-all cursor-pointer" data-category="chocolate" onclick="filterHampers('chocolate', this)">
       Chocolate &amp; Sweets
     </button>
-    <button class="filter-pill px-5 py-2.5 rounded-full font-label-md text-label-md uppercase tracking-wider bg-surface-container text-on-surface hover:bg-surface-container-high transition-all cursor-pointer" data-category="gourmet" onclick="filterHampers('gourmet', this)">
+    <button class="filter-pill shrink-0 px-4 py-2 sm:px-5 sm:py-2.5 rounded-full font-label-md text-xs sm:text-label-md uppercase tracking-wider bg-surface-container text-on-surface hover:bg-surface-container-high transition-all cursor-pointer" data-category="gourmet" onclick="filterHampers('gourmet', this)">
       Gourmet &amp; Savory
     </button>
-    <button class="filter-pill px-5 py-2.5 rounded-full font-label-md text-label-md uppercase tracking-wider bg-surface-container text-on-surface hover:bg-surface-container-high transition-all cursor-pointer" data-category="spa" onclick="filterHampers('spa', this)">
+    <button class="filter-pill shrink-0 px-4 py-2 sm:px-5 sm:py-2.5 rounded-full font-label-md text-xs sm:text-label-md uppercase tracking-wider bg-surface-container text-on-surface hover:bg-surface-container-high transition-all cursor-pointer" data-category="spa" onclick="filterHampers('spa', this)">
       Spa &amp; Wellness
     </button>
-    <button class="filter-pill px-5 py-2.5 rounded-full font-label-md text-label-md uppercase tracking-wider bg-surface-container text-on-surface hover:bg-surface-container-high transition-all cursor-pointer" data-category="baby" onclick="filterHampers('baby', this)">
+    <button class="filter-pill shrink-0 px-4 py-2 sm:px-5 sm:py-2.5 rounded-full font-label-md text-xs sm:text-label-md uppercase tracking-wider bg-surface-container text-on-surface hover:bg-surface-container-high transition-all cursor-pointer" data-category="baby" onclick="filterHampers('baby', this)">
       Baby &amp; New Mom
     </button>
-    <button class="filter-pill px-5 py-2.5 rounded-full font-label-md text-label-md uppercase tracking-wider bg-surface-container text-on-surface hover:bg-surface-container-high transition-all cursor-pointer" data-category="corporate" onclick="filterHampers('corporate', this)">
+    <button class="filter-pill shrink-0 px-4 py-2 sm:px-5 sm:py-2.5 rounded-full font-label-md text-xs sm:text-label-md uppercase tracking-wider bg-surface-container text-on-surface hover:bg-surface-container-high transition-all cursor-pointer" data-category="corporate" onclick="filterHampers('corporate', this)">
       Corporate Gifts
     </button>
   </div>
@@ -136,15 +168,15 @@ tailwind.config={darkMode:"class",theme:{extend:{"colors":{"surface-variant":"#f
 
 <!-- ─── PRODUCT GRID ─── -->
 <section class="pb-space-xl space-y-space-md">
-  <div class="flex flex-col md:flex-row items-baseline justify-between gap-space-xs mb-space-sm">
+  <div class="flex flex-col sm:flex-row items-start sm:items-baseline justify-between gap-space-xs mb-space-sm">
     <div>
       <span class="font-label-sm text-label-sm uppercase tracking-widest text-primary font-semibold">Our Collection</span>
-      <h2 class="font-headline-lg text-headline-lg font-serif text-on-surface">Signature Gift Hampers</h2>
+      <h2 class="font-headline-lg text-2xl sm:text-headline-lg font-serif text-on-surface">Signature Gift Hampers</h2>
     </div>
-    <span class="font-label-md text-label-md uppercase tracking-widest text-on-surface-variant" id="hamper-count">Showing 6 Hampers</span>
+    <span class="font-label-md text-xs sm:text-label-md uppercase tracking-widest text-on-surface-variant" id="hamper-count">Showing 6 Hampers</span>
   </div>
 
-  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter" id="hamper-grid">
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-gutter" id="hamper-grid">
 
     <!-- ══ Card 1: Sweet Indulgence Hamper ══ -->
     <article class="hamper-card rounded-xl bg-surface-container-lowest p-4 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col group" data-category="chocolate">

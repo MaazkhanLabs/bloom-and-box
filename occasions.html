@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
 <title>Shop by Occasion — Bloom &amp; Box</title>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Noto+Serif:wght@400;500;600&display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
@@ -11,42 +11,38 @@
 tailwind.config={darkMode:"class",theme:{extend:{"colors":{"surface-variant":"#f1dfd9","background":"#fff8f6","error-container":"#ffdad6","tertiary":"#7c5149","secondary-fixed-dim":"#baccaf","on-primary-fixed":"#3a0a00","on-primary":"#ffffff","inverse-primary":"#ffb59f","on-primary-container":"#fffbff","on-surface":"#231917","on-secondary-container":"#57674f","inverse-on-surface":"#ffede8","on-secondary":"#ffffff","on-tertiary":"#ffffff","on-tertiary-fixed":"#31120d","primary-container":"#af5e45","on-error":"#ffffff","on-surface-variant":"#54433e","surface-container":"#fdeae5","on-tertiary-container":"#fffbff","surface-container-lowest":"#ffffff","surface-container-highest":"#f1dfd9","primary-fixed-dim":"#ffb59f","on-primary-fixed-variant":"#76321d","on-error-container":"#93000a","surface-tint":"#944931","outline-variant":"#dac1ba","on-secondary-fixed":"#111f0d","on-secondary-fixed-variant":"#3b4b35","tertiary-fixed-dim":"#f1b9af","secondary-container":"#d3e5c8","outline":"#87736d","on-background":"#231917","surface":"#fff8f6","tertiary-fixed":"#ffdad4","secondary-fixed":"#d6e8ca","primary":"#91462f","tertiary-container":"#976960","secondary":"#53634b","surface-dim":"#e8d6d1","on-tertiary-fixed-variant":"#643c35","inverse-surface":"#392e2b","surface-container-low":"#fff1ed","error":"#ba1a1a","surface-container-high":"#f7e4df","primary-fixed":"#ffdbd0","surface-bright":"#fff8f6"},"borderRadius":{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},"spacing":{"space-xl":"3.5rem","margin-mobile":"1.25rem","space-sm":"0.75rem","space-xs":"0.375rem","space-md":"1.25rem","margin":"3.5rem","space-lg":"2rem","gutter-mobile":"1rem","gutter":"1.5rem"},"fontFamily":{"body-lg":["Manrope"],"label-lg":["Manrope"],"headline-lg-mobile":["Noto Serif"],"body-md":["Manrope"],"title-lg":["Manrope"],"headline-md":["Noto Serif"],"headline-lg":["Noto Serif"],"title-md":["Manrope"],"display-hero-mobile":["Noto Serif"],"headline-sm":["Noto Serif"],"label-sm":["Manrope"],"display-hero":["Noto Serif"],"label-md":["Manrope"],"body-sm":["Manrope"]},"fontSize":{"body-lg":["18px",{"lineHeight":"28px","letterSpacing":"0.01em","fontWeight":"400"}],"label-lg":["13px",{"lineHeight":"18px","letterSpacing":"0.08em","fontWeight":"600"}],"headline-lg-mobile":["28px",{"lineHeight":"36px","letterSpacing":"-0.01em","fontWeight":"400"}],"body-md":["15px",{"lineHeight":"24px","letterSpacing":"0.01em","fontWeight":"400"}],"title-lg":["18px",{"lineHeight":"26px","letterSpacing":"0.01em","fontWeight":"600"}],"headline-md":["28px",{"lineHeight":"38px","letterSpacing":"-0.01em","fontWeight":"500"}],"headline-lg":["40px",{"lineHeight":"52px","letterSpacing":"-0.015em","fontWeight":"400"}],"title-md":["16px",{"lineHeight":"24px","letterSpacing":"0.01em","fontWeight":"600"}],"display-hero-mobile":["38px",{"lineHeight":"48px","letterSpacing":"-0.01em","fontWeight":"400"}],"headline-sm":["22px",{"lineHeight":"30px","letterSpacing":"0em","fontWeight":"500"}],"label-sm":["10px",{"lineHeight":"14px","letterSpacing":"0.12em","fontWeight":"700"}],"display-hero":["56px",{"lineHeight":"68px","letterSpacing":"-0.02em","fontWeight":"400"}],"label-md":["11px",{"lineHeight":"16px","letterSpacing":"0.1em","fontWeight":"600"}],"body-sm":["13px",{"lineHeight":"20px","letterSpacing":"0.015em","fontWeight":"400"}]}}}};
 </script>
 <style>
-@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}
-::-webkit-scrollbar{display:none;}
+@layer base{html,body{margin:0;padding:0;-webkit-tap-highlight-color:transparent;}body{touch-action:manipulation;-webkit-font-smoothing:antialiased;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}
+.safe-top{padding-top:max(0.375rem,env(safe-area-inset-top,0px));}
+.no-scrollbar::-webkit-scrollbar{display:none;}
+.no-scrollbar{-ms-overflow-style:none;scrollbar-width:none;-webkit-overflow-scrolling:touch;}
+html{scroll-behavior:smooth;}
 </style>
 </head>
 <body class="bg-background font-body-md text-on-surface antialiased">
 
 <!-- ==================== HEADER ==================== -->
-<header class="fixed top-0 left-0 right-0 z-50 bg-surface/90 backdrop-blur-md shadow-[0_1px_8px_rgba(43,33,30,0.04)]">
+<header class="sticky top-0 left-0 right-0 z-50 bg-surface/95 backdrop-blur-md shadow-[0_1px_8px_rgba(43,33,30,0.04)] border-b border-surface-container/60">
   <!-- Top Utility Bar -->
-  <div class="bg-surface-container-high py-1 px-margin-mobile lg:px-margin text-center">
-    <div class="max-w-[1360px] mx-auto flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm">
-      <div class="flex items-center gap-space-xs">
-        <span class="w-1.5 h-1.5 rounded-full bg-secondary inline-block"></span>
-        <span class="tracking-wider uppercase">Free Delivery Across Lahore</span>
-      </div>
-      <div class="hidden md:flex items-center gap-space-md">
-        <a class="hover:text-primary transition-colors" href="custom.html">Custom Orders</a>
-        <span class="text-outline-variant">•</span>
-        <a class="hover:text-primary transition-colors" href="#">Care Guide</a>
-        <span class="text-outline-variant">•</span>
-        <button class="flex items-center gap-1 hover:text-primary transition-colors cursor-pointer">
-          <span class="material-symbols-outlined text-[14px]">support_agent</span>
-          <span>Customer Support</span>
-        </button>
+  <div class="bg-surface-container-high py-1.5 px-3 sm:px-margin-mobile lg:px-margin text-center safe-top transition-all">
+    <div class="max-w-[1360px] mx-auto flex items-center justify-center text-on-surface-variant font-label-sm text-[11px] sm:text-label-sm">
+      <div class="flex items-center gap-1.5">
+        <span class="w-1.5 h-1.5 rounded-full bg-secondary inline-block animate-pulse shrink-0"></span>
+        <span class="tracking-wide sm:tracking-wider uppercase font-semibold text-[10px] sm:text-[11px]">🌸 Free Delivery Above ₨5,000 · Same-Day in Lahore</span>
       </div>
     </div>
   </div>
   <!-- Main Navigation Bar -->
-  <div class="h-20 max-w-[1360px] mx-auto px-margin-mobile lg:px-margin flex items-center justify-between gap-space-md">
+  <div class="h-16 sm:h-20 max-w-[1360px] mx-auto px-4 sm:px-margin-mobile lg:px-margin flex items-center justify-between gap-2 sm:gap-space-md">
     <!-- Brand -->
-    <div class="flex items-center gap-space-sm">
-      <a class="flex flex-col text-left" href="index.html">
-        <span class="font-headline-sm text-headline-sm text-primary tracking-tight font-serif">Bloom &amp; Box</span>
-        <span class="font-label-sm text-label-sm tracking-widest text-on-surface-variant uppercase">Premium Bouquets &amp; Gift Hampers · Lahore</span>
-      </a>
-    </div>
+    <a class="flex items-center gap-2.5 shrink-0 group" href="index.html">
+      <div class="w-9 h-9 rounded-full bg-primary flex items-center justify-center text-on-primary shrink-0 shadow-sm group-hover:scale-105 transition-transform">
+        <span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">local_florist</span>
+      </div>
+      <div class="flex flex-col text-left leading-tight">
+        <span class="font-headline-sm text-lg sm:text-headline-sm text-primary tracking-tight font-serif font-bold">Bloom &amp; Box</span>
+        <span class="font-label-sm text-[9px] sm:text-label-sm tracking-widest text-on-surface-variant uppercase hidden xs:block">Lahore · Bouquets &amp; Hampers</span>
+      </div>
+    </a>
     <!-- Desktop Nav -->
     <nav class="hidden xl:flex items-center gap-space-md font-label-lg text-label-lg tracking-wider">
       <a class="text-on-surface-variant hover:text-on-surface transition-colors py-1" href="index.html">Home</a>
@@ -58,42 +54,59 @@ tailwind.config={darkMode:"class",theme:{extend:{"colors":{"surface-variant":"#f
       <a class="text-primary font-semibold border-b border-primary py-1" href="occasions.html">Occasions</a>
     </nav>
     <!-- Right Actions -->
-    <div class="flex items-center gap-space-sm">
+    <div class="flex items-center gap-1.5 sm:gap-space-sm shrink-0">
       <button aria-label="Search" class="w-9 h-9 rounded-full flex items-center justify-center text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors">
         <span class="material-symbols-outlined text-[20px]">search</span>
       </button>
-      <div class="hidden sm:flex items-center px-2 py-1 rounded bg-surface-container text-on-surface font-label-md text-label-md">
-        <span class="text-primary font-bold">PKR ₨</span>
-      </div>
-      <button aria-label="Open Cart" class="relative flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-surface-container hover:bg-surface-container-high transition-colors text-on-surface">
+      <button aria-label="Open Cart" class="relative flex items-center gap-1 sm:gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-full bg-surface-container hover:bg-surface-container-high transition-colors text-on-surface" id="cart-btn">
         <span class="material-symbols-outlined text-[18px] text-primary">shopping_bag</span>
-        <span class="font-label-sm text-label-sm font-semibold">Bag (0)</span>
+        <span class="font-label-sm text-[11px] sm:text-label-sm font-semibold" id="cart-count-label">Bag (0)</span>
       </button>
-      <div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center ml-1">
-        <span class="material-symbols-outlined text-on-primary text-[18px]">person</span>
-      </div>
       <!-- Mobile Menu Toggle -->
-      <button class="xl:hidden w-9 h-9 rounded-full flex items-center justify-center text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
+      <button class="xl:hidden w-9 h-9 rounded-full flex items-center justify-center text-on-surface-variant hover:bg-surface-container transition-colors" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')" aria-label="Toggle menu">
         <span class="material-symbols-outlined text-[22px]">menu</span>
       </button>
     </div>
   </div>
   <!-- Mobile Nav -->
-  <div class="hidden xl:hidden bg-surface-container-lowest border-t border-surface-container px-margin-mobile py-space-sm" id="mobile-menu">
-    <nav class="flex flex-col gap-space-xs font-label-lg text-label-lg tracking-wider">
-      <a class="py-2 text-on-surface-variant hover:text-primary transition-colors" href="index.html">Home</a>
-      <a class="py-2 text-on-surface-variant hover:text-primary transition-colors" href="bouquets.html">Bouquets</a>
-      <a class="py-2 text-on-surface-variant hover:text-primary transition-colors" href="hampers.html">Hampers</a>
-      <a class="py-2 text-on-surface-variant hover:text-primary transition-colors" href="keepsakes.html">Keepsakes</a>
-      <a class="py-2 text-on-surface-variant hover:text-primary transition-colors" href="custom.html">Custom</a>
-      <a class="py-2 text-on-surface-variant hover:text-primary transition-colors" href="blog.html">Blog</a>
-      <a class="py-2 text-primary font-semibold" href="occasions.html">Occasions</a>
-    </nav>
+  <div class="hidden xl:hidden bg-surface-container-lowest/98 backdrop-blur-md border-t border-surface-container shadow-xl max-h-[calc(100vh-5rem)] overflow-y-auto px-4 py-3 space-y-1" id="mobile-menu">
+    <a class="flex items-center gap-2 py-2.5 px-3 rounded-lg text-on-surface-variant hover:bg-surface-container font-label-lg text-label-lg tracking-wider" href="index.html">
+      <span class="material-symbols-outlined text-[20px]">home</span>
+      <span>Home</span>
+    </a>
+    <a class="flex items-center gap-2 py-2.5 px-3 rounded-lg text-on-surface-variant hover:bg-surface-container font-label-lg text-label-lg tracking-wider" href="bouquets.html">
+      <span class="material-symbols-outlined text-[20px] text-primary">local_florist</span>
+      <span>Bouquets</span>
+    </a>
+    <a class="flex items-center gap-2 py-2.5 px-3 rounded-lg text-on-surface-variant hover:bg-surface-container font-label-lg text-label-lg tracking-wider" href="hampers.html">
+      <span class="material-symbols-outlined text-[20px] text-primary">redeem</span>
+      <span>Gift Hampers</span>
+    </a>
+    <a class="flex items-center gap-2 py-2.5 px-3 rounded-lg text-on-surface-variant hover:bg-surface-container font-label-lg text-label-lg tracking-wider" href="keepsakes.html">
+      <span class="material-symbols-outlined text-[20px] text-primary">diamond</span>
+      <span>Keepsake Boxes</span>
+    </a>
+    <a class="flex items-center gap-2 py-2.5 px-3 rounded-lg text-on-surface-variant hover:bg-surface-container font-label-lg text-label-lg tracking-wider" href="custom.html">
+      <span class="material-symbols-outlined text-[20px] text-primary">palette</span>
+      <span>Custom Gift Builder</span>
+    </a>
+    <a class="flex items-center gap-2 py-2.5 px-3 rounded-lg text-primary font-semibold bg-surface-container/50 font-label-lg text-label-lg tracking-wider" href="occasions.html">
+      <span class="material-symbols-outlined text-[20px]">celebration</span>
+      <span>Shop by Occasion</span>
+    </a>
+    <a class="flex items-center gap-2 py-2.5 px-3 rounded-lg text-on-surface-variant hover:bg-surface-container font-label-lg text-label-lg tracking-wider" href="blog.html">
+      <span class="material-symbols-outlined text-[20px] text-primary">auto_stories</span>
+      <span>The Bloom Journal</span>
+    </a>
+    <div class="pt-3 border-t border-surface-container flex items-center justify-between px-3 text-xs text-on-surface-variant">
+      <span class="flex items-center gap-1 font-semibold text-primary">PKR (₨) · Lahore Boutique</span>
+      <button onclick="promptChangeAdminWhatsApp()" class="text-xs text-primary underline">Admin WhatsApp</button>
+    </div>
   </div>
 </header>
 
 <!-- ==================== MAIN CONTENT ==================== -->
-<main class="w-full pt-20 bg-background max-w-[1360px] mx-auto px-margin-mobile lg:px-margin min-h-screen">
+<main class="w-full pt-4 sm:pt-6 lg:pt-8 bg-background max-w-[1360px] mx-auto px-4 sm:px-margin-mobile lg:px-margin min-h-screen">
 
   <!-- Breadcrumb -->
   <nav class="pt-space-lg pb-space-sm">

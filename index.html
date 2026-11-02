@@ -2,19 +2,21 @@
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
 <title>Bloom & Box — Premium Bouquets & Gift Hampers · Lahore, Pakistan</title>
 <meta name="description" content="Bloom & Box: Handcrafted bouquets, curated gift hampers, luxury keepsake boxes, and personalized gifts. Same-day delivery in Lahore. Delivery across Pakistan."/>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Noto+Serif:wght@400;500;600&display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
 <style>
 @layer base {
-  html, body { margin: 0; padding: 0; }
-  body { overscroll-behavior: none; }
+  html, body { margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+  body { touch-action: manipulation; -webkit-font-smoothing: antialiased; }
   main > :first-child { margin-top: 0 !important; }
   main > :last-child { margin-bottom: 0 !important; }
 }
-::-webkit-scrollbar { display: none; }
+.safe-top { padding-top: max(0.375rem, env(safe-area-inset-top, 0px)); }
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
 html { scroll-behavior: smooth; }
 </style>
 <script src="https://cdn.tailwindcss.com"></script>
@@ -130,13 +132,13 @@ tailwind.config = {
 <body class="bg-background font-body-md text-on-surface antialiased">
 
 <!-- ========== HEADER ========== -->
-<header class="fixed top-0 left-0 right-0 z-50 bg-surface/90 backdrop-blur-md shadow-[0_1px_8px_rgba(43,33,30,0.04)]">
+<header class="sticky top-0 left-0 right-0 z-50 bg-surface/95 backdrop-blur-md shadow-[0_1px_8px_rgba(43,33,30,0.04)] border-b border-surface-container/60">
   <!-- Announcement Bar -->
-  <div class="bg-surface-container-high py-1.5 px-margin-mobile lg:px-margin text-center">
-    <div class="max-w-[1360px] mx-auto flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm">
-      <div class="flex items-center gap-space-xs">
-        <span class="w-1.5 h-1.5 rounded-full bg-secondary inline-block animate-pulse"></span>
-        <span class="tracking-wider uppercase">🌸 Free Delivery on Orders Above ₨5,000 · Same-Day Delivery in Lahore</span>
+  <div class="bg-surface-container-high py-1.5 px-3 sm:px-margin-mobile lg:px-margin text-center safe-top transition-all">
+    <div class="max-w-[1360px] mx-auto flex items-center justify-between text-on-surface-variant font-label-sm text-[11px] sm:text-label-sm">
+      <div class="flex items-center gap-1.5 mx-auto md:mx-0">
+        <span class="w-1.5 h-1.5 rounded-full bg-secondary inline-block animate-pulse shrink-0"></span>
+        <span class="tracking-wide sm:tracking-wider uppercase font-semibold text-[10px] sm:text-[11px]">🌸 Free Delivery Above ₨5,000 · Same-Day in Lahore</span>
       </div>
       <div class="hidden md:flex items-center gap-space-md">
         <a class="hover:text-primary transition-colors" href="#customizer">Custom Gift Builder</a>
@@ -151,17 +153,17 @@ tailwind.config = {
     </div>
   </div>
   <!-- Main Navigation -->
-  <div class="h-20 max-w-[1360px] mx-auto px-margin-mobile lg:px-margin flex items-center justify-between gap-space-md">
+  <div class="h-16 sm:h-20 max-w-[1360px] mx-auto px-4 sm:px-margin-mobile lg:px-margin flex items-center justify-between gap-2 sm:gap-space-md">
     <!-- Brand -->
-    <div class="flex items-center gap-space-sm">
-      <div class="w-9 h-9 rounded-full bg-primary flex items-center justify-center text-on-primary">
-        <span class="material-symbols-outlined text-[22px]" style="font-variation-settings: 'FILL' 1;">local_florist</span>
+    <a class="flex items-center gap-2.5 shrink-0 group" href="index.html">
+      <div class="w-9 h-9 rounded-full bg-primary flex items-center justify-center text-on-primary shrink-0 shadow-sm group-hover:scale-105 transition-transform">
+        <span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">local_florist</span>
       </div>
-      <a class="flex flex-col text-left" href="#">
-        <span class="font-headline-sm text-headline-sm text-primary tracking-tight font-serif">Bloom &amp; Box</span>
-        <span class="font-label-sm text-label-sm tracking-widest text-on-surface-variant uppercase">Bouquets &amp; Gift Hampers · Lahore</span>
-      </a>
-    </div>
+      <div class="flex flex-col text-left leading-tight">
+        <span class="font-headline-sm text-lg sm:text-headline-sm text-primary tracking-tight font-serif font-bold">Bloom &amp; Box</span>
+        <span class="font-label-sm text-[9px] sm:text-label-sm tracking-widest text-on-surface-variant uppercase hidden xs:block">Lahore · Bouquets &amp; Hampers</span>
+      </div>
+    </a>
     <!-- Desktop Nav -->
     <nav class="hidden xl:flex items-center gap-space-md font-label-lg text-label-lg tracking-wider">
       <a class="text-on-surface-variant hover:text-on-surface transition-colors py-1" href="bouquets.html">Bouquets</a>
@@ -172,19 +174,19 @@ tailwind.config = {
       <a class="text-on-surface-variant hover:text-on-surface transition-colors py-1" href="occasions.html">Occasions</a>
     </nav>
     <!-- Right Icons -->
-    <div class="flex items-center gap-space-sm">
+    <div class="flex items-center gap-1.5 sm:gap-space-sm shrink-0">
       <button aria-label="Search" class="w-9 h-9 rounded-full flex items-center justify-center text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors">
         <span class="material-symbols-outlined text-[20px]">search</span>
       </button>
       <div class="hidden sm:flex items-center px-2 py-1 rounded bg-surface-container text-on-surface font-label-md text-label-md">
         <span class="text-primary font-bold">PKR ₨</span>
       </div>
-      <button aria-label="Open Cart" class="relative flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-surface-container hover:bg-surface-container-high transition-colors text-on-surface" id="cart-btn">
+      <button aria-label="Open Cart" class="relative flex items-center gap-1 sm:gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-full bg-surface-container hover:bg-surface-container-high transition-colors text-on-surface" id="cart-btn">
         <span class="material-symbols-outlined text-[18px] text-primary">shopping_bag</span>
-        <span class="font-label-sm text-label-sm font-semibold" id="cart-count-label">Bag (0)</span>
+        <span class="font-label-sm text-[11px] sm:text-label-sm font-semibold" id="cart-count-label">Bag (0)</span>
       </button>
-      <div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center ml-1 cursor-pointer">
-        <span class="material-symbols-outlined text-on-primary text-[18px]">person</span>
+      <div class="hidden sm:flex w-8 h-8 rounded-full bg-primary items-center justify-center text-on-primary cursor-pointer hover:opacity-90 transition-opacity">
+        <span class="material-symbols-outlined text-[18px]">person</span>
       </div>
       <!-- Mobile menu button -->
       <button class="xl:hidden w-9 h-9 rounded-full flex items-center justify-center text-on-surface-variant hover:bg-surface-container transition-colors" id="mobile-menu-btn" aria-label="Toggle menu">
@@ -192,67 +194,93 @@ tailwind.config = {
       </button>
     </div>
   </div>
-  <!-- Mobile Nav -->
-  <div class="xl:hidden hidden bg-surface-container-lowest border-t border-surface-container px-margin-mobile py-space-md space-y-space-xs" id="mobile-nav">
-    <a class="block py-2 px-3 rounded-lg text-on-surface-variant hover:bg-surface-container font-label-lg text-label-lg tracking-wider" href="bouquets.html">Bouquets</a>
-    <a class="block py-2 px-3 rounded-lg text-on-surface-variant hover:bg-surface-container font-label-lg text-label-lg tracking-wider" href="hampers.html">Gift Hampers</a>
-    <a class="block py-2 px-3 rounded-lg text-on-surface-variant hover:bg-surface-container font-label-lg text-label-lg tracking-wider" href="keepsakes.html">Keepsake Boxes</a>
-    <a class="block py-2 px-3 rounded-lg text-on-surface-variant hover:bg-surface-container font-label-lg text-label-lg tracking-wider" href="custom.html">Custom Gift Builder</a>
-    <a class="block py-2 px-3 rounded-lg text-on-surface-variant hover:bg-surface-container font-label-lg text-label-lg tracking-wider" href="blog.html">Blog</a>
-    <a class="block py-2 px-3 rounded-lg text-on-surface-variant hover:bg-surface-container font-label-lg text-label-lg tracking-wider" href="occasions.html">Occasions</a>
+  <!-- Mobile Nav Drawer -->
+  <div class="xl:hidden hidden bg-surface-container-lowest/98 backdrop-blur-md border-t border-surface-container shadow-xl max-h-[calc(100vh-5rem)] overflow-y-auto px-4 py-3 space-y-1" id="mobile-nav">
+    <a class="flex items-center gap-2 py-2.5 px-3 rounded-lg text-primary font-semibold bg-surface-container/50 font-label-lg text-label-lg tracking-wider" href="index.html">
+      <span class="material-symbols-outlined text-[20px]">home</span>
+      <span>Home</span>
+    </a>
+    <a class="flex items-center gap-2 py-2.5 px-3 rounded-lg text-on-surface-variant hover:bg-surface-container font-label-lg text-label-lg tracking-wider" href="bouquets.html">
+      <span class="material-symbols-outlined text-[20px] text-primary">local_florist</span>
+      <span>Bouquets</span>
+    </a>
+    <a class="flex items-center gap-2 py-2.5 px-3 rounded-lg text-on-surface-variant hover:bg-surface-container font-label-lg text-label-lg tracking-wider" href="hampers.html">
+      <span class="material-symbols-outlined text-[20px] text-primary">redeem</span>
+      <span>Gift Hampers</span>
+    </a>
+    <a class="flex items-center gap-2 py-2.5 px-3 rounded-lg text-on-surface-variant hover:bg-surface-container font-label-lg text-label-lg tracking-wider" href="keepsakes.html">
+      <span class="material-symbols-outlined text-[20px] text-primary">diamond</span>
+      <span>Keepsake Boxes</span>
+    </a>
+    <a class="flex items-center gap-2 py-2.5 px-3 rounded-lg text-on-surface-variant hover:bg-surface-container font-label-lg text-label-lg tracking-wider" href="custom.html">
+      <span class="material-symbols-outlined text-[20px] text-primary">palette</span>
+      <span>Custom Gift Builder</span>
+    </a>
+    <a class="flex items-center gap-2 py-2.5 px-3 rounded-lg text-on-surface-variant hover:bg-surface-container font-label-lg text-label-lg tracking-wider" href="occasions.html">
+      <span class="material-symbols-outlined text-[20px] text-primary">celebration</span>
+      <span>Shop by Occasion</span>
+    </a>
+    <a class="flex items-center gap-2 py-2.5 px-3 rounded-lg text-on-surface-variant hover:bg-surface-container font-label-lg text-label-lg tracking-wider" href="blog.html">
+      <span class="material-symbols-outlined text-[20px] text-primary">auto_stories</span>
+      <span>The Bloom Journal</span>
+    </a>
+    <div class="pt-3 border-t border-surface-container flex items-center justify-between px-3 text-xs text-on-surface-variant">
+      <span class="flex items-center gap-1 font-semibold text-primary">PKR (₨) · Lahore Boutique</span>
+      <button onclick="promptChangeAdminWhatsApp()" class="text-xs text-primary underline">Admin WhatsApp</button>
+    </div>
   </div>
 </header>
 
 <!-- ========== MAIN CONTENT ========== -->
-<main class="w-full pt-20 bg-background max-w-[1360px] mx-auto px-margin-mobile lg:px-margin min-h-screen">
+<main class="w-full pt-4 sm:pt-6 lg:pt-8 bg-background max-w-[1360px] mx-auto px-4 sm:px-margin-mobile lg:px-margin min-h-screen">
 <div class="flex flex-col w-full">
 
 <!-- ===== SECTION 1: HERO ===== -->
-<section class="relative pt-space-lg pb-space-xl overflow-hidden">
+<section class="relative pt-2 sm:pt-space-sm pb-space-lg lg:pb-space-xl overflow-hidden">
   <!-- Decorative Blurs -->
-  <div class="absolute -top-32 -left-20 w-96 h-96 rounded-full bg-surface-variant/40 blur-3xl pointer-events-none"></div>
-  <div class="absolute top-1/2 right-0 w-[500px] h-[500px] rounded-full bg-secondary-container/30 blur-3xl pointer-events-none"></div>
+  <div class="absolute -top-32 -left-20 w-72 sm:w-96 h-72 sm:h-96 rounded-full bg-surface-variant/40 blur-3xl pointer-events-none"></div>
+  <div class="absolute top-1/2 right-0 w-80 sm:w-[500px] h-80 sm:h-[500px] rounded-full bg-secondary-container/30 blur-3xl pointer-events-none"></div>
 
-  <div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter items-center">
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-gutter items-center">
     <!-- Left Editorial Column -->
-    <div class="lg:col-span-7 space-y-space-md z-10">
-      <div class="inline-flex items-center gap-space-xs px-3.5 py-1.5 rounded-full bg-surface-container-high text-tertiary">
-        <span class="material-symbols-outlined text-[16px] text-primary" style="font-variation-settings: 'FILL' 1;">local_florist</span>
-        <span class="font-label-sm text-label-sm uppercase tracking-widest font-semibold">Premium Gifting Boutique · Lahore, Pakistan</span>
+    <div class="lg:col-span-7 space-y-3 sm:space-y-space-md z-10">
+      <div class="inline-flex items-center gap-1.5 sm:gap-space-xs px-3 sm:px-3.5 py-1.5 rounded-full bg-surface-container-high text-tertiary">
+        <span class="material-symbols-outlined text-[15px] sm:text-[16px] text-primary" style="font-variation-settings: 'FILL' 1;">local_florist</span>
+        <span class="font-label-sm text-[10px] sm:text-label-sm uppercase tracking-widest font-semibold">Premium Gifting Boutique · Lahore, Pakistan</span>
       </div>
 
-      <h1 class="font-display-hero text-display-hero-mobile lg:text-display-hero text-on-surface tracking-tight leading-[1.08] max-w-xl">
+      <h1 class="font-display-hero text-3xl sm:text-4xl md:text-5xl lg:text-display-hero text-on-surface tracking-tight leading-[1.12] sm:leading-[1.08] max-w-xl">
         Handcrafted Bouquets, <br/><span class="italic font-light text-primary">Unforgettable</span> Moments.
       </h1>
 
-      <p class="font-body-lg text-body-lg text-on-surface-variant max-w-lg leading-relaxed">
+      <p class="font-body-md sm:font-body-lg text-sm sm:text-body-lg text-on-surface-variant max-w-lg leading-relaxed">
         Premium fresh flower bouquets paired with artisan gift hampers, personalized ribbons, and luxury keepsake boxes — delivered with love across Pakistan.
       </p>
 
-      <div class="flex flex-wrap items-center gap-space-sm pt-space-xs">
-        <a class="px-space-md py-3.5 rounded-full bg-primary text-on-primary font-label-lg text-label-lg uppercase tracking-wider shadow-lg shadow-primary/20 hover:bg-primary-container transition-all flex items-center gap-2 group" href="#customizer">
+      <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 sm:gap-space-sm pt-space-xs">
+        <a class="px-space-md py-3 sm:py-3.5 rounded-full bg-primary text-on-primary font-label-md sm:font-label-lg text-xs sm:text-label-lg uppercase tracking-wider shadow-lg shadow-primary/20 hover:bg-primary-container transition-all flex items-center justify-center gap-2 group" href="#customizer">
           <span>Build Your Custom Gift</span>
           <span class="material-symbols-outlined text-[18px] group-hover:translate-x-1 transition-transform">arrow_forward</span>
         </a>
-        <a class="px-space-md py-3.5 rounded-full bg-surface-container-high text-on-surface font-label-lg text-label-lg tracking-wider hover:bg-surface-container transition-colors flex items-center gap-2" href="#bestsellers">
+        <a class="px-space-md py-3 sm:py-3.5 rounded-full bg-surface-container-high text-on-surface font-label-md sm:font-label-lg text-xs sm:text-label-lg tracking-wider hover:bg-surface-container transition-colors flex items-center justify-center gap-2" href="#bestsellers">
           <span class="material-symbols-outlined text-[18px] text-secondary">auto_awesome</span>
           <span>Explore Gift Hampers</span>
         </a>
       </div>
 
       <!-- Stats Bar -->
-      <div class="pt-space-md grid grid-cols-3 max-w-md gap-space-sm">
-        <div class="p-space-sm rounded-lg bg-surface-container-low shadow-sm">
-          <span class="font-headline-sm text-headline-sm text-primary font-serif block">500+</span>
-          <span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Happy Customers</span>
+      <div class="pt-2 sm:pt-space-md grid grid-cols-3 max-w-md gap-2 sm:gap-space-sm">
+        <div class="p-2 sm:p-space-sm rounded-lg bg-surface-container-low shadow-sm">
+          <span class="font-headline-sm text-lg sm:text-headline-sm text-primary font-serif block">500+</span>
+          <span class="font-label-sm text-[9px] sm:text-label-sm text-on-surface-variant uppercase tracking-wider block leading-tight">Happy Customers</span>
         </div>
-        <div class="p-space-sm rounded-lg bg-surface-container-low shadow-sm">
-          <span class="font-headline-sm text-headline-sm text-secondary font-serif block">Same-Day</span>
-          <span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Delivery in Lahore</span>
+        <div class="p-2 sm:p-space-sm rounded-lg bg-surface-container-low shadow-sm">
+          <span class="font-headline-sm text-lg sm:text-headline-sm text-secondary font-serif block">Same-Day</span>
+          <span class="font-label-sm text-[9px] sm:text-label-sm text-on-surface-variant uppercase tracking-wider block leading-tight">Lahore Delivery</span>
         </div>
-        <div class="p-space-sm rounded-lg bg-surface-container-low shadow-sm">
-          <span class="font-headline-sm text-headline-sm text-tertiary font-serif block">100%</span>
-          <span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Fresh Flowers</span>
+        <div class="p-2 sm:p-space-sm rounded-lg bg-surface-container-low shadow-sm">
+          <span class="font-headline-sm text-lg sm:text-headline-sm text-tertiary font-serif block">100%</span>
+          <span class="font-label-sm text-[9px] sm:text-label-sm text-on-surface-variant uppercase tracking-wider block leading-tight">Fresh Flowers</span>
         </div>
       </div>
     </div>
@@ -343,29 +371,29 @@ tailwind.config = {
     <p class="font-body-md text-body-md text-on-surface-variant">Find the perfect gift for every celebration, milestone, and heartfelt moment.</p>
   </div>
 
-  <div class="flex items-center justify-center flex-wrap gap-2.5 max-w-4xl mx-auto">
-    <button class="occasion-pill px-5 py-2.5 rounded-full font-label-md text-label-md uppercase tracking-wider bg-secondary text-on-secondary transition-all cursor-pointer shadow-sm">
+  <div class="flex items-center justify-start sm:justify-center flex-nowrap sm:flex-wrap gap-2 sm:gap-2.5 overflow-x-auto no-scrollbar pb-2 sm:pb-0 max-w-4xl mx-auto px-1">
+    <button class="occasion-pill shrink-0 px-4 py-2 sm:px-5 sm:py-2.5 rounded-full font-label-md text-xs sm:text-label-md uppercase tracking-wider bg-secondary text-on-secondary transition-all cursor-pointer shadow-sm">
       Romantic &amp; Anniversary
     </button>
-    <button class="occasion-pill px-5 py-2.5 rounded-full font-label-md text-label-md uppercase tracking-wider bg-surface-container text-on-surface hover:bg-surface-container-high transition-all cursor-pointer">
+    <button class="occasion-pill shrink-0 px-4 py-2 sm:px-5 sm:py-2.5 rounded-full font-label-md text-xs sm:text-label-md uppercase tracking-wider bg-surface-container text-on-surface hover:bg-surface-container-high transition-all cursor-pointer">
       Birthday Celebrations
     </button>
-    <button class="occasion-pill px-5 py-2.5 rounded-full font-label-md text-label-md uppercase tracking-wider bg-surface-container text-on-surface hover:bg-surface-container-high transition-all cursor-pointer">
+    <button class="occasion-pill shrink-0 px-4 py-2 sm:px-5 sm:py-2.5 rounded-full font-label-md text-xs sm:text-label-md uppercase tracking-wider bg-surface-container text-on-surface hover:bg-surface-container-high transition-all cursor-pointer">
       Wedding Gifts
     </button>
-    <button class="occasion-pill px-5 py-2.5 rounded-full font-label-md text-label-md uppercase tracking-wider bg-surface-container text-on-surface hover:bg-surface-container-high transition-all cursor-pointer">
+    <button class="occasion-pill shrink-0 px-4 py-2 sm:px-5 sm:py-2.5 rounded-full font-label-md text-xs sm:text-label-md uppercase tracking-wider bg-surface-container text-on-surface hover:bg-surface-container-high transition-all cursor-pointer">
       Baby Shower &amp; New Born
     </button>
-    <button class="occasion-pill px-5 py-2.5 rounded-full font-label-md text-label-md uppercase tracking-wider bg-surface-container text-on-surface hover:bg-surface-container-high transition-all cursor-pointer">
+    <button class="occasion-pill shrink-0 px-4 py-2 sm:px-5 sm:py-2.5 rounded-full font-label-md text-xs sm:text-label-md uppercase tracking-wider bg-surface-container text-on-surface hover:bg-surface-container-high transition-all cursor-pointer">
       Corporate &amp; Thank You
     </button>
-    <button class="occasion-pill px-5 py-2.5 rounded-full font-label-md text-label-md uppercase tracking-wider bg-surface-container text-on-surface hover:bg-surface-container-high transition-all cursor-pointer">
+    <button class="occasion-pill shrink-0 px-4 py-2 sm:px-5 sm:py-2.5 rounded-full font-label-md text-xs sm:text-label-md uppercase tracking-wider bg-surface-container text-on-surface hover:bg-surface-container-high transition-all cursor-pointer">
       Get Well Soon
     </button>
-    <button class="occasion-pill px-5 py-2.5 rounded-full font-label-md text-label-md uppercase tracking-wider bg-surface-container text-on-surface hover:bg-surface-container-high transition-all cursor-pointer">
+    <button class="occasion-pill shrink-0 px-4 py-2 sm:px-5 sm:py-2.5 rounded-full font-label-md text-xs sm:text-label-md uppercase tracking-wider bg-surface-container text-on-surface hover:bg-surface-container-high transition-all cursor-pointer">
       Eid &amp; Festive Gifts
     </button>
-    <button class="occasion-pill px-5 py-2.5 rounded-full font-label-md text-label-md uppercase tracking-wider bg-surface-container text-on-surface hover:bg-surface-container-high transition-all cursor-pointer">
+    <button class="occasion-pill shrink-0 px-4 py-2 sm:px-5 sm:py-2.5 rounded-full font-label-md text-xs sm:text-label-md uppercase tracking-wider bg-surface-container text-on-surface hover:bg-surface-container-high transition-all cursor-pointer">
       Sympathy &amp; Condolence
     </button>
   </div>
@@ -373,41 +401,41 @@ tailwind.config = {
 
 <!-- ===== SECTION 3: BEST SELLERS ===== -->
 <section class="py-space-lg space-y-space-md" id="bestsellers">
-  <div class="flex flex-col md:flex-row items-baseline justify-between gap-space-xs">
+  <div class="flex flex-col sm:flex-row items-start sm:items-baseline justify-between gap-space-xs">
     <div>
       <span class="font-label-sm text-label-sm uppercase tracking-widest text-primary font-semibold">Customer Favourites</span>
-      <h2 class="font-headline-lg text-headline-lg font-serif text-on-surface">Best Sellers</h2>
+      <h2 class="font-headline-lg text-2xl sm:text-headline-lg font-serif text-on-surface">Best Sellers</h2>
     </div>
-    <a class="font-label-md text-label-md uppercase tracking-widest text-primary hover:text-primary-container transition-colors flex items-center gap-1 underline underline-offset-4" href="#">
+    <a class="font-label-md text-xs sm:text-label-md uppercase tracking-widest text-primary hover:text-primary-container transition-colors flex items-center gap-1 underline underline-offset-4" href="bouquets.html">
       <span>View All Products (24+)</span>
       <span class="material-symbols-outlined text-[16px]">north_east</span>
     </a>
   </div>
 
   <!-- Product Grid -->
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-gutter">
 
     <!-- Card 1: Rose Garden Bouquet -->
-    <article class="rounded-xl bg-surface-container-lowest p-4 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col group">
-      <div class="relative h-80 rounded-lg overflow-hidden bg-surface-container mb-space-sm p-1">
+    <article class="rounded-xl bg-surface-container-lowest p-3.5 sm:p-4 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col group">
+      <div class="relative h-64 sm:h-80 rounded-lg overflow-hidden bg-surface-container mb-space-sm p-1">
         <img class="w-full h-full object-cover rounded-lg group-hover:scale-105 transition-transform duration-500" alt="24 premium long-stem red roses hand-tied bouquet" src="https://images.unsplash.com/photo-1455659817273-f96807779a8a?w=600"/>
         <span class="absolute top-3 left-3 bg-surface-container-lowest/90 backdrop-blur-md px-3 py-1 rounded-full font-label-sm text-label-sm text-on-surface font-semibold">Bestseller</span>
         <span class="absolute bottom-3 right-3 bg-primary text-on-primary px-3 py-1 rounded-full font-label-sm text-label-sm font-bold">₨4,500</span>
       </div>
       <div class="flex-1 flex flex-col justify-between space-y-space-xs px-1">
         <div>
-          <div class="flex items-center gap-1 text-secondary font-label-sm text-label-sm mb-1">
+          <div class="flex items-center gap-1 text-secondary font-label-sm text-xs sm:text-label-sm mb-1">
             <span class="material-symbols-outlined text-[14px]">spa</span>
             <span>Fresh Flowers · Lasts 7-10 Days</span>
           </div>
-          <h3 class="font-headline-sm text-headline-sm font-serif text-on-surface">Rose Garden Bouquet</h3>
+          <h3 class="font-headline-sm text-xl sm:text-headline-sm font-serif text-on-surface">Rose Garden Bouquet</h3>
           <p class="font-body-sm text-body-sm text-on-surface-variant mt-1 leading-relaxed">
             24 premium long-stem red roses hand-tied with satin ribbon, wrapped in Korean art paper with preserved eucalyptus accents.
           </p>
         </div>
-        <div class="pt-space-sm flex items-center justify-between">
-          <span class="font-label-sm text-label-sm text-on-surface-variant italic">Signature Black Gift Box</span>
-          <button class="add-to-cart-btn px-4 py-2 rounded-full bg-surface-container-high hover:bg-primary hover:text-on-primary transition-all text-on-surface font-label-sm text-label-sm uppercase tracking-wider font-semibold cursor-pointer" data-name="Rose Garden Bouquet" data-price="4500">
+        <div class="pt-space-sm flex items-center justify-between gap-2">
+          <span class="font-label-sm text-xs text-on-surface-variant italic truncate">Signature Black Gift Box</span>
+          <button class="add-to-cart-btn shrink-0 px-4 py-2.5 rounded-full bg-surface-container-high hover:bg-primary hover:text-on-primary transition-all text-on-surface font-label-sm text-xs sm:text-label-sm uppercase tracking-wider font-semibold cursor-pointer" data-name="Rose Garden Bouquet" data-price="4500">
             Add to Cart
           </button>
         </div>
@@ -415,29 +443,29 @@ tailwind.config = {
     </article>
 
     <!-- Card 2: Royal Indulgence Hamper (FEATURED) -->
-    <article class="rounded-xl bg-surface-container-low p-4 shadow-md hover:shadow-2xl transition-all duration-300 flex flex-col relative group">
-      <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-primary text-on-primary px-4 py-0.5 rounded-full font-label-sm text-label-sm uppercase tracking-widest font-semibold shadow z-10">
+    <article class="rounded-xl bg-surface-container-low p-3.5 sm:p-4 shadow-md hover:shadow-2xl transition-all duration-300 flex flex-col relative group">
+      <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-primary text-on-primary px-4 py-0.5 rounded-full font-label-sm text-[11px] sm:text-label-sm uppercase tracking-widest font-semibold shadow z-10 whitespace-nowrap">
         Most Popular
       </div>
-      <div class="relative h-80 rounded-lg overflow-hidden bg-surface-container mb-space-sm p-1">
+      <div class="relative h-64 sm:h-80 rounded-lg overflow-hidden bg-surface-container mb-space-sm p-1">
         <img class="w-full h-full object-cover rounded-lg group-hover:scale-105 transition-transform duration-500" alt="Premium chocolate assortment and gift hamper in luxury wooden crate" src="https://images.unsplash.com/photo-1513885535751-8b9238bd345a?w=600"/>
         <span class="absolute top-3 left-3 bg-surface-container-lowest/90 backdrop-blur-md px-3 py-1 rounded-full font-label-sm text-label-sm text-on-surface font-semibold">Most Popular</span>
         <span class="absolute bottom-3 right-3 bg-primary text-on-primary px-3 py-1 rounded-full font-label-sm text-label-sm font-bold">₨8,500</span>
       </div>
       <div class="flex-1 flex flex-col justify-between space-y-space-xs px-1">
         <div>
-          <div class="flex items-center gap-1 text-secondary font-label-sm text-label-sm mb-1">
+          <div class="flex items-center gap-1 text-secondary font-label-sm text-xs sm:text-label-sm mb-1">
             <span class="material-symbols-outlined text-[14px]">redeem</span>
             <span>Gourmet Hamper · Ready to Gift</span>
           </div>
-          <h3 class="font-headline-sm text-headline-sm font-serif text-on-surface">Royal Indulgence Hamper</h3>
+          <h3 class="font-headline-sm text-xl sm:text-headline-sm font-serif text-on-surface">Royal Indulgence Hamper</h3>
           <p class="font-body-sm text-body-sm text-on-surface-variant mt-1 leading-relaxed">
             Premium chocolate assortment, imported dried fruits, scented candle, artisan honey jar, and a mini preserved flower bouquet in a luxury velvet-lined wooden crate.
           </p>
         </div>
-        <div class="pt-space-sm flex items-center justify-between">
-          <span class="font-label-sm text-label-sm text-on-surface-variant italic">Handcrafted Wooden Crate</span>
-          <button class="add-to-cart-btn px-4 py-2 rounded-full bg-primary text-on-primary hover:bg-primary-container transition-all font-label-sm text-label-sm uppercase tracking-wider font-semibold cursor-pointer" data-name="Royal Indulgence Hamper" data-price="8500">
+        <div class="pt-space-sm flex items-center justify-between gap-2">
+          <span class="font-label-sm text-xs text-on-surface-variant italic truncate">Handcrafted Wooden Crate</span>
+          <button class="add-to-cart-btn shrink-0 px-4 py-2.5 rounded-full bg-primary text-on-primary hover:bg-primary-container transition-all font-label-sm text-xs sm:text-label-sm uppercase tracking-wider font-semibold cursor-pointer" data-name="Royal Indulgence Hamper" data-price="8500">
             Add to Cart
           </button>
         </div>
@@ -445,26 +473,26 @@ tailwind.config = {
     </article>
 
     <!-- Card 3: Golden Celebration Box -->
-    <article class="rounded-xl bg-surface-container-lowest p-4 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col group">
-      <div class="relative h-80 rounded-lg overflow-hidden bg-surface-container mb-space-sm p-1">
+    <article class="rounded-xl bg-surface-container-lowest p-3.5 sm:p-4 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col group">
+      <div class="relative h-64 sm:h-80 rounded-lg overflow-hidden bg-surface-container mb-space-sm p-1">
         <img class="w-full h-full object-cover rounded-lg group-hover:scale-105 transition-transform duration-500" alt="24K gold-dipped real rose and luxury keepsake chest" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCahoqzd9UCRljCvepZp6x2Cn7rsqRo_xzvp3T6KZSac58a7mu6riye9pCJyv1rER5oK0EAFErZCMxw9VKqfUvpUDIoCY_CORN6TcxIZJD_wxZssRqdjZ75CbyXdwH6mhh-T_3sB3VU0h_7B3t020_N_BQ0IYnGWoaL5adqaP7szfn-8vyfWT70_KoKKojwu706odce6y7FUAjKWaK2psGUzJXYPEO8sxrDFybqUTsT"/>
         <span class="absolute top-3 left-3 bg-surface-container-lowest/90 backdrop-blur-md px-3 py-1 rounded-full font-label-sm text-label-sm text-on-surface font-semibold">Premium</span>
         <span class="absolute bottom-3 right-3 bg-primary text-on-primary px-3 py-1 rounded-full font-label-sm text-label-sm font-bold">₨15,000</span>
       </div>
       <div class="flex-1 flex flex-col justify-between space-y-space-xs px-1">
         <div>
-          <div class="flex items-center gap-1 text-secondary font-label-sm text-label-sm mb-1">
+          <div class="flex items-center gap-1 text-secondary font-label-sm text-xs sm:text-label-sm mb-1">
             <span class="material-symbols-outlined text-[14px]">workspace_premium</span>
             <span>Heirloom Grade · Forever Keepsake</span>
           </div>
-          <h3 class="font-headline-sm text-headline-sm font-serif text-on-surface">Golden Celebration Box</h3>
+          <h3 class="font-headline-sm text-xl sm:text-headline-sm font-serif text-on-surface">Golden Celebration Box</h3>
           <p class="font-body-sm text-body-sm text-on-surface-variant mt-1 leading-relaxed">
             24K gold-dipped real rose, crystal trinket dish, luxury perfume sampler, silk pocket square, and personalized engraved brass photo frame in a cedarwood keepsake chest.
           </p>
         </div>
-        <div class="pt-space-sm flex items-center justify-between">
-          <span class="font-label-sm text-label-sm text-on-surface-variant italic">Aromatic Cedarwood Chest</span>
-          <button class="add-to-cart-btn px-4 py-2 rounded-full bg-surface-container-high hover:bg-primary hover:text-on-primary transition-all text-on-surface font-label-sm text-label-sm uppercase tracking-wider font-semibold cursor-pointer" data-name="Golden Celebration Box" data-price="15000">
+        <div class="pt-space-sm flex items-center justify-between gap-2">
+          <span class="font-label-sm text-xs text-on-surface-variant italic truncate">Aromatic Cedarwood Chest</span>
+          <button class="add-to-cart-btn shrink-0 px-4 py-2.5 rounded-full bg-surface-container-high hover:bg-primary hover:text-on-primary transition-all text-on-surface font-label-sm text-xs sm:text-label-sm uppercase tracking-wider font-semibold cursor-pointer" data-name="Golden Celebration Box" data-price="15000">
             Add to Cart
           </button>
         </div>
@@ -495,7 +523,7 @@ tailwind.config = {
             <span class="font-label-sm text-label-sm text-secondary font-semibold uppercase">Personalized</span>
           </div>
           <p class="font-body-sm text-body-sm text-on-surface-variant">Hot-stamped by hand onto premium satin ribbon with gold foil lettering.</p>
-          <input class="w-full px-4 py-3 bg-surface-container rounded-lg text-body-md font-body-md text-on-surface focus:outline-none focus:ring-2 focus:ring-primary/40 transition-all" id="ribbon-input" maxlength="60" placeholder="e.g., Happy Birthday, my love!" type="text" value="With all my love, forever yours ♡"/>
+          <input class="w-full px-4 py-3 bg-surface-container rounded-lg text-base sm:text-body-md font-body-md text-on-surface focus:outline-none focus:ring-2 focus:ring-primary/40 transition-all" id="ribbon-input" maxlength="60" placeholder="e.g., Happy Birthday, my love!" type="text" value="With all my love, forever yours ♡"/>
           <div class="flex items-center gap-2 pt-1">
             <span class="font-label-sm text-label-sm text-on-surface-variant">Ribbon Color:</span>
             <button class="ribbon-color-btn w-7 h-7 rounded-full bg-[#f1cfc6] border-2 border-primary cursor-pointer transition-all hover:scale-110" onclick="changeRibbonColor('pink')" title="Pink"></button>
@@ -508,7 +536,7 @@ tailwind.config = {
         <div class="p-space-md rounded-xl bg-surface-container-lowest shadow-sm space-y-space-xs">
           <label class="font-title-md text-title-md text-on-surface block">2. Add-On Selection</label>
           <p class="font-body-sm text-body-sm text-on-surface-variant">Enhance your gift with premium add-ons. Select as many as you like.</p>
-          <div class="grid grid-cols-3 gap-2 pt-1">
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 pt-1">
             <button class="addon-btn p-3 rounded-lg bg-surface-container text-left hover:bg-surface-variant transition-colors cursor-pointer" onclick="toggleAddon(this, 'Premium Chocolates', 800)">
               <span class="block font-label-sm text-label-sm font-bold text-on-surface">🍫 Chocolates</span>
               <span class="block font-body-sm text-body-sm text-on-surface-variant text-[11px] leading-tight">Belgian truffle box</span>
@@ -531,7 +559,7 @@ tailwind.config = {
         <div class="p-space-md rounded-xl bg-surface-container-lowest shadow-sm space-y-space-xs">
           <label class="font-title-md text-title-md text-on-surface block" for="note-input">3. Personal Note (Handwritten Card)</label>
           <p class="font-body-sm text-body-sm text-on-surface-variant">Your message will be hand-calligraphed on a premium cotton card and placed inside the gift.</p>
-          <textarea class="w-full px-4 py-2.5 bg-surface-container rounded-lg text-body-md font-body-md text-on-surface focus:outline-none focus:ring-2 focus:ring-primary/40 transition-all resize-none" id="note-input" placeholder="Write your heartfelt message..." rows="3">Wishing you a world of happiness on your special day. May every petal remind you of how much you are loved.</textarea>
+          <textarea class="w-full px-4 py-2.5 bg-surface-container rounded-lg text-base sm:text-body-md font-body-md text-on-surface focus:outline-none focus:ring-2 focus:ring-primary/40 transition-all resize-none" id="note-input" placeholder="Write your heartfelt message..." rows="3">Wishing you a world of happiness on your special day. May every petal remind you of how much you are loved.</textarea>
         </div>
       </div>
 
@@ -703,10 +731,10 @@ tailwind.config = {
 
       <!-- Booking Form -->
       <form class="space-y-space-xs" onsubmit="event.preventDefault(); handleScheduleSubmit();">
-        <div class="grid grid-cols-2 gap-2">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
           <div>
             <label class="font-label-sm text-label-sm text-on-surface-variant block mb-1">Occasion Type</label>
-            <select class="w-full px-3 py-2.5 text-body-sm font-body-sm bg-surface-container rounded-lg text-on-surface focus:outline-none focus:ring-1 focus:ring-primary appearance-none cursor-pointer">
+            <select class="w-full px-3 py-2.5 text-base sm:text-body-sm font-body-sm bg-surface-container rounded-lg text-on-surface focus:outline-none focus:ring-1 focus:ring-primary appearance-none cursor-pointer">
               <option>Birthday</option>
               <option>Anniversary</option>
               <option>Wedding</option>
@@ -717,7 +745,7 @@ tailwind.config = {
           </div>
           <div>
             <label class="font-label-sm text-label-sm text-on-surface-variant block mb-1">Delivery Area</label>
-            <select class="w-full px-3 py-2.5 text-body-sm font-body-sm bg-surface-container rounded-lg text-on-surface focus:outline-none focus:ring-1 focus:ring-primary appearance-none cursor-pointer" id="delivery-area-select">
+            <select class="w-full px-3 py-2.5 text-base sm:text-body-sm font-body-sm bg-surface-container rounded-lg text-on-surface focus:outline-none focus:ring-1 focus:ring-primary appearance-none cursor-pointer" id="delivery-area-select">
               <option>Lahore (Same-Day)</option>
               <option>Islamabad (Next-Day)</option>
               <option>Karachi (2-3 Days)</option>
@@ -789,8 +817,8 @@ tailwind.config = {
           <span class="font-headline-sm text-headline-sm text-on-surface block">Join the Bloom Club</span>
           <p class="font-body-sm text-body-sm text-on-surface-variant mt-1 mb-space-sm">Get 10% off your first order, exclusive deals, and new collection previews delivered to your inbox.</p>
           <form class="space-y-space-xs" onsubmit="event.preventDefault(); handleNewsletterSubmit();">
-            <div class="flex gap-2">
-              <input class="w-full px-3 py-2 text-body-sm font-body-sm bg-surface-container-low rounded text-on-surface placeholder:text-on-surface-variant/50 focus:outline-none focus:ring-1 focus:ring-primary" placeholder="Your email address" type="email" id="newsletter-email"/>
+            <div class="flex flex-col sm:flex-row gap-2">
+              <input class="w-full px-3 py-2 text-base sm:text-body-sm font-body-sm bg-surface-container-low rounded text-on-surface placeholder:text-on-surface-variant/50 focus:outline-none focus:ring-1 focus:ring-primary" placeholder="Your email address" type="email" id="newsletter-email"/>
               <button class="px-4 py-2 bg-primary text-on-primary rounded font-label-md text-label-md tracking-wider uppercase hover:bg-primary-container transition-colors whitespace-nowrap" type="submit">Subscribe</button>
             </div>
             <span class="font-label-sm text-label-sm text-on-surface-variant/70 block">We respect your privacy. Unsubscribe anytime.</span>
