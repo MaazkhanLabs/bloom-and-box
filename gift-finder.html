@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>Gift Finder Quiz — Bloom &amp; Box | Bespoke Gifting Concierge</title>
+  <meta name="description" content="Discover the perfect handcrafted bouquet, curated hamper or heirloom keepsake in under 60 seconds with our interactive gift finder quiz."/>
+
+  <!-- Fonts & Material Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&family=Noto+Serif:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              ivory: "#F7EDEB",
+              blush: "#E8C9C9",
+              rose: "#B97980",
+              espresso: "#443535",
+              white: "#FFFFFF"
+            }
+          },
+          fontFamily: {
+            serif: ['"Noto Serif"', 'serif'],
+            sans: ['"Manrope"', 'sans-serif']
+          },
+          boxShadow: {
+            'pillowy': '0 10px 40px -10px rgba(68, 53, 53, 0.08)',
+            'lift': '0 20px 45px -15px rgba(185, 121, 128, 0.22)'
+          }
+        }
+      }
+    };
+  </script>
+  <style>
+    body {
+      background-color: #F7EDEB;
+      color: #443535;
+      font-family: 'Manrope', sans-serif;
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col antialiased selection:bg-[#E8C9C9] selection:text-[#443535]">
+
+  <!-- Top Announcement Bar -->
+  <div class="bg-[#443535] text-[#F7EDEB] py-2 px-4 text-center text-xs tracking-wider flex items-center justify-center gap-2">
+    <span class="inline-block w-2 h-2 rounded-full bg-[#E8C9C9] animate-pulse"></span>
+    <span>Complimentary Chauffeur Delivery in Lahore on Orders Above ₨5,000</span>
+  </div>
+
+  <!-- Intelligently Fixed Header Navigation -->
+  <header class="sticky top-0 z-50 bg-[#F7EDEB]/90 backdrop-blur-md border-b border-[#E8C9C9]/50 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="h-20 flex items-center justify-between gap-4">
+        
+        <!-- Logo -->
+        <a href="index.html" class="flex flex-col group">
+          <span class="font-serif text-2xl font-bold tracking-tight text-[#443535] group-hover:text-[#B97980] transition-colors">Bloom &amp; Box</span>
+          <span class="text-[10px] uppercase tracking-widest text-[#B97980] font-medium -mt-1">Atelier Lahore · Est. 2021</span>
+        </a>
+
+        <!-- Desktop Navigation -->
+        <nav class="hidden md:flex items-center gap-7 text-xs font-semibold uppercase tracking-wider text-[#443535]/80">
+          <a href="index.html" class="hover:text-[#B97980] transition-colors">Home</a>
+          <a href="shop.html" class="hover:text-[#B97980] transition-colors">Shop All</a>
+          <a href="bouquets.html" class="hover:text-[#B97980] transition-colors">Bouquets</a>
+          <a href="hampers.html" class="hover:text-[#B97980] transition-colors">Gift Hampers</a>
+          <a href="keepsakes.html" class="hover:text-[#B97980] transition-colors">Keepsakes</a>
+          <a href="custom.html" class="hover:text-[#B97980] transition-colors">Custom Studio</a>
+          <a href="gift-finder.html" class="text-[#B97980] border-b-2 border-[#B97980] pb-1">Gift Finder</a>
+        </nav>
+
+        <!-- Right Action Icons -->
+        <div class="flex items-center gap-2">
+          <button onclick="openSearchModal()" class="w-10 h-10 rounded-full flex items-center justify-center text-[#443535] hover:bg-white/70 transition-colors" title="Search">
+            <span class="material-symbols-outlined text-[20px]">search</span>
+          </button>
+          <button onclick="openWishlistDrawer()" class="relative w-10 h-10 rounded-full flex items-center justify-center text-[#443535] hover:bg-white/70 transition-colors" title="Wishlist">
+            <span class="material-symbols-outlined text-[20px]">favorite</span>
+            <span class="wishlist-badge-count absolute top-2 right-2 w-4 h-4 rounded-full bg-[#B97980] text-white text-[10px] font-bold flex items-center justify-center">0</span>
+          </button>
+          <button onclick="openCartDrawer()" class="relative flex items-center gap-2 px-3.5 py-2 rounded-full bg-white shadow-sm hover:shadow transition-all text-[#443535]" title="Shopping Bag">
+            <span class="material-symbols-outlined text-[20px] text-[#B97980]">shopping_bag</span>
+            <span class="text-xs font-bold font-serif cart-badge-count">0</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Hero & Quiz Section -->
+  <main class="flex-1 max-w-5xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-10 sm:py-16">
+    
+    <!-- Title Header -->
+    <div class="text-center max-w-2xl mx-auto mb-10">
+      <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#E8C9C9]/50 text-[#B97980] text-xs font-bold uppercase tracking-widest mb-3">
+        <span class="material-symbols-outlined text-[15px]">auto_awesome</span>
+        AI-Powered Gift Matchmaker
+      </span>
+      <h1 class="font-serif text-3xl sm:text-5xl font-bold text-[#443535] leading-tight">
+        Find the Perfect Gift in 60 Seconds
+      </h1>
+      <p class="text-sm sm:text-base text-[#443535]/70 mt-3 leading-relaxed">
+        Answer 4 intuitive questions and our bespoke algorithm matches your sentiment with handcrafted fresh bouquets, gourmet hampers, or forever keepsakes.
+      </p>
+    </div>
+
+    <!-- Quiz Wizard Card Container -->
+    <div id="gift-finder-wizard" class="bg-white rounded-3xl p-6 sm:p-12 shadow-pillowy border border-[#E8C9C9]/40 relative min-h-[460px]">
+      <!-- Dynamically filled by gift-finder.js -->
+      <div class="flex items-center justify-center h-64 text-[#443535]/60 text-sm">
+        <span class="material-symbols-outlined text-3xl animate-spin mr-3 text-[#B97980]">progress_activity</span>
+        Loading Gift Finder concierge...
+      </div>
+    </div>
+
+    <!-- Assurance Badges -->
+    <div class="mt-12 grid grid-cols-1 sm:grid-cols-3 gap-6 text-center">
+      <div class="p-4 rounded-2xl bg-white/60 border border-[#E8C9C9]/40">
+        <span class="material-symbols-outlined text-[#B97980] text-2xl mb-1">verified</span>
+        <h4 class="font-serif font-bold text-sm text-[#443535]">Hand-Tied Freshness</h4>
+        <p class="text-xs text-[#443535]/70 mt-1">Sourced daily from verified botanical gardens.</p>
+      </div>
+      <div class="p-4 rounded-2xl bg-white/60 border border-[#E8C9C9]/40">
+        <span class="material-symbols-outlined text-[#B97980] text-2xl mb-1">local_shipping</span>
+        <h4 class="font-serif font-bold text-sm text-[#443535]">Same-Day Express</h4>
+        <p class="text-xs text-[#443535]/70 mt-1">Climate-controlled chauffeur dispatch across Lahore.</p>
+      </div>
+      <div class="p-4 rounded-2xl bg-white/60 border border-[#E8C9C9]/40">
+        <span class="material-symbols-outlined text-[#B97980] text-2xl mb-1">support_agent</span>
+        <h4 class="font-serif font-bold text-sm text-[#443535]">Atelier Concierge</h4>
+        <p class="text-xs text-[#443535]/70 mt-1">Direct WhatsApp consultation with our master florist.</p>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Premium Footer -->
+  <footer class="bg-[#443535] text-[#F7EDEB] pt-14 pb-8 border-t border-[#443535] mt-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-xs text-[#F7EDEB]/60">
+      <p class="font-serif text-lg text-white font-bold mb-2">Bloom &amp; Box Luxury Atelier</p>
+      <p class="max-w-md mx-auto mb-6">Lahore, Punjab, Pakistan · Direct WhatsApp: +91 8169188117</p>
+      <div class="border-t border-[#F7EDEB]/10 pt-4 flex flex-col sm:flex-row justify-between items-center gap-2">
+        <p>&copy; <span id="current-year"></span> Bloom &amp; Box. All rights reserved.</p>
+        <p class="text-[#E8C9C9]">Handcrafted Luxury Bouquets &amp; Curated Hampers</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="products.js"></script>
+  <script src="store.js"></script>
+  <script src="gift-finder.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      document.getElementById('current-year').textContent = new Date().getFullYear();
+      if (typeof initGiftFinder === 'function') {
+        initGiftFinder();
+      }
+    });
+  </script>
+</body>
+</html>

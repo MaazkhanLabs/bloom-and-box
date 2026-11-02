@@ -7,3 +7,5 @@ extracted/
 Thumbs.db
 .vscode/
 .idea/
+
+.vercel
