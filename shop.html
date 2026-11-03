@@ -35,6 +35,10 @@ tailwind.config = {
 </script>
 
 <style>
+  html, body {
+    overflow-x: hidden;
+    width: 100%;
+  }
   body {
     background-color: #F7EDEB;
     color: #443535;
@@ -86,7 +90,25 @@ tailwind.config = {
         <span class="material-symbols-outlined text-[18px]">shopping_bag</span>
         <span class="cart-bag-label">Bag (0)</span>
       </button>
+
+      <!-- Mobile Hamburger Menu Button -->
+      <button id="mobile-toggle-btn" class="lg:hidden w-9 h-9 rounded-full bg-white/80 border border-[#E8C9C9] flex items-center justify-center text-[#443535]" aria-label="Toggle Menu">
+        <span class="material-symbols-outlined text-[22px]">menu</span>
+      </button>
     </div>
+  </div>
+
+  <!-- Mobile Drawer Nav -->
+  <div id="mobile-drawer-nav" class="hidden lg:hidden bg-white border-b border-[#E8C9C9] px-6 py-5 space-y-3 shadow-xl">
+    <a href="index.html" class="block text-sm font-semibold text-[#443535] hover:text-[#B97980]">Home</a>
+    <a href="shop.html" class="block font-serif text-sm font-bold text-[#B97980]">Shop All Gifts</a>
+    <a href="bouquets.html" class="block text-sm font-semibold text-[#443535] hover:text-[#B97980] pl-3">↳ Fresh Bouquets</a>
+    <a href="hampers.html" class="block text-sm font-semibold text-[#443535] hover:text-[#B97980] pl-3">↳ Curated Hampers</a>
+    <a href="keepsakes.html" class="block text-sm font-semibold text-[#443535] hover:text-[#B97980] pl-3">↳ Heirloom Keepsakes</a>
+    <a href="occasions.html" class="block text-sm font-semibold text-[#443535] hover:text-[#B97980]">Shop by Occasion</a>
+    <a href="custom.html" class="block text-sm font-semibold text-[#443535] hover:text-[#B97980]">Custom Gift Studio</a>
+    <a href="gift-finder.html" class="block text-sm font-semibold text-[#443535] hover:text-[#B97980]">Gift Finder Quiz ✨</a>
+    <a href="blog.html" class="block text-sm font-semibold text-[#443535] hover:text-[#B97980]">The Bloom Journal</a>
   </div>
 </header>
 
@@ -103,20 +125,20 @@ tailwind.config = {
     <p class="text-xs sm:text-sm text-[#443535]/70">Explore seasonal stems, curated gourmet crates, and everlasting keepsakes.</p>
   </div>
 
-  <!-- Filter & Controls Toolbar -->
-  <div class="bg-white rounded-3xl p-6 border border-[#E8C9C9]/80 shadow-pillowy mb-10 space-y-6">
-    <!-- Category Tabs -->
-    <div class="flex items-center justify-center sm:justify-start flex-wrap gap-2">
-      <button onclick="setFilterCategory('all')" class="cat-pill px-5 py-2.5 rounded-full text-xs font-semibold uppercase tracking-wider transition-all bg-[#B97980] text-white shadow-sm" data-category="all">
+  <!-- Filter & Controls Toolbar (Responsive) -->
+  <div class="bg-white rounded-3xl p-4 sm:p-6 border border-[#E8C9C9]/80 shadow-pillowy mb-8 sm:mb-10 space-y-4 sm:space-y-6">
+    <!-- Category Tabs (Touch-friendly & wrap cleanly on mobile) -->
+    <div class="flex items-center justify-start sm:justify-start flex-wrap gap-2">
+      <button onclick="setFilterCategory('all')" class="cat-pill px-3.5 sm:px-5 py-2 sm:py-2.5 rounded-full text-[11px] sm:text-xs font-semibold uppercase tracking-wider transition-all bg-[#B97980] text-white shadow-sm" data-category="all">
         All Creations (<span id="count-all">13</span>)
       </button>
-      <button onclick="setFilterCategory('bouquets')" class="cat-pill px-5 py-2.5 rounded-full text-xs font-semibold uppercase tracking-wider transition-all bg-[#F7EDEB] text-[#443535] hover:bg-[#E8C9C9]" data-category="bouquets">
+      <button onclick="setFilterCategory('bouquets')" class="cat-pill px-3.5 sm:px-5 py-2 sm:py-2.5 rounded-full text-[11px] sm:text-xs font-semibold uppercase tracking-wider transition-all bg-[#F7EDEB] text-[#443535] hover:bg-[#E8C9C9]" data-category="bouquets">
         Fresh Bouquets (<span id="count-bouquets">5</span>)
       </button>
-      <button onclick="setFilterCategory('hampers')" class="cat-pill px-5 py-2.5 rounded-full text-xs font-semibold uppercase tracking-wider transition-all bg-[#F7EDEB] text-[#443535] hover:bg-[#E8C9C9]" data-category="hampers">
+      <button onclick="setFilterCategory('hampers')" class="cat-pill px-3.5 sm:px-5 py-2 sm:py-2.5 rounded-full text-[11px] sm:text-xs font-semibold uppercase tracking-wider transition-all bg-[#F7EDEB] text-[#443535] hover:bg-[#E8C9C9]" data-category="hampers">
         Curated Hampers (<span id="count-hampers">5</span>)
       </button>
-      <button onclick="setFilterCategory('keepsakes')" class="cat-pill px-5 py-2.5 rounded-full text-xs font-semibold uppercase tracking-wider transition-all bg-[#F7EDEB] text-[#443535] hover:bg-[#E8C9C9]" data-category="keepsakes">
+      <button onclick="setFilterCategory('keepsakes')" class="cat-pill px-3.5 sm:px-5 py-2 sm:py-2.5 rounded-full text-[11px] sm:text-xs font-semibold uppercase tracking-wider transition-all bg-[#F7EDEB] text-[#443535] hover:bg-[#E8C9C9]" data-category="keepsakes">
         Heirloom Keepsakes (<span id="count-keepsakes">3</span>)
       </button>
     </div>
@@ -164,8 +186,8 @@ tailwind.config = {
     <span class="text-[#B97980]">✓ Delivered with Care in Lahore</span>
   </div>
 
-  <!-- Dynamic Product Grid -->
-  <div id="shop-product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+  <!-- Dynamic Product Grid (1-col on mobile, 2-col on tablets, 3-col on desktop) -->
+  <div id="shop-product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-8">
     <!-- Populated by products.js -->
   </div>
 
@@ -356,6 +378,9 @@ tailwind.config = {
   }
 
   document.addEventListener('DOMContentLoaded', () => {
+    const mobBtn = document.getElementById('mobile-toggle-btn');
+    const mobNav = document.getElementById('mobile-drawer-nav');
+    if (mobBtn && mobNav) mobBtn.onclick = () => mobNav.classList.toggle('hidden');
     initShop();
   });
 </script>

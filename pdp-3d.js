@@ -48,6 +48,7 @@ function setupPdpScene(container, productId) {
     renderer.toneMappingExposure = 1.25;
     renderer.domElement.style.width = '100%';
     renderer.domElement.style.height = '100%';
+    renderer.domElement.style.touchAction = 'pan-y'; // Mobile scrolling preserved
     renderer.domElement.style.cursor = 'grab';
 
     container.innerHTML = '';
@@ -100,27 +101,43 @@ function setupPdpScene(container, productId) {
       pdp3D.prevMouse = { x: e.clientX, y: e.clientY };
     });
 
-    // Touch support
+    // Touch support (Allows natural vertical scroll)
+    let pdpTouchX = 0;
+    let pdpTouchY = 0;
+    let pdpIsHorizontal = false;
+
     renderer.domElement.addEventListener('touchstart', (e) => {
       if (e.touches.length === 1) {
+        pdpTouchX = e.touches[0].clientX;
+        pdpTouchY = e.touches[0].clientY;
+        pdpIsHorizontal = false;
         pdp3D.isDragging = true;
-        pdp3D.prevMouse = { x: e.touches[0].clientX, y: e.touches[0].clientY };
+        pdp3D.prevMouse = { x: pdpTouchX, y: pdpTouchY };
       }
     }, { passive: true });
 
     window.addEventListener('touchend', () => {
       pdp3D.isDragging = false;
+      pdpIsHorizontal = false;
     });
 
     window.addEventListener('touchmove', (e) => {
       if (!pdp3D.isDragging || e.touches.length !== 1) return;
-      const dx = e.touches[0].clientX - pdp3D.prevMouse.x;
-      const dy = e.touches[0].clientY - pdp3D.prevMouse.y;
+      const currentX = e.touches[0].clientX;
+      const currentY = e.touches[0].clientY;
+      const dx = currentX - pdp3D.prevMouse.x;
+      const dy = currentY - pdp3D.prevMouse.y;
 
-      group.rotation.y += dx * 0.007;
-      group.rotation.x = Math.max(-0.6, Math.min(0.8, group.rotation.x + dy * 0.007));
+      if (!pdpIsHorizontal && (Math.abs(dx) > 4 || Math.abs(dy) > 4)) {
+        pdpIsHorizontal = Math.abs(dx) > Math.abs(dy);
+      }
 
-      pdp3D.prevMouse = { x: e.touches[0].clientX, y: e.touches[0].clientY };
+      if (pdpIsHorizontal) {
+        group.rotation.y += dx * 0.007;
+        group.rotation.x = Math.max(-0.6, Math.min(0.8, group.rotation.x + dy * 0.007));
+      }
+
+      pdp3D.prevMouse = { x: currentX, y: currentY };
     }, { passive: true });
 
     // Window Resize

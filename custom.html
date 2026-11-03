@@ -41,6 +41,10 @@
   </script>
 
   <style>
+    html, body {
+      overflow-x: hidden;
+      width: 100%;
+    }
     body {
       background-color: #F7EDEB;
       color: #443535;
@@ -113,8 +117,24 @@
             <span class="material-symbols-outlined text-[20px] text-[#B97980]">shopping_bag</span>
             <span class="text-xs font-bold font-serif cart-badge-count">0</span>
           </button>
+          <!-- Mobile Hamburger Menu Button -->
+          <button id="mobile-toggle-btn" class="md:hidden w-10 h-10 rounded-full bg-white/80 border border-[#E8C9C9] flex items-center justify-center text-[#443535]" aria-label="Toggle Menu">
+            <span class="material-symbols-outlined text-[22px]">menu</span>
+          </button>
         </div>
       </div>
+    </div>
+    <!-- Mobile Drawer Nav -->
+    <div id="mobile-drawer-nav" class="hidden md:hidden bg-white border-b border-[#E8C9C9] px-6 py-5 space-y-3 shadow-xl">
+      <a href="index.html" class="block text-sm font-semibold text-[#443535] hover:text-[#B97980]">Home</a>
+      <a href="shop.html" class="block text-sm font-semibold text-[#443535] hover:text-[#B97980]">Shop All Gifts</a>
+      <a href="bouquets.html" class="block text-sm font-semibold text-[#443535] hover:text-[#B97980] pl-3">↳ Fresh Bouquets</a>
+      <a href="hampers.html" class="block text-sm font-semibold text-[#443535] hover:text-[#B97980] pl-3">↳ Curated Hampers</a>
+      <a href="keepsakes.html" class="block text-sm font-semibold text-[#443535] hover:text-[#B97980] pl-3">↳ Heirloom Keepsakes</a>
+      <a href="occasions.html" class="block text-sm font-semibold text-[#443535] hover:text-[#B97980]">Shop by Occasion</a>
+      <a href="custom.html" class="block font-serif text-sm font-bold text-[#B97980]">Custom Gift Studio</a>
+      <a href="gift-finder.html" class="block text-sm font-semibold text-[#443535] hover:text-[#B97980]">Gift Finder Quiz ✨</a>
+      <a href="blog.html" class="block text-sm font-semibold text-[#443535] hover:text-[#B97980]">The Bloom Journal</a>
     </div>
   </header>
 
@@ -148,9 +168,29 @@
     </div>
   </section>
 
-  <!-- Step Progression Bar -->
-  <section class="bg-white/80 border-b border-[#E8C9C9]/60 sticky top-20 z-40 backdrop-blur-md">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 overflow-x-auto no-scrollbar">
+  <!-- Step Progression Bar (Responsive: Compact on Mobile, Horizontal on Desktop) -->
+  <section class="bg-white/90 border-b border-[#E8C9C9]/60 sticky top-20 z-40 backdrop-blur-md">
+    <!-- Mobile Step Header (< 768px) -->
+    <div class="md:hidden flex items-center justify-between py-2.5 px-4 bg-white/90">
+      <div class="flex items-center gap-2">
+        <span class="w-6 h-6 rounded-full bg-[#B97980] text-white flex items-center justify-center text-[11px] font-bold shadow-sm" id="mobile-step-num">1</span>
+        <span class="text-xs font-bold text-[#443535]" id="mobile-step-label">Box Size &amp; Architecture</span>
+      </div>
+      <div class="flex items-center gap-2">
+        <span class="text-[10px] text-[#443535]/60 font-semibold" id="mobile-step-ratio">1 of 7</span>
+        <div class="flex items-center gap-1">
+          <button onclick="prevStep()" class="w-7 h-7 rounded-full bg-[#F7EDEB] text-[#443535] flex items-center justify-center shadow-sm active:scale-95">
+            <span class="material-symbols-outlined text-[16px]">chevron_left</span>
+          </button>
+          <button onclick="nextStep()" class="w-7 h-7 rounded-full bg-[#443535] text-white flex items-center justify-center shadow-sm active:scale-95">
+            <span class="material-symbols-outlined text-[16px]">chevron_right</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Desktop Step Pills (>= 768px) -->
+    <div class="hidden md:block max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 overflow-x-auto no-scrollbar">
       <div class="flex items-center justify-between min-w-[700px] gap-2 text-xs font-semibold">
         
         <button onclick="goToStep(1)" id="step-btn-1" class="step-btn flex items-center gap-2 py-1 px-3 rounded-full transition-all">
@@ -224,8 +264,8 @@
             </span>
           </div>
 
-          <!-- 3D Canvas Stage Container -->
-          <div class="relative w-full aspect-square rounded-2xl bg-[#F7EDEB] overflow-hidden flex items-center justify-center shadow-inner border border-[#E8C9C9]/40 group">
+          <!-- 3D Canvas Stage Container (Responsive height on phones, square on desktop) -->
+          <div class="relative w-full h-80 sm:h-96 lg:aspect-square rounded-2xl bg-[#F7EDEB] overflow-hidden flex items-center justify-center shadow-inner border border-[#E8C9C9]/40 group">
             
             <!-- Three.js 3D WebGL Canvas mounts here -->
             <div id="custom-3d-stage" class="absolute inset-0 w-full h-full"></div>
@@ -237,13 +277,13 @@
             </div>
 
             <!-- Floating 3D Action Controls -->
-            <div class="absolute bottom-3 left-3 right-3 z-20 flex items-center justify-between gap-2">
-              <button id="unbox-3d-btn" onclick="toggle3DUnbox()" class="px-3.5 py-1.5 rounded-full bg-[#443535] hover:bg-[#B97980] text-white text-[11px] font-semibold flex items-center gap-1.5 shadow transition-all cursor-pointer">
+            <div class="absolute bottom-3 left-3 right-3 z-20 flex flex-wrap sm:flex-nowrap items-center justify-between gap-2">
+              <button id="unbox-3d-btn" onclick="toggle3DUnbox()" class="flex-1 sm:flex-initial px-3.5 py-2 sm:py-1.5 rounded-full bg-[#443535] hover:bg-[#B97980] text-white text-[11px] font-semibold flex items-center justify-center gap-1.5 shadow transition-all cursor-pointer">
                 <span class="material-symbols-outlined text-[16px]">lock_open</span>
                 <span>Unbox &amp; Reveal Stems</span>
               </button>
               
-              <button id="rotate-3d-btn" onclick="toggle3DAutoRotate()" class="px-3 py-1.5 rounded-full bg-white/90 hover:bg-white text-[#443535] text-[11px] font-semibold flex items-center gap-1.5 shadow-sm transition-all border border-[#E8C9C9] cursor-pointer">
+              <button id="rotate-3d-btn" onclick="toggle3DAutoRotate()" class="flex-1 sm:flex-initial px-3 py-2 sm:py-1.5 rounded-full bg-white/90 hover:bg-white text-[#443535] text-[11px] font-semibold flex items-center justify-center gap-1.5 shadow-sm transition-all border border-[#E8C9C9] cursor-pointer">
                 <span class="material-symbols-outlined text-[15px] text-[#B97980]">pause</span>
                 <span>Pause Orbit</span>
               </button>
@@ -703,6 +743,22 @@
       if (stepNumber < 1 || stepNumber > 7) return;
       customStudioState.step = stepNumber;
 
+      const stepNames = [
+        "Box Size & Architecture",
+        "Fresh & Preserved Blooms",
+        "Artisan Wrapping Paper",
+        "Ribbon & Rosette Knot",
+        "Confectionery & Treats",
+        "Personalized Card Vow",
+        "Atelier Review & Order"
+      ];
+      const mobNum = document.getElementById('mobile-step-num');
+      const mobLabel = document.getElementById('mobile-step-label');
+      const mobRatio = document.getElementById('mobile-step-ratio');
+      if (mobNum) mobNum.textContent = stepNumber;
+      if (mobLabel) mobLabel.textContent = stepNames[stepNumber - 1];
+      if (mobRatio) mobRatio.textContent = `${stepNumber} of 7`;
+
       // Update panels
       for (let i = 1; i <= 7; i++) {
         const panel = document.getElementById(`step-panel-${i}`);
@@ -1017,6 +1073,9 @@
 
     document.addEventListener('DOMContentLoaded', () => {
       document.getElementById('current-year').textContent = new Date().getFullYear();
+      const mobBtn = document.getElementById('mobile-toggle-btn');
+      const mobNav = document.getElementById('mobile-drawer-nav');
+      if (mobBtn && mobNav) mobBtn.onclick = () => mobNav.classList.toggle('hidden');
       updatePriceDisplays();
       goToStep(1);
     });

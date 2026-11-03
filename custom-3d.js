@@ -55,6 +55,7 @@ function setupConfigurator(container) {
     renderer.toneMappingExposure = 1.15;
     renderer.domElement.style.width = '100%';
     renderer.domElement.style.height = '100%';
+    renderer.domElement.style.touchAction = 'pan-y'; // Mobile friendly: allows vertical scrolling
     renderer.domElement.style.cursor = 'grab';
     container.innerHTML = '';
     container.appendChild(renderer.domElement);
@@ -124,31 +125,47 @@ function setupConfigurator(container) {
       custom3D.prevMouse = { x: e.clientX, y: e.clientY };
     });
 
-    // Touch support for mobile
+    // Touch support for mobile (Allows page scrolling)
+    let touchStartX = 0;
+    let touchStartY = 0;
+    let isHorizontalOrbit = false;
+
     renderer.domElement.addEventListener('touchstart', (e) => {
       if (e.touches.length === 1) {
+        touchStartX = e.touches[0].clientX;
+        touchStartY = e.touches[0].clientY;
         custom3D.isDragging = true;
         custom3D.autoRotate = false;
-        custom3D.prevMouse = { x: e.touches[0].clientX, y: e.touches[0].clientY };
+        isHorizontalOrbit = false;
+        custom3D.prevMouse = { x: touchStartX, y: touchStartY };
       }
     }, { passive: true });
 
     window.addEventListener('touchend', () => {
       custom3D.isDragging = false;
+      isHorizontalOrbit = false;
     });
 
     window.addEventListener('touchmove', (e) => {
       if (!custom3D.isDragging || e.touches.length !== 1) return;
-      const dx = e.touches[0].clientX - custom3D.prevMouse.x;
-      const dy = e.touches[0].clientY - custom3D.prevMouse.y;
+      const currentX = e.touches[0].clientX;
+      const currentY = e.touches[0].clientY;
+      const dx = currentX - custom3D.prevMouse.x;
+      const dy = currentY - custom3D.prevMouse.y;
 
-      custom3D.velocity.x = dx * 0.007;
-      custom3D.velocity.y = dy * 0.007;
+      if (!isHorizontalOrbit && (Math.abs(dx) > 4 || Math.abs(dy) > 4)) {
+        isHorizontalOrbit = Math.abs(dx) > Math.abs(dy);
+      }
 
-      boxGroup.rotation.y += custom3D.velocity.x;
-      boxGroup.rotation.x = Math.max(-0.5, Math.min(0.8, boxGroup.rotation.x + custom3D.velocity.y));
+      if (isHorizontalOrbit) {
+        custom3D.velocity.x = dx * 0.007;
+        custom3D.velocity.y = dy * 0.007;
 
-      custom3D.prevMouse = { x: e.touches[0].clientX, y: e.touches[0].clientY };
+        boxGroup.rotation.y += custom3D.velocity.x;
+        boxGroup.rotation.x = Math.max(-0.5, Math.min(0.8, boxGroup.rotation.x + custom3D.velocity.y));
+      }
+
+      custom3D.prevMouse = { x: currentX, y: currentY };
     }, { passive: true });
 
     // Window Resize

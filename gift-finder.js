@@ -78,7 +78,7 @@ function renderQuizStep() {
   const progressPercent = Math.round(((quizState.currentStep + 1) / totalSteps) * 100);
 
   container.innerHTML = `
-    <div class="max-w-2xl mx-auto bg-white rounded-3xl p-6 sm:p-10 shadow-xl border border-[#E8C9C9]/50">
+    <div class="max-w-2xl mx-auto bg-white rounded-3xl p-4 sm:p-8 lg:p-10 shadow-xl border border-[#E8C9C9]/50">
       <!-- Progress Bar -->
       <div class="mb-8">
         <div class="flex items-center justify-between text-xs font-semibold uppercase tracking-widest text-[#B97980] mb-2">

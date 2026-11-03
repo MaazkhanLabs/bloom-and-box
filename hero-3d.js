@@ -48,6 +48,7 @@ function setupLivingRoseScene(container) {
     renderer.domElement.style.height = '100%';
     renderer.domElement.style.zIndex = '1';
     renderer.domElement.style.pointerEvents = 'auto'; // Allows interactive drag & hover
+    renderer.domElement.style.touchAction = 'pan-y'; // Crucial for mobile: allows smooth vertical scrolling
     renderer.domElement.style.cursor = 'grab';
     container.appendChild(renderer.domElement);
 
@@ -286,27 +287,44 @@ function setupLivingRoseScene(container) {
       previousMousePosition = { x: e.clientX, y: e.clientY };
     });
 
-    // Touch support for mobile devices
+    // Touch support for mobile devices (Permits vertical page scrolling)
+    let touchStartY = 0;
+    let touchStartX = 0;
+    let isHorizontalGesture = false;
+
     renderer.domElement.addEventListener('touchstart', (e) => {
       if (e.touches.length === 1) {
+        touchStartX = e.touches[0].clientX;
+        touchStartY = e.touches[0].clientY;
+        previousMousePosition = { x: touchStartX, y: touchStartY };
+        isHorizontalGesture = false;
         isDragging = true;
-        previousMousePosition = { x: e.touches[0].clientX, y: e.touches[0].clientY };
       }
     }, { passive: true });
 
     window.addEventListener('touchend', () => {
       isDragging = false;
+      isHorizontalGesture = false;
     });
 
     window.addEventListener('touchmove', (e) => {
       if (!isDragging || e.touches.length !== 1) return;
-      const deltaX = e.touches[0].clientX - previousMousePosition.x;
-      const deltaY = e.touches[0].clientY - previousMousePosition.y;
+      const currentX = e.touches[0].clientX;
+      const currentY = e.touches[0].clientY;
+      const deltaX = currentX - previousMousePosition.x;
+      const deltaY = currentY - previousMousePosition.y;
 
-      roseGroup.rotation.y += deltaX * 0.005;
-      roseGroup.rotation.x += deltaY * 0.005;
+      // Determine intent on first significant movement
+      if (!isHorizontalGesture && (Math.abs(deltaX) > 4 || Math.abs(deltaY) > 4)) {
+        isHorizontalGesture = Math.abs(deltaX) > Math.abs(deltaY);
+      }
 
-      previousMousePosition = { x: e.touches[0].clientX, y: e.touches[0].clientY };
+      if (isHorizontalGesture) {
+        roseGroup.rotation.y += deltaX * 0.005;
+        roseGroup.rotation.x += deltaY * 0.003;
+      }
+
+      previousMousePosition = { x: currentX, y: currentY };
     }, { passive: true });
 
     // ================= RESIZE LISTENER =================
@@ -318,6 +336,10 @@ function setupLivingRoseScene(container) {
       camera.updateProjectionMatrix();
       renderer.setSize(width, height);
       renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.5));
+
+      // Re-position rose based on device width
+      const nowDesktop = window.innerWidth >= 1024;
+      roseGroup.position.set(nowDesktop ? 6.5 : 0, nowDesktop ? 0.5 : -1.2, nowDesktop ? 2 : -1.5);
     });
 
     // ================= ANIMATION TICK LOOP =================

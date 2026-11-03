@@ -35,6 +35,10 @@ tailwind.config = {
 </script>
 
 <style>
+  html, body {
+    overflow-x: hidden;
+    width: 100%;
+  }
   body {
     background-color: #F7EDEB;
     color: #443535;
@@ -82,7 +86,25 @@ tailwind.config = {
         <span class="material-symbols-outlined text-[18px]">shopping_bag</span>
         <span class="cart-bag-label">Bag (0)</span>
       </button>
+
+      <!-- Mobile Hamburger Menu Button -->
+      <button id="mobile-toggle-btn" class="lg:hidden w-9 h-9 rounded-full bg-white/80 border border-[#E8C9C9] flex items-center justify-center text-[#443535]" aria-label="Toggle Menu">
+        <span class="material-symbols-outlined text-[22px]">menu</span>
+      </button>
     </div>
+  </div>
+
+  <!-- Mobile Drawer Nav -->
+  <div id="mobile-drawer-nav" class="hidden lg:hidden bg-white border-b border-[#E8C9C9] px-6 py-5 space-y-3 shadow-xl">
+    <a href="index.html" class="block text-sm font-semibold text-[#443535] hover:text-[#B97980]">Home</a>
+    <a href="shop.html" class="block text-sm font-semibold text-[#443535] hover:text-[#B97980]">Shop All Gifts</a>
+    <a href="bouquets.html" class="block text-sm font-semibold text-[#443535] hover:text-[#B97980] pl-3">↳ Fresh Bouquets</a>
+    <a href="hampers.html" class="block text-sm font-semibold text-[#443535] hover:text-[#B97980] pl-3">↳ Curated Hampers</a>
+    <a href="keepsakes.html" class="block text-sm font-semibold text-[#443535] hover:text-[#B97980] pl-3">↳ Heirloom Keepsakes</a>
+    <a href="occasions.html" class="block text-sm font-semibold text-[#443535] hover:text-[#B97980]">Shop by Occasion</a>
+    <a href="custom.html" class="block text-sm font-semibold text-[#443535] hover:text-[#B97980]">Custom Gift Studio</a>
+    <a href="gift-finder.html" class="block text-sm font-semibold text-[#443535] hover:text-[#B97980]">Gift Finder Quiz ✨</a>
+    <a href="blog.html" class="block text-sm font-semibold text-[#443535] hover:text-[#B97980]">The Bloom Journal</a>
   </div>
 </header>
 
@@ -97,28 +119,28 @@ tailwind.config = {
     <span id="pdp-breadcrumb-cat" class="text-[#443535]">Product</span>
   </div>
 
-  <!-- PDP Main Grid -->
-  <div class="bg-white rounded-3xl p-6 sm:p-10 border border-[#E8C9C9]/80 shadow-pillowy grid grid-cols-1 lg:grid-cols-12 gap-12 mt-4">
+  <!-- PDP Main Grid (Responsive Padding & Gap) -->
+  <div class="bg-white rounded-3xl p-4 sm:p-8 lg:p-10 border border-[#E8C9C9]/80 shadow-pillowy grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-12 mt-4">
     <!-- Left Column: Gallery & 3D Interactive Stage -->
     <div class="lg:col-span-6 space-y-4">
       <!-- Media Mode Toggle (Photo vs 3D) -->
-      <div class="flex items-center justify-between">
+      <div class="flex items-center justify-between gap-2">
         <span class="text-[11px] uppercase tracking-widest font-bold text-[#B97980] flex items-center gap-1">
           <span class="w-2 h-2 rounded-full bg-[#B97980] animate-pulse"></span>
-          Interactive Atelier Stage
+          Atelier Stage
         </span>
         <div class="inline-flex p-1 bg-[#F7EDEB] rounded-full border border-[#E8C9C9]">
-          <button id="pdp-mode-photo" onclick="switchPdpMediaMode('photo')" class="px-3.5 py-1 rounded-full text-xs font-semibold bg-white text-[#443535] shadow-sm transition-all flex items-center gap-1">
-            <span class="material-symbols-outlined text-[15px]">photo_library</span> Photography
+          <button id="pdp-mode-photo" onclick="switchPdpMediaMode('photo')" class="px-3 sm:px-3.5 py-1 rounded-full text-xs font-semibold bg-white text-[#443535] shadow-sm transition-all flex items-center gap-1">
+            <span class="material-symbols-outlined text-[15px]">photo_library</span> Photos
           </button>
-          <button id="pdp-mode-3d" onclick="switchPdpMediaMode('3d')" class="px-3.5 py-1 rounded-full text-xs font-semibold text-[#443535]/70 hover:text-[#443535] transition-all flex items-center gap-1">
-            <span class="material-symbols-outlined text-[15px] text-[#B97980]">3d_rotation</span> 360° 3D Model
+          <button id="pdp-mode-3d" onclick="switchPdpMediaMode('3d')" class="px-3 sm:px-3.5 py-1 rounded-full text-xs font-semibold text-[#443535]/70 hover:text-[#443535] transition-all flex items-center gap-1">
+            <span class="material-symbols-outlined text-[15px] text-[#B97980]">3d_rotation</span> 3D Model
           </button>
         </div>
       </div>
 
       <!-- Main Active Viewport -->
-      <div class="relative h-96 sm:h-[500px] rounded-2xl overflow-hidden bg-[#F7EDEB] border border-[#E8C9C9]">
+      <div class="relative h-80 sm:h-96 md:h-[480px] rounded-2xl overflow-hidden bg-[#F7EDEB] border border-[#E8C9C9]">
         <!-- 2D Photo View -->
         <div id="pdp-photo-view" class="w-full h-full">
           <img id="pdp-main-img" src="" alt="" class="w-full h-full object-cover transition-opacity duration-300">
@@ -472,6 +494,9 @@ tailwind.config = {
   }
 
   document.addEventListener('DOMContentLoaded', () => {
+    const mobBtn = document.getElementById('mobile-toggle-btn');
+    const mobNav = document.getElementById('mobile-drawer-nav');
+    if (mobBtn && mobNav) mobBtn.onclick = () => mobNav.classList.toggle('hidden');
     loadProductDetails();
   });
 </script>
